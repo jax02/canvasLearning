@@ -1,23 +1,19 @@
-$color: #00cc99;
+// bootstrap載入
+@import '../../../node_modules/bootstrap/scss/functions';
+@import '../style/helpers/variables';
+@import '../../../node_modules/bootstrap/scss/bootstrap';
 
-.header {
-  height: 200px;
-  background-color: #00cc99;
-}
+@import '../style/utilities/mixin';
 
-.footer {
-  height: 200px;
-  background-color: #00cc99;
-}
+//icon
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0");
 
-.box {
-  width: 100px;
-  height: 100px;
-  background-color: red;
-  display: flex;
-  transition: all 0.5s;
-  &:hover {
-    width: 200px;
-    background-color: $color;
-  }
-}
+//hover.css
+@import '../../../node_modules/hover.css/scss/hover.scss';
+
+// 各別頁面
+@import '../style/pages/layout/header.scss';
+@import '../style/pages/index.scss';
+
+
+

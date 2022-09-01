@@ -1,0 +1,22 @@
+/* 圖片取代文字技巧 */
+@mixin hide-text {
+    text-indent: 101%;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+// 文字漸層效果
+//https://bootcamp.uxdesign.cc/gradient-text-in-css-609068d3f953
+@mixin gradient-text {
+    background-image: linear-gradient(100deg, #EB9C37, #DD4C57);
+    background-clip: text;
+    color: transparent;
+}
+@mixin img-mask{
+    background-color: rgba(0, 0, 0, 0.7);
+    background-blend-mode: multiply;
+}
+//文字強迫不換行
+@mixin text-nowrap{
+    word-wrap: normal;
+    white-space:nowrap; 
+}

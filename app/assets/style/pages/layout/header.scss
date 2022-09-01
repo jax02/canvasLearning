@@ -1,0 +1,28 @@
+@import'../../utilities/mixin';
+
+.navbar-brand{
+    .logo{
+        @include gradient-text;
+    }
+}
+.btnArea{
+    a{
+        &:hover{
+            box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.5);
+        }
+        &:active{
+            box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.9);
+            transition: .1s;
+        }
+    }
+}
+.nav-item{
+    &:hover{
+        box-shadow: 5px 3px 3px 2px rgba(0, 0, 0, 0.3);
+        border-radius: 15px;
+    }
+    &:active{
+        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.9);
+        transition: .1s;
+    }
+}
