@@ -1,0 +1,33 @@
+@charset "UTF-8";
+/* 圖片取代文字技巧 */
+.navbar-brand .logo {
+  background-image: -o-linear-gradient(350deg, #EB9C37, #DD4C57);
+  background-image: linear-gradient(100deg, #EB9C37, #DD4C57);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent; }
+
+.btnArea a:hover {
+  -webkit-box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.5);
+          box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.5); }
+
+.btnArea a:active {
+  -webkit-box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.9);
+          box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.9);
+  -webkit-transition: .1s;
+  -o-transition: .1s;
+  transition: .1s; }
+
+.nav-item:hover {
+  -webkit-box-shadow: 5px 3px 3px 2px rgba(0, 0, 0, 0.3);
+          box-shadow: 5px 3px 3px 2px rgba(0, 0, 0, 0.3);
+  border-radius: 15px; }
+
+.nav-item:active {
+  -webkit-box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.9);
+          box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.9);
+  -webkit-transition: .1s;
+  -o-transition: .1s;
+  transition: .1s; }
+
+/*# sourceMappingURL=header.css.map */
