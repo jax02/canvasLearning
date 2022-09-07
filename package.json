@@ -39,7 +39,8 @@
     "jquery": "^3.5.1",
     "minimist": "^1.2.0",
     "morgan": "^1.9.1",
-    "node-sass": "^4.12.0"
+    "node-sass": "^4.12.0",
+    "pure-css-loader": "^3.3.3"
   },
   "repository": {
     "type": "git",

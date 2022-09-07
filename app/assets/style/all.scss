@@ -4,16 +4,22 @@
 @import '../../../node_modules/bootstrap/scss/bootstrap';
 
 @import '../style/utilities/mixin';
+@import '../style/helpers/buttons';
 
 //icon
 @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css");
 
 //hover.css
 @import '../../../node_modules/hover.css/scss/hover.scss';
+//css-loader(https://github.com/raphaelfabeni/css-loader#default)
+@import '../../../node_modules/pure-css-loader/dist/css-loader.css';
 
 // 各別頁面
 @import '../style/pages/layout/header.scss';
 @import '../style/pages/index.scss';
+@import '../style/pages/register.scss';
+@import '../style/pages/login.scss';
 
 
 

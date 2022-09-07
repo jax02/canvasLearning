@@ -1,5 +1,6 @@
 @import '../utilities/mixin';
 
+
 .banner{
     height: 720px;
     background-image: url('https://s3-alpha-sig.figma.com/img/d7cb/9cc6/5e4ce0bd07cbfa920b0241f31552a551?Expires=1662940800&Signature=FKpFUhJvGKG4AGQXU8VOxEoGK~02nP4ZJseMxlRZjReOPMO2Vh0TcIFNOm-HepHCl3dU0etqhrEw0hc6ezzyn8ZzXjCymicZk5Eac-Pjhdfc3vVgLkKtQTsy09oZaIEWxMeGVeUJgsq4AKTng8UNg74~JL1U8IGLi-1hrrgPcgCbeB4sRC3qORLLpoZ9Lsb1DRg4IMgjVRdpAvnGAxpmaDI1DlyarYwUb70GWirhz7bgENLneJIjSeQYJbkc9MP8-i0UB7WMIElPPE49q7DuHIeGvBGrJ5unIl45CXcWF3cyRUEEWdvseAxwOVpslK2l5bYPf13NVn1Jab-B03MLAw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA');
@@ -200,7 +201,7 @@
     }
 }
 .notice{
-    overflow: hidden;
+    // overflow: hidden;
     padding: 60px 0px 0px 0px;
     picture{
         position: absolute;
@@ -232,3 +233,5 @@
         }
     }
 }
+
+
