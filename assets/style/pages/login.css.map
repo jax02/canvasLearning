@@ -1,0 +1,1 @@
+{"version":3,"sources":["pages/login.scss"],"names":[],"mappings":"AAAA;EACI,yBAAyB,EAAA;EAD7B;IAGQ,yBAAyB;IACzB,WAAW,EAAA","file":"login.css","sourcesContent":[".google-btn{\n    background-color: #4285F4;\n    &:hover{\n        background-color: #4285F4;\n        opacity: .9;\n    }\n}\n"]}
