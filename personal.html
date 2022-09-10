@@ -5,8 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>登入頁</title>
+  <title>帳號管理</title>
   <link rel="stylesheet" href="./assets/style/all.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+  <!-- swiperJs 要放head位置，body沒效果-->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 </head>
 
 <body>
@@ -23,41 +26,51 @@
               <a class="nav-link fs-5 fw-bold" aria-current="page" href="#">介紹</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link  fs-5 fw-bold" href="#">課程預覽</a>
+              <a class="nav-link  fs-5 fw-bold" href="#">如何使用</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link  fs-5 fw-bold" href="#">課程預覽</a>
+              <a class="nav-link  fs-5 fw-bold" href="course.html">課程預覽</a>
             </li>
             <li class="nav-item">
               <a class="nav-link  fs-5 fw-bold" href="#">排行榜</a>
             </li>
           </ul>
-          <div class="btnArea">
-            <!-- <a href="#" class="text-light fs-5 bg-gradient fw-semibold register text-decoration-none py-1 px-3 rounded-pill me-3">註冊</a> -->
-            <a href="login.html" class="text-light fs-5 bg-gradient fw-semibold login text-decoration-none py-1 px-3 rounded-pill">登入</a>
+          <div class="btn-group">
+            <button class="btn btn-primary dropdown-toggle d-flex justify-content-center align-items-center " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="material-symbols-outlined me-2">
+                face
+                </span>
+              小明
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="personal.html">個人資料</a></li>
+              <li><a class="dropdown-item" href="#">學習記錄</a></li>
+              <li><a class="dropdown-item" href="account.html">帳號管理</a></li>
+            </ul>
           </div>
+          
         </div>
       </div>
     </nav>
   </header>
 
-  <div class="login pt-4">
+  <div class="account pt-4">
     <div class="container">
         <div class="tittle text-center">
-            <span class="fs-3 text-dark">會員登入</span>
+            <span class="fs-3 text-dark">個人資料</span>
         </div>
         <div class="row">
             <div class="col-md-6 offset-md-3">
-                <form class="form border border-primary border-2 bg-light bg-opacity-75 my-5 p-4 rounded-4">
+                <form  class="form border border-primary bg-light bg-opacity-25 border-2 my-5 p-4 rounded-4">
                     <div class="mb-3 row text-dark">
-                        <label for="staticEmail" class="col-xl-2 col-form-label d-flex align-items-center">
+                        <label  for="staticEmail" class="col-xl-2 col-form-label d-flex align-items-center">
                             <span class="material-symbols-outlined me-1">
                                 person
                             </span>
                             帳號
                         </label>
                         <div class="col-xl-10">
-                          <input type="text"  class="form-control" id="staticEmail" placeholder="example@mail.com">
+                          <input disabled type="text"  class="form-control" id="staticEmail" placeholder="example@mail.com">
                         </div>
                       </div>
                       <div class="mb-3 row text-dark">
@@ -68,37 +81,31 @@
                             密碼</label>
                         <div class="col-xl-10">
                           <div class="input-area d-flex align-items-center position-relative ">
-                            <input type="password" class="form-control" id="inputPassword" placeholder="請輸入密碼">
-                            <span class="material-symbols-outlined position-absolute end-0 me-2">
-                              visibility
-                              </span>
+                            <input disabled type="password" class="form-control" id="inputPassword" placeholder="**********">
+                            <a href="#" class="position-absolute end-0 me-2 d-flex align-items-center text-decoration-none text-primary">
+                                <span class="material-symbols-outlined ">
+                                    visibility
+                                    </span>
+                              </a>
                           </div>
                         </div>
                       </div>
-                    <button type="submit" class="my-3 btn btn-primary w-100 text-light fs-5 bg-opacity-25">登入</button>
-                    <div class="under-line my-4 bg-primary"></div>
-                    <div class="row gy-2">
-                        <div class="col-md-6">
-                            <a href="#" class="btn btn-outline-primary w-100">忘記密碼</a>
+                      <div class="mb-3 row text-dark">
+                        <label for="nickName" class="col-xl-2 col-form-label d-flex align-items-center">
+                            <span class="material-symbols-outlined me-1">
+                                face
+                            </span>
+                            暱稱</label>
+                        <div class="col-xl-10">
+                          <input disabled type="text" class="form-control" id="nickName" placeholder="小明">
                         </div>
-                        <div class="col-md-6">
-                            <a href="register.html" class="btn btn-outline-primary w-100">註冊</a>
-                        </div>
-                        <div class="under-line my-4 bg-primary"></div>
-                        <button type="button" class="mt-3 btn google-btn text-light w-100 fs-5">
-                            <i class="fa-brands fa-google me-1"></i>
-                            Google登入
-                        </button>
-                        <button type="button" class="mt-3 btn btn-dark w-100 text-light fs-5">
-                            <i class="fa-brands fa-github me-1 text-light"></i>
-                            Github登入
-                        </button>
-                    </div>
+                      </div>
+                      <button type="submit" class="btn btn-primary w-100 text-light fs-5">前往調整個人資料</button>
                   </form>
             </div>
         </div>
     </div>
-</div>
+  </div>
 
   <!-- <footer class="footer bg-dark py-2">
     <div class="container d-flex justify-content-between align-items-center">

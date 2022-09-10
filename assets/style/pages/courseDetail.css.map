@@ -1,0 +1,1 @@
+{"version":3,"sources":["pages/courseDetail.scss"],"names":[],"mappings":"AAAA;EACI,oBAAoB;EACpB,6BAA6B,EAAA;;AAEjC;EACI,cAAc;EACd,WAAW;EACX,YAAY,EAAA","file":"courseDetail.css","sourcesContent":[".border-bottom{\n    padding-bottom: 80px;\n    border-bottom: 1px solid #111;\n}\nimg{\n    display: block;\n    width: 100%;\n    height: 100%;\n}"]}

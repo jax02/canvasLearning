@@ -4,4 +4,10 @@
     background-color: #4285F4;
     opacity: .9; }
 
+.login {
+  height: 100vh;
+  background-image: url(https://images.unsplash.com/photo-1472289065668-ce650ac443d2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MTcxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60);
+  background-repeat: no-repeat;
+  background-size: cover; }
+
 /*# sourceMappingURL=login.css.map */

@@ -15914,7 +15914,7 @@ textarea.form-control-lg {
   width: 100%;
   height: 3px; }
 
-.bg-image {
+.register {
   height: 100vh;
   background-image: url(https://media.istockphoto.com/photos/businessman-at-office-desk-signing-a-contract-form-in-office-picture-id1217086008?k=20&m=1217086008&s=612x612&w=0&h=4hyFas9-0XxePsCPThqQ1noGYNacaW5If1uc77dIbCI=);
   background-repeat: no-repeat;
@@ -15925,5 +15925,135 @@ textarea.form-control-lg {
   .google-btn:hover {
     background-color: #4285F4;
     opacity: .9; }
+
+.login {
+  height: 100vh;
+  background-image: url(https://images.unsplash.com/photo-1472289065668-ce650ac443d2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MTcxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60);
+  background-repeat: no-repeat;
+  background-size: cover; }
+
+.swiper {
+  width: 100%;
+  height: 100%; }
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  max-width: calc(calc(100% - 40px) / 3); }
+  @media (max-width: 768px) {
+    .swiper-slide {
+      max-width: calc(calc(100% - 20px) / 2); } }
+  @media (max-width: 378px) {
+    .swiper-slide {
+      max-width: 100%; } }
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover; }
+
+.courseSwiper .swiper-button-next::after, .courseSwiper .swiper-button-prev::after {
+  content: ''; }
+
+@media (max-width: 1200px) {
+  .courseSwiper .swiper-button-prev {
+    top: 40%;
+    left: 10px; } }
+
+@media (max-width: 992px) {
+  .courseSwiper .swiper-button-prev {
+    top: 30%;
+    left: 10px; } }
+
+@media (max-width: 768px) {
+  .courseSwiper .swiper-button-prev {
+    top: 40%;
+    left: 10px; } }
+
+@media (max-width: 378px) {
+  .courseSwiper .swiper-button-prev {
+    top: 50%;
+    left: 10px; } }
+
+@media (max-width: 1200px) {
+  .courseSwiper .swiper-button-next {
+    top: 40%;
+    right: 10px; } }
+
+@media (max-width: 992px) {
+  .courseSwiper .swiper-button-next {
+    top: 30%;
+    right: 10px; } }
+
+@media (max-width: 768px) {
+  .courseSwiper .swiper-button-next {
+    top: 40%;
+    right: 10px; } }
+
+@media (max-width: 378px) {
+  .courseSwiper .swiper-button-next {
+    top: 50%;
+    right: 10px; } }
+
+.ranking {
+  height: 100%;
+  background-color: rgba(235, 156, 55, 0.3); }
+  .ranking .col-lg-3 a:hover {
+    background-color: #F1C40F !important; }
+
+.circle-number {
+  width: 80px;
+  height: 80px;
+  background-color: #EB9C37;
+  border-radius: 50%; }
+  .circle-number .inside-circle {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 3px solid rgba(146, 241, 38, 0.6); }
+
+.first {
+  position: relative; }
+
+.subtitle::after {
+  display: block;
+  width: 100%;
+  height: 2px;
+  content: '';
+  background-color: #EB9C37; }
+
+@-webkit-keyframes arrow-down {
+  from {
+    top: -20px;
+    opacity: .7; }
+  to {
+    top: 10px;
+    opacity: 0; } }
+
+@keyframes arrow-down {
+  from {
+    top: -20px;
+    opacity: .7; }
+  to {
+    top: 10px;
+    opacity: 0; } }
+
+.arrow-down {
+  position: relative;
+  -webkit-animation: arrow-down 3s ease 1s infinite;
+          animation: arrow-down 3s ease 1s infinite; }
+
+.border-bottom {
+  padding-bottom: 80px;
+  border-bottom: 1px solid #111; }
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%; }
 
 /*# sourceMappingURL=all.css.map */
