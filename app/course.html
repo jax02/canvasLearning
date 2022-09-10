@@ -1,0 +1,307 @@
+---
+title: 課程總覽
+layout: ./app/userHeader.ejs
+engine: ejs
+current: index
+---
+<div class="ranking pt-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 offset-lg-2 d-flex flex-column justify-content-center mb-3 mb-lg-0">
+                <p class="fs-4"><span class="fs-2 mb-3">排行榜</span> <br> 距離NO.1還差一點點</p>
+                <a href="#course-list" class="text-decoration-none bg-primary px-3 py-2 rounded-pill text-center fs-4 text-light shadow fw-semibold">開始挑戰</a>
+            </div>
+            <div class="col-lg-6">
+                <div class="list-group shadow-lg rounded-3">
+                    <a href="#" class="list-group-item list-group-item-action bg-primary text-light" aria-current="true">
+                      <div class="w-100 text-center">
+                        <h5 class="mb-1 fs-2">
+                            <i class="fa-solid fa-trophy"></i>
+                            積分排行榜</h5>
+                      </div>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action d-flex align-items-center justify-content-around flex-wrap flex-md-nowrap">
+                      <div class="w-100 d-flex align-items-center mb-2 mb-md-0">
+                        <div class="circle-number d-flex justify-content-center align-items-center">
+                            <div class="inside-circle d-flex justify-content-center align-items-center">
+                                <span class="fs-2">1</span>
+                            </div>
+                        </div>
+                        <i class="fa-duotone fa-trophy-star"></i>
+                        <h5 class="fs-3 ms-5">王小明
+                        </h5>
+                      </div>
+                      <i class="fa-solid fa-star fa-2x text-primary"></i>
+                      <i class="fa-solid fa-star fa-2x text-primary"></i>
+                      <i class="fa-solid fa-star fa-2x text-primary"></i>
+                      <i class="fa-solid fa-star fa-2x text-primary"></i>
+                      <i class="fa-solid fa-star fa-2x text-primary">...</i>
+                      <strong class="text-muted">(15)</strong>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action d-flex align-items-center justify-content-around flex-wrap flex-md-nowrap">
+                        <div class="w-100 d-flex align-items-center mb-2 mb-md-0">
+                          <div class="circle-number d-flex justify-content-center align-items-center">
+                              <div class="inside-circle d-flex justify-content-center align-items-center">
+                                  <span class="fs-2">2</span>
+                              </div>
+                          </div>
+                          <h5 class="fs-3 ms-5">小華</h5>
+                        </div>
+                        <i class="fa-solid fa-star fa-2x text-primary"></i>
+                        <i class="fa-solid fa-star fa-2x text-primary"></i>
+                        <i class="fa-solid fa-star fa-2x text-primary"></i>
+                        <i class="fa-solid fa-star fa-2x text-primary">...</i>
+                        <strong class="text-muted">(10)</strong>
+                      </a>
+                      <a href="#" class="list-group-item list-group-item-action d-flex align-items-center justify-content-around flex-wrap flex-md-nowrap">
+                        <div class="w-100 d-flex align-items-center mb-2 mb-md-0">
+                          <div class="circle-number d-flex justify-content-center align-items-center">
+                              <div class="inside-circle d-flex justify-content-center align-items-center">
+                                  <span class="fs-2">3</span>
+                              </div>
+                          </div>
+                          <h5 class="fs-3 ms-5">王小明#112</h5>
+                        </div>
+                        <i class="fa-solid fa-star fa-2x text-primary"></i>
+                        <i class="fa-solid fa-star fa-2x text-primary"></i>
+                        <i class="fa-solid fa-star fa-2x text-primary">...</i>
+                        <strong class="text-muted">(9)</strong>
+                      </a>
+                      <a href="#" class="list-group-item list-group-item-action d-flex align-items-center justify-content-around flex-wrap flex-md-nowrap">
+                        <div class="w-100 d-flex align-items-center mb-2 mb-md-0">
+                          <div class="circle-number d-flex justify-content-center align-items-center">
+                              <div class="inside-circle d-flex justify-content-center align-items-center">
+                                  <span class="fs-2">4</span>
+                              </div>
+                          </div>
+                          <h5 class="fs-3 ms-5">小美</h5>
+                        </div>
+                        <i class="fa-solid fa-star fa-2x text-primary"></i>
+                        <i class="fa-solid fa-star fa-2x text-primary">...</i>
+                        <strong class="text-muted">(5)</strong>
+                      </a>
+                      <a href="#" class="list-group-item list-group-item-action d-flex align-items-center justify-content-around flex-wrap flex-md-nowrap">
+                        <div class="w-100 d-flex align-items-center mb-2 mb-md-0">
+                          <div class="circle-number d-flex justify-content-center align-items-center">
+                              <div class="inside-circle d-flex justify-content-center align-items-center">
+                                  <span class="fs-2">5</span>
+                              </div>
+                          </div>
+                          <h5 class="fs-3 ms-5">小明#3515</h5>
+                        </div>
+                        <i class="fa-solid fa-star fa-2x text-primary">...</i>
+                        <strong class="text-muted">(3)</strong>
+                      </a>
+                  </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <a href="#course-list" class="d-flex flex-column text-decoration-none text-dark">
+                <i class="arrow-down fa-solid fa-angles-down fa-2x"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="course-list mt-5" id="course-list">
+    <div class="container">
+        <div class="subtitle mt-6">
+            <div class="content d-flex justify-content-between align-items-center">
+                <span class="fs-1">初級</span>
+                <div class="btn btn-outline-primary">開始挑戰</div>
+            </div>
+        </div>
+        <div class="swiper courseSwiper mt-3 position-relative">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <a href="courseDetail.html" class="text-decoration-none text-dark">
+                        <div class="card">
+                            <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MTAwfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title text-start">認識座標系統</h5>
+                                <p class="card-text text-start">我們先了解畫布的座標系，畫布的原點在元素的左上角，水平是 x 軸.... </p>
+                                <p class="card-text  text-start text-lg-end">積分數：
+                                <i class="fa-solid fa-star fa-1x text-primary"></i>
+                                <i class="fa-solid fa-star fa-1x text-dark"></i>
+                                <i class="fa-solid fa-star fa-1x text-dark"></i>
+                                <i class="fa-solid fa-star fa-1x text-dark"></i>
+                                <i class="fa-solid fa-star fa-1x text-dark"></i>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="courseDetail.html" class="text-decoration-none text-dark">
+                        <div class="card">
+                            <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MTAwfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title text-start">認識座標系統</h5>
+                                <p class="card-text text-start">我們先了解畫布的座標系，畫布的原點在元素的左上角，水平是 x 軸.... </p>
+                                <p class="card-text  text-start text-lg-end">積分數：
+                                <i class="fa-solid fa-star fa-1x text-primary"></i>
+                                <i class="fa-solid fa-star fa-1x text-dark"></i>
+                                <i class="fa-solid fa-star fa-1x text-dark"></i>
+                                <i class="fa-solid fa-star fa-1x text-dark"></i>
+                                <i class="fa-solid fa-star fa-1x text-dark"></i>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="courseDetail.html" class="text-decoration-none text-dark">
+                        <div class="card">
+                            <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MTAwfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title text-start">認識座標系統</h5>
+                                <p class="card-text text-start">我們先了解畫布的座標系，畫布的原點在元素的左上角，水平是 x 軸.... </p>
+                                <p class="card-text  text-start text-lg-end">積分數：
+                                <i class="fa-solid fa-star fa-1x text-primary"></i>
+                                <i class="fa-solid fa-star fa-1x text-dark"></i>
+                                <i class="fa-solid fa-star fa-1x text-dark"></i>
+                                <i class="fa-solid fa-star fa-1x text-dark"></i>
+                                <i class="fa-solid fa-star fa-1x text-dark"></i>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <i class="swiper-button-next fa-solid fa-forward fa-3x text-primary"></i>
+            <i class="fa-solid fa-backward swiper-button-prev text-primary fa-3x"></i>
+        </div>
+        <div class="subtitle mt-6">
+            <div class="content d-flex justify-content-between align-items-center">
+                <span class="fs-1">中級</span>
+                <div class="btn btn-outline-primary">開始挑戰</div>
+            </div>
+        </div>
+        <div class="swiper courseSwiper mt-3 position-relative">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <a href="#" class="text-decoration-none text-dark">
+                        <div class="card">
+                            <img src="https://images.unsplash.com/photo-1543286386-713bdd548da4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8bWF0aCUyMGdyYXBofGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title text-start">認識座標系統</h5>
+                                <p class="card-text text-start">我們先了解畫布的座標系，畫布的原點在元素的左上角，水平是 x 軸.... </p>
+                                <p class="card-text  text-start text-lg-end">積分數：
+                                <i class="fa-solid fa-star fa-1x text-primary"></i>
+                                <i class="fa-solid fa-star fa-1x text-dark"></i>
+                                <i class="fa-solid fa-star fa-1x text-dark"></i>
+                                <i class="fa-solid fa-star fa-1x text-dark"></i>
+                                <i class="fa-solid fa-star fa-1x text-dark"></i>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#" class="text-decoration-none text-dark">
+                        <div class="card">
+                            <img src="https://images.unsplash.com/photo-1543286386-713bdd548da4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8bWF0aCUyMGdyYXBofGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title text-start">認識座標系統</h5>
+                                <p class="card-text text-start">我們先了解畫布的座標系，畫布的原點在元素的左上角，水平是 x 軸.... </p>
+                                <p class="card-text  text-start text-lg-end">積分數：
+                                <i class="fa-solid fa-star fa-1x text-primary"></i>
+                                <i class="fa-solid fa-star fa-1x text-dark"></i>
+                                <i class="fa-solid fa-star fa-1x text-dark"></i>
+                                <i class="fa-solid fa-star fa-1x text-dark"></i>
+                                <i class="fa-solid fa-star fa-1x text-dark"></i>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#" class="text-decoration-none text-dark">
+                        <div class="card">
+                            <img src="https://images.unsplash.com/photo-1543286386-713bdd548da4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8bWF0aCUyMGdyYXBofGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title text-start">認識座標系統</h5>
+                                <p class="card-text text-start">我們先了解畫布的座標系，畫布的原點在元素的左上角，水平是 x 軸.... </p>
+                                <p class="card-text  text-start text-lg-end">積分數：
+                                <i class="fa-solid fa-star fa-1x text-primary"></i>
+                                <i class="fa-solid fa-star fa-1x text-dark"></i>
+                                <i class="fa-solid fa-star fa-1x text-dark"></i>
+                                <i class="fa-solid fa-star fa-1x text-dark"></i>
+                                <i class="fa-solid fa-star fa-1x text-dark"></i>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <i class="swiper-button-next fa-solid fa-forward fa-3x text-primary"></i>
+            <i class="fa-solid fa-backward swiper-button-prev text-primary fa-3x"></i>
+        </div>
+        <div class="subtitle mt-6">
+            <div class="content d-flex justify-content-between align-items-center">
+                <span class="fs-1">困難</span>
+                <div class="btn btn-outline-primary">開始挑戰</div>
+            </div>
+        </div>
+        <div class="swiper courseSwiper mt-3 position-relative">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <a href="#" class="text-decoration-none text-dark">
+                        <div class="card">
+                            <img src="https://images.unsplash.com/photo-1614732414444-096e5f1122d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGxhbmV0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title text-start">認識座標系統</h5>
+                                <p class="card-text text-start">我們先了解畫布的座標系，畫布的原點在元素的左上角，水平是 x 軸.... </p>
+                                <p class="card-text  text-start text-lg-end">積分數：
+                                <i class="fa-solid fa-star fa-1x text-primary"></i>
+                                <i class="fa-solid fa-star fa-1x text-dark"></i>
+                                <i class="fa-solid fa-star fa-1x text-dark"></i>
+                                <i class="fa-solid fa-star fa-1x text-dark"></i>
+                                <i class="fa-solid fa-star fa-1x text-dark"></i>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#" class="text-decoration-none text-dark">
+                        <div class="card">
+                            <img src="https://images.unsplash.com/photo-1614732414444-096e5f1122d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGxhbmV0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title text-start">認識座標系統</h5>
+                                <p class="card-text text-start">我們先了解畫布的座標系，畫布的原點在元素的左上角，水平是 x 軸.... </p>
+                                <p class="card-text  text-start text-lg-end">積分數：
+                                <i class="fa-solid fa-star fa-1x text-primary"></i>
+                                <i class="fa-solid fa-star fa-1x text-dark"></i>
+                                <i class="fa-solid fa-star fa-1x text-dark"></i>
+                                <i class="fa-solid fa-star fa-1x text-dark"></i>
+                                <i class="fa-solid fa-star fa-1x text-dark"></i>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#" class="text-decoration-none text-dark">
+                        <div class="card">
+                            <img src="https://images.unsplash.com/photo-1614732414444-096e5f1122d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGxhbmV0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title text-start">認識座標系統</h5>
+                                <p class="card-text text-start">我們先了解畫布的座標系，畫布的原點在元素的左上角，水平是 x 軸.... </p>
+                                <p class="card-text  text-start text-lg-end">積分數：
+                                <i class="fa-solid fa-star fa-1x text-primary"></i>
+                                <i class="fa-solid fa-star fa-1x text-dark"></i>
+                                <i class="fa-solid fa-star fa-1x text-dark"></i>
+                                <i class="fa-solid fa-star fa-1x text-dark"></i>
+                                <i class="fa-solid fa-star fa-1x text-dark"></i>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <i class="swiper-button-next fa-solid fa-forward fa-3x text-primary"></i>
+            <i class="fa-solid fa-backward swiper-button-prev text-primary fa-3x"></i>
+        </div>
+    </div>
+</div>

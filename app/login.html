@@ -4,59 +4,61 @@ layout: ./app/headerOnly.ejs
 engine: ejs
 current: index
 ---
-<div class="container">
-    <div class="tittle text-center mt-4">
-        <span class="fs-3 text-dark">會員登入</span>
-    </div>
-    <div class="row">
-        <div class="col-md-6 offset-md-3">
-            <form class="form border border-primary border-2 my-5 p-4 rounded-4">
-                <div class="mb-3 row text-dark">
-                    <label for="staticEmail" class="col-xl-2 col-form-label d-flex align-items-center">
-                        <span class="material-symbols-outlined me-1">
-                            person
-                        </span>
-                        帳號
-                    </label>
-                    <div class="col-xl-10">
-                      <input type="text"  class="form-control" id="staticEmail" placeholder="example@mail.com">
-                    </div>
-                  </div>
-                  <div class="mb-3 row text-dark">
-                    <label for="inputPassword" class="col-xl-2 col-form-label d-flex align-items-center">
-                        <span class="material-symbols-outlined me-1">
-                            lock
-                        </span>
-                        密碼</label>
-                    <div class="col-xl-10">
-                      <div class="input-area d-flex align-items-center position-relative ">
-                        <input type="password" class="form-control" id="inputPassword" placeholder="請輸入密碼">
-                        <span class="material-symbols-outlined position-absolute end-0 me-2">
-                          visibility
-                          </span>
+<div class="login pt-4">
+    <div class="container">
+        <div class="tittle text-center">
+            <span class="fs-3 text-dark">會員登入</span>
+        </div>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <form class="form border border-primary border-2 bg-light bg-opacity-75 my-5 p-4 rounded-4">
+                    <div class="mb-3 row text-dark">
+                        <label for="staticEmail" class="col-xl-2 col-form-label d-flex align-items-center">
+                            <span class="material-symbols-outlined me-1">
+                                person
+                            </span>
+                            帳號
+                        </label>
+                        <div class="col-xl-10">
+                          <input type="text"  class="form-control" id="staticEmail" placeholder="example@mail.com">
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                <button type="submit" class="my-3 btn btn-primary w-100 text-light fs-5">登入</button>
-                <div class="under-line my-4 bg-primary"></div>
-                <div class="row">
-                    <div class="col-6">
-                        <button type="button" class="btn btn-outline-primary w-100 change-color">忘記密碼</button>
-                    </div>
-                    <div class="col-6">
-                        <button type="button" class="btn btn-outline-primary w-100">註冊</button>
-                    </div>
+                      <div class="mb-3 row text-dark">
+                        <label for="inputPassword" class="col-xl-2 col-form-label d-flex align-items-center">
+                            <span class="material-symbols-outlined me-1">
+                                lock
+                            </span>
+                            密碼</label>
+                        <div class="col-xl-10">
+                          <div class="input-area d-flex align-items-center position-relative ">
+                            <input type="password" class="form-control" id="inputPassword" placeholder="請輸入密碼">
+                            <span class="material-symbols-outlined position-absolute end-0 me-2">
+                              visibility
+                              </span>
+                          </div>
+                        </div>
+                      </div>
+                    <button type="submit" class="my-3 btn btn-primary w-100 text-light fs-5 bg-opacity-25">登入</button>
                     <div class="under-line my-4 bg-primary"></div>
-                    <button type="button" class="mt-3 btn google-btn text-light w-100 fs-5">
-                        <i class="fa-brands fa-google me-1"></i>
-                        Google登入
-                    </button>
-                    <button type="button" class="mt-3 btn btn-dark w-100 text-light fs-5">
-                        <i class="fa-brands fa-github me-1 text-light"></i>
-                        Github登入
-                    </button>
-                </div>
-              </form>
+                    <div class="row gy-2">
+                        <div class="col-md-6">
+                            <a href="#" class="btn btn-outline-primary w-100">忘記密碼</a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="register.html" class="btn btn-outline-primary w-100">註冊</a>
+                        </div>
+                        <div class="under-line my-4 bg-primary"></div>
+                        <button type="button" class="mt-3 btn google-btn text-light w-100 fs-5">
+                            <i class="fa-brands fa-google me-1"></i>
+                            Google登入
+                        </button>
+                        <button type="button" class="mt-3 btn btn-dark w-100 text-light fs-5">
+                            <i class="fa-brands fa-github me-1 text-light"></i>
+                            Github登入
+                        </button>
+                    </div>
+                  </form>
+            </div>
         </div>
     </div>
 </div>

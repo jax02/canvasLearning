@@ -1,0 +1,92 @@
+---
+title: 帳號管理
+layout: ./app/userHeader.ejs
+engine: ejs
+current: index
+---
+<div class="account pt-4">
+    <div class="container">
+        <div class="tittle text-center">
+            <span class="fs-3 text-dark">會員資料</span>
+        </div>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <form class="form border border-primary bg-light bg-opacity-25 border-2 my-5 p-4 rounded-4">
+                    <div class="mb-3 row text-dark">
+                        <label for="staticEmail" class="col-xl-2 col-form-label d-flex align-items-center">
+                            <span class="material-symbols-outlined me-1">
+                                person
+                            </span>
+                            帳號
+                        </label>
+                        <div class="col-xl-10">
+                          <input type="text"  class="form-control" id="staticEmail" placeholder="example@mail.com">
+                        </div>
+                      </div>
+                      <div class="mb-3 row text-dark">
+                        <label for="inputPassword" class="col-xl-2 col-form-label d-flex align-items-center">
+                            <span class="material-symbols-outlined me-1">
+                                lock
+                            </span>
+                            密碼</label>
+                        <div class="col-xl-10">
+                          <div class="input-area d-flex align-items-center position-relative ">
+                            <input type="password" class="form-control" id="inputPassword" placeholder="請輸入密碼">
+                            <a href="#" class="position-absolute end-0 me-2 d-flex align-items-center text-decoration-none text-primary">
+                                <span class="material-symbols-outlined ">
+                                    visibility
+                                    </span>
+                              </a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="mb-3 row d-flex align-items-center text-dark">
+                        <label for="inputPassword2" class="col-xl-2 col-form-label d-flex align-items-center">
+                            <span class="material-symbols-outlined me-1">
+                                lock
+                            </span>
+                            修改密碼</label>
+                        <div class="col-xl-10">
+                          <div class="input-area d-flex align-items-center position-relative ">
+                            <input type="password" class="form-control" id="inputPassword2" placeholder="請再次輸入密碼">
+                            <a href="#" class="position-absolute end-0 me-2 d-flex align-items-center text-decoration-none text-primary">
+                                <span class="material-symbols-outlined ">
+                                    visibility
+                                    </span>
+                              </a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="mb-3 row d-flex align-items-center text-dark">
+                        <label for="inputPassword2" class="col-xl-2 col-form-label d-flex align-items-center">
+                            <span class="material-symbols-outlined me-1">
+                                lock
+                            </span>
+                            確認密碼</label>
+                        <div class="col-xl-10">
+                          <div class="input-area d-flex align-items-center position-relative ">
+                            <input type="password" class="form-control" id="inputPassword2" placeholder="請再次輸入密碼">
+                            <a href="#" class="position-absolute end-0 me-2 d-flex align-items-center text-decoration-none text-primary">
+                                <span class="material-symbols-outlined ">
+                                    visibility
+                                    </span>
+                              </a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="mb-3 row text-dark">
+                        <label for="nickName" class="col-xl-2 col-form-label d-flex align-items-center">
+                            <span class="material-symbols-outlined me-1">
+                                face
+                            </span>
+                            暱稱</label>
+                        <div class="col-xl-10">
+                          <input type="text" class="form-control" id="nickName" placeholder="小明">
+                        </div>
+                      </div>
+                    <button type="submit" class="btn btn-primary w-100 text-light fs-5">確認修改</button>
+                  </form>
+            </div>
+        </div>
+    </div>
+  </div>
