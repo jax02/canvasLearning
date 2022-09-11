@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>課程細節</title>
+  <link rel="stylesheet" href="./assets/style/all.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.18/c3.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.18/c3.js"></script>
+  <!-- swiperJs 要放head位置，body沒效果-->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+</head>
+
+<body>
+  <header class="header bg-light3">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand fs-2 fw-bold" href="index.html"><span class="logo">c</span>anvas <span class="logo">A</span>cademy</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse d-lg-flex justify-content-lg-around justify-content-center" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link fs-5 fw-bold" aria-current="page" href="index.html">介紹</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link  fs-5 fw-bold" href="index.html">如何使用</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link  fs-5 fw-bold" href="course.html">課程預覽</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link  fs-5 fw-bold" href="course.html">排行榜</a>
+            </li>
+          </ul>
+          <div class="btn-group">
+            <button class="btn btn-primary dropdown-toggle d-flex justify-content-center align-items-center " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="material-symbols-outlined me-2">
+                face
+                </span>
+              小明
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="personal.html">個人資料</a></li>
+              <li><a class="dropdown-item" href="record.html">學習記錄</a></li>
+              <li><a class="dropdown-item" href="account.html">帳號管理</a></li>
+            </ul>
+          </div>
+          
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="record">
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-lg-3 bg-light2 rounded-5 p-5 shadow person mb-5">
+                <div class="img">
+                    <img src="https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8bWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60" alt="" class="shadow-lg mb-5">
+                </div>
+                <div class="content">
+                    <div class="fs-3 mb-2 text-center">王小明</div>
+                    <div class="fs-5 text-start">積分數：
+                        <span class="text-primary">11</span>
+                    </div>
+                    <div class="fs-5">課程完成比例：
+                        <span class="text-primary">91%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="offset-lg-1 col-lg-4 rounded-5 shadow mb-5">
+                <div id="chart"></div>
+                <div id="chart2"></div>
+            </div>
+            <div class="offset-lg-1 col-lg-3 rounded-5 shadow">
+                <ul class="list-group list-group-flush my-2">
+                    <li class="list-group-item text-center fs-5">已完成列表</li>
+                    <li class="list-group-item">矩形rect <br>
+                        <div class="content d-flex justify-content-between align-items-center">
+                            <div class="star">
+                                <i class="fa-solid fa-star text-primary"></i>
+                                <i class="fa-solid fa-star text-primary"></i>
+                                <i class="fa-solid fa-star text-primary"></i>
+                                <i class="fa-solid fa-star text-primary"></i>
+                            </div>
+                            <button class="btn btn-sm btn-primary text-light">再試一次</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item">弧形arc <br>
+                        <div class="content d-flex justify-content-between align-items-center">
+                            <div class="star">
+                                <i class="fa-solid fa-star text-primary"></i>
+                                <i class="fa-solid fa-star text-primary"></i>
+                            </div>
+                            <button class="btn btn-sm btn-primary text-light">再試一次</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item">矩形rect <br>
+                        <div class="content d-flex justify-content-between align-items-center">
+                            <div class="star">
+                                <i class="fa-solid fa-star text-primary"></i>
+                                <i class="fa-solid fa-star text-primary"></i>
+                                <i class="fa-solid fa-star text-primary"></i>
+                                <i class="fa-solid fa-star text-primary"></i>
+                            </div>
+                            <button class="btn btn-sm btn-primary text-light">再試一次</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item">填色fill <br>
+                        <div class="content d-flex justify-content-between align-items-center">
+                            <div class="star">
+                                <i class="fa-solid fa-star text-primary"></i>
+                                <i class="fa-solid fa-star text-primary"></i>
+                                <i class="fa-solid fa-star text-primary"></i>
+                            </div>
+                            <button class="btn btn-sm btn-primary text-light">再試一次</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item">矩形rect <br>
+                        <div class="content d-flex justify-content-between align-items-center">
+                            <div class="star">
+                                <i class="fa-solid fa-star text-primary"></i>
+                                <i class="fa-solid fa-star text-primary"></i>
+                                <i class="fa-solid fa-star text-primary"></i>
+                                <i class="fa-solid fa-star text-primary"></i>
+                            </div>
+                            <button class="btn btn-sm btn-primary text-light">再試一次</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item">填色fill <br>
+                        <div class="content d-flex justify-content-between align-items-center">
+                            <div class="star">
+                                <i class="fa-solid fa-star text-primary"></i>
+                                <i class="fa-solid fa-star text-primary"></i>
+                                <i class="fa-solid fa-star text-primary"></i>
+                            </div>
+                            <button class="btn btn-sm btn-primary text-light">再試一次</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item">函數function <br>
+                        <div class="content d-flex justify-content-between align-items-center">
+                            <div class="star">
+                                <i class="fa-solid fa-star text-primary"></i>
+                                <i class="fa-solid fa-star text-primary"></i>
+                                <i class="fa-solid fa-star text-primary"></i>
+                                <i class="fa-solid fa-star text-primary"></i>
+                                <i class="fa-solid fa-star text-primary"></i>
+                                <i class="fa-solid fa-star text-primary"></i>
+                            </div>
+                            <button class="btn btn-sm btn-primary text-light">再試一次</button>
+                        </div>
+                    </li>
+                   
+                  </ul>
+            </div>
+        </div>
+        <div class="row mt-5 bg-light rounded-5 shadow">
+            <div id="chart3"></div>
+        </div>
+    </div>
+</div>
+
+  <!-- <footer class="footer bg-dark py-2">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div></div>
+      <div class="content text-light fw-semibold">ⓒ 2022 僅供練習使用，無商業用途</div>
+      <div class="admin"><a href="#" class="btn text-light border py-1 px-3 rounded-2">後臺管理</a></div>
+    </div>
+  </footer> -->
+  <script src="./assets/js/vendors.js"></script>
+  <script src="./assets/js/all.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+</body>
+
+</html>

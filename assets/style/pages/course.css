@@ -66,7 +66,13 @@
 
 .ranking {
   height: 100%;
-  background-color: rgba(235, 156, 55, 0.3); }
+  width: 100%;
+  background: -o-linear-gradient(55deg, #eeca38 50%, transparent 50%), url(https://media.istockphoto.com/illustrations/geometric-minimalist-abstract-illustration-id955851432?k=20&m=955851432&s=612x612&w=0&h=4Fumj6r-pxbjLX73iYKYXY5ln75TU6iF4LSWtJZOZqM=) left bottom/100% 100%;
+  background: linear-gradient(35deg, #eeca38 50%, transparent 50%), url(https://media.istockphoto.com/illustrations/geometric-minimalist-abstract-illustration-id955851432?k=20&m=955851432&s=612x612&w=0&h=4Fumj6r-pxbjLX73iYKYXY5ln75TU6iF4LSWtJZOZqM=) left bottom/100% 100%; }
+  @media (max-width: 992px) {
+    .ranking {
+      background: -o-linear-gradient(55deg, #f1c40f 30%, transparent 50%), url(https://media.istockphoto.com/photos/three-people-are-standing-near-the-tower-of-cubes-with-the-word-goal-picture-id1128537795?k=20&m=1128537795&s=612x612&w=0&h=ubWoLL6RIrcFGMSPNq3kEzvWW5lPtkoPszPyLKMwfQc=) left bottom/100% 100%;
+      background: linear-gradient(35deg, #f1c40f 30%, transparent 50%), url(https://media.istockphoto.com/photos/three-people-are-standing-near-the-tower-of-cubes-with-the-word-goal-picture-id1128537795?k=20&m=1128537795&s=612x612&w=0&h=ubWoLL6RIrcFGMSPNq3kEzvWW5lPtkoPszPyLKMwfQc=) left bottom/100% 100%; } }
   .ranking .col-lg-3 a:hover {
     background-color: #F1C40F !important; }
 

@@ -1,0 +1,1 @@
+{"version":3,"sources":["pages/record.scss"],"names":[],"mappings":"AAAA;EAEQ,cAAc;EACd,gBAAgB;EAChB,iBAAiB;EACjB,kBAAkB;EAClB,sBAAsB,EAAA","file":"record.css","sourcesContent":[".person{\n    img{\n        display: block;\n        max-width: 250px;\n        max-height: 250px;\n        border-radius: 50%;\n        background-size: cover;\n    }   \n}\n\n"]}
