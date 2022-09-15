@@ -16071,6 +16071,17 @@ img {
   -o-transition: .5s;
   transition: .5s; }
 
+.iview body {
+  margin: 0; }
+
+canvas {
+  display: block;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -ms-user-select: none;
+      user-select: none; }
+
 .person img {
   display: block;
   max-width: 250px;
