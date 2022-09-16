@@ -224,17 +224,14 @@ var lessons = [{
 }];
 console.log(lessons);
 console.log('data end');
+// const load = document.querySelector('.loader');
+// function loader (){
+//   setTimeout(() => { 
+//     load.style.display = 'none';}
+//     , 3000);
+// }
+// loader ();
 "use strict";
-
-var load = document.querySelector('.loader');
-
-function loader() {
-  setTimeout(function () {
-    load.style.display = 'none';
-  }, 3000);
-}
-
-loader();
 "use strict";
 
 console.log('mirror start');
@@ -337,11 +334,12 @@ var code2Learn; // the code lesson
 var destinationCode; // used to compare user source code
 
 var sourceCode; // user source code
-// var code; 
+
+var correct = 0; // var code; 
 
 var preview; // flag for preview
 
-var verification = "\n \n    image2 = ctx.getImageData(0,0,canvas.width,canvas.height)\n    totalPixels = 0;\n    imageDiff = 0\n    for (let i=0; i<image1.data.length;i++){\n        if(image1.data[i]!=0) totalPixels++; \n        if(image1.data[i]!=image2.data[i]) imageDiff ++;\n    }\n    console.log(\"totalPixels\", totalPixels);\n    console.log(\"imageDiff\", imageDiff);\n    localStorage.setItem(\"totalPixels\", totalPixels);                                         \n    localStorage.setItem(\"imageDiff\", imageDiff)\n";
+var verification = "\n \n    image2 = ctx.getImageData(0,0,canvas.width,canvas.height)\n    totalPixels = 0;\n    imageDiff = 0\n    for (let i=0; i<image1.data.length;i++){\n        if(image1.data[i]!=0) totalPixels++; \n        if(image1.data[i]!=image2.data[i]) imageDiff ++;\n    }\n    // console.log(\"totalPixels\", totalPixels);\n    // console.log(\"imageDiff\", imageDiff);\n    localStorage.setItem(\"totalPixels\", totalPixels);                                         \n    localStorage.setItem(\"imageDiff\", imageDiff)\n";
 var clearScreen = "ctx.clearRect(0,0,canvas.width,canvas.height);";
 var showSample = "ctx.clearRect(0,0,canvas.width,canvas.height);\n  ctx.putImageData(image1,0,0);";
 init();
@@ -375,8 +373,7 @@ function getSignatures() {
     doc.write(destinationCode);
     doc.close();
     lessons[i].signature.imageDiff = parseInt(localStorage.getItem("imageDiff"));
-    lessons[i].signature.totalPixels = parseInt(localStorage.getItem("totalPixels"));
-    console.log(destinationCode);
+    lessons[i].signature.totalPixels = parseInt(localStorage.getItem("totalPixels")); // console.log(destinationCode);
   }
 }
 
@@ -384,14 +381,15 @@ function check() {
   doc.write("<scri" + "pt>" + clearScreen + editor.getValue() + verification + "\n</scri" + "pt>");
   var imageDiff = parseInt(localStorage.getItem('imageDiff'));
   var totalPixels = parseInt(localStorage.getItem('totalPixels'));
-  var distanceSquare = (imageDiff - lessons[current_lesson].signature.imageDiff) * (imageDiff - lessons[current_lesson].signature.imageDiff) + (totalPixels - lessons[current_lesson].signature.totalPixels) * (totalPixels - lessons[current_lesson].signature.totalPixels);
-  alert("imageDiff:".concat(lessons[current_lesson].signature.imageDiff));
-  alert("totalPixels:".concat(lessons[current_lesson].signature.totalPixels));
+  var distanceSquare = (imageDiff - lessons[current_lesson].signature.imageDiff) * (imageDiff - lessons[current_lesson].signature.imageDiff) + (totalPixels - lessons[current_lesson].signature.totalPixels) * (totalPixels - lessons[current_lesson].signature.totalPixels); // alert(`imageDiff:${lessons[current_lesson].signature.imageDiff}`);
+  // alert(`totalPixels:${lessons[current_lesson].signature.totalPixels}`)
 
   if (distanceSquare < 20) {
-    alert('great success !!!'); //  correct++;
-    //  document.getElementById('progress').style.width=`${correct/lessons.length*100}%`;
-    //  document.getElementById('progress').innerHTML=` <h6>${correct}/${lessons.length}</h6>`
+    correct++;
+    console.log(correct);
+    alert('great success !!!');
+    document.getElementById('progress').style.width = "".concat(correct / lessons.length * 100, "%");
+    document.getElementById('progress').innerHTML = " <h6>".concat(correct, "/").concat(lessons.length, "</h6>");
   } else {
     alert('try again !!!');
   }
@@ -448,6 +446,37 @@ function prev() {
 }
 
 console.log('mirror end');
+"use strict";
+
+console.log('register start'); // Import the functions you need from the SDKs you need
+// import { initializeApp } from "firebase/app";
+// import { getAuth } from "firebase/auth";
+// import { getDatabase } from "firebase/database";
+// // TODO: Add SDKs for Firebase products that you want to use
+// // https://firebase.google.com/docs/web/setup#available-libraries
+// // Your web app's Firebase configuration
+// // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// const firebaseConfig = {
+//   apiKey: "AIzaSyAw_YWO4B_PD1kBejUfdOioA-zVhGPdMcQ",
+//   authDomain: "canvaslearning-7762b.firebaseapp.com",
+//   projectId: "canvaslearning-7762b",
+//   storageBucket: "canvaslearning-7762b.appspot.com",
+//   messagingSenderId: "730906836458",
+//   appId: "1:730906836458:web:e0fb78536098e187108693",
+//   measurementId: "G-TFSLY6QFRV"
+// };
+// // Initialize Firebase
+// const app = initializeApp(firebaseConfig);
+// const auth = getAuth();
+// const database = getDatabase();
+//註冊
+
+var signUp = document.getElementById('signUp');
+console.log(signUp); // signUp.addEventListener('click',(e) => {
+//     // var email = document.getElementById('staticEmail').value;
+//     // console.log(email);
+//     alert('123')
+// });
 "use strict";
 
 console.log('swiper start');
