@@ -67,66 +67,62 @@
   <div class="container">
     <div class="row row-cols-1 border-bottom gy-4">
       <div class="col d-flex align-items-center">
-        <div class="title fs-3 bg-light2 rounded-5 p-2 shadow">
-          初級主題
+        <div class="title fs-3 bg-light2 rounded-5 p-2 shadow w-100">
+          中級主題
           <p class="fs-5 mt-2">
-            &emsp;&emsp;Canvas是HTML5中一個用來繪製圖形、動畫和其他可視化內容的標準。使用Canvas，開發者可以透過JavaScript來操作畫布上的元素，包括形狀、線條、圖像等，也可以創建動畫效果和遊戲等互動應用。
+            &emsp;&emsp;使用函數方法，能簡化剛才練習中的重複步驟
             <br />
-            &emsp;&emsp;HTML Canvas繪製需透過下列步驟:
+            &emsp;&emsp;透過函數繪製需透過下列步驟:
             <br />
-            - 新增畫布
-            <br />
-            &emsp;&emsp;在 HTML 中建立 canvas 元素，新增畫布。
-            為了後續操作，給予 id 名稱 mycanvas。
-            <br />
-            - 取得畫布
-            <br />
-            &emsp;&emsp;canvas 元素會產生一塊畫布，<code>getContext() </code>
-            方法能夠取得這塊畫布及各個繪圖方法。
+            - 新增函數
             <br />
             &emsp;&emsp;<code
-              >let canvas = document.querySelector('#fractal')</code
+              >function 函數名稱(參數){ <br />
+              &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;執行動作 <br />
+              &emsp;&emsp;&emsp;&emsp;}</code
             >
             <br />
-            &emsp;&emsp;<code>let ctx = canvas.getContext("2d")</code>
+            - 執行函數
             <br />
-            - 開始繪圖
+            &emsp;&emsp;呼叫剛新增的函數後就能重複執行同樣的步驟。
             <br />
-            &emsp;&emsp;Canvas 的
-            2d基本繪製，為一個座標繪製。原點在畫布的左上方。往右為
-            x，往下為y。(如下圖)
-            <img src="https://i.imgur.com/zrSrAIK.png" alt="canvas座標圖" />
+            - 多次執行
+            <br />
+            &emsp;&emsp;搭配條件式、參數就能以多次執行方式繪製較複雜幾何圖形。
           </p>
         </div>
       </div>
       <div class="col">
         <div class="list-group fs-4 shadow">
           <button type="button" class="list-group-item list-group-item-action">
-            <span>線段</span>
+            <span>建立函數</span>
           </button>
           <button type="button" class="list-group-item list-group-item-action">
             內容介紹：
             <span>
               <br />
-              開始路徑 :
-              <code>beginPath()</code> ，產生路徑，開始繪製路徑。 <br />
-              結束路徑 :
-              <code>closePath()</code> ，封閉路徑，完成路徑繪製 。<br />
-              移動 :
-              <code>moveTo(x,y)</code> ，將畫筆移動到 (x,y) 。<br />
-              畫出直線 :
-              <code>lineTo(x,y) </code>，從目前的所在點，繪製一條直線至 (x,y)<br />
-              填滿路徑區域 :
-              <code>fill()</code> ，填滿路徑區域。<br />
-              繪製路徑線條 :
-              <code>stroke() </code>，繪製出路徑的線條、框線。<br />
-              常用指令 :
+              以下列方式建立函數: <br />
+              &emsp;&emsp;<code
+                >function 函數名稱(參數){ <br />
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;執行動作 <br />
+                &emsp;&emsp;&emsp;&emsp;}</code
+              ><br />
+              範例: <br />
+              <code>
+                function drawCircle(x,y,r){ <br />
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;ctx.beginPath();<br />
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;ctx,arc(x,y,r,0,2*Math.PI);
+                <br />
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;ctx.stroke(); <br />
+                }</code
+              ><br />
+
+              關鍵字 :
             </span>
-            <span class="badge bg-secondary"> beginPath() </span>
-            <span class="badge bg-secondary"> closePath() </span>
-            <span class="badge bg-secondary"> moveTo(x,y) </span>
-            <span class="badge bg-secondary"> lineTo(x,y) </span>
-            <span class="badge bg-secondary"> stroke() </span>
+            <span class="badge bg-secondary"> function </span>
+            <span class="badge bg-secondary"> 函數數名稱 </span>
+            <span class="badge bg-secondary"> 參數 </span>
+            <span class="badge bg-secondary"> 箭頭函式 </span>
           </button>
           <button type="button" class="list-group-item list-group-item-action">
             完成後可獲得積分數：
@@ -140,35 +136,23 @@
       <div class="col">
         <div class="list-group fs-4 shadow">
           <button type="button" class="list-group-item list-group-item-action">
-            <span>基本圖形</span>
+            <span>使用函數</span>
           </button>
           <button type="button" class="list-group-item list-group-item-action">
             內容介紹： <br />
-            Canvas 僅支援一種基本圖型：矩形。其他形狀都需要利用路徑繪製。
-            <span>
+            以上述方法建立函數: <br />
+            <code>
+              function drawCircle(x,y,r){ <br />
+              &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;ctx.beginPath();<br />
+              &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;ctx,arc(x,y,r,0,2*Math.PI);
               <br />
-              繪製填滿的實心矩形 ，x、y為起點、width為矩形寬、height為矩形長:
-              <code>fillRect(x, y, width, height)</code><br />
-              僅有外框的空心矩形，x、y為起點、width為矩形寬、height為矩形長:
-              <code>strokeRect(x, y, width, height)</code> <br />
-              繪製三角形，利用路徑繪製移動座標點並連接 <br />
-              <code>ctx.beginPath()</code><br />
-              <code>ctx.moveTo(x,y)</code><br />
-              <code>ctx.lineTo(X2,y2)</code><br />
-              <code>ctx.lineTo(x,y2)</code><br />
-              <code>ctx.closePath()</code><br />
-              <code>ctx.stroke();</code><br />
-            </span>
-            <span class="badge bg-secondary">
-              fillRect(x, y, width, height)
-            </span>
-            <span class="badge bg-secondary">
-              strokeRect(x, y, width, height)</span
-            >
-            <span class="badge bg-secondary"> beginPath() </span>
-            <span class="badge bg-secondary"> moveTo(x,y) </span>
-            <span class="badge bg-secondary"> lineTo(x,y) </span>
-            <span class="badge bg-secondary"> closePath() </span>
+              &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;ctx.stroke(); <br />
+              }</code
+            ><br />
+            給予不同參數並執行<br />
+            <code>drawCircle(320,180,100);</code> <br />
+            <code>drawCircle(220,180,100);</code> <br />
+            <code>drawCircle(420,180,100);</code> <br />
           </button>
           <button type="button" class="list-group-item list-group-item-action">
             完成後可獲得積分數：
@@ -183,28 +167,26 @@
       <div class="col">
         <div class="list-group fs-4 shadow">
           <button type="button" class="list-group-item list-group-item-action">
-            <span>圓形、弧形</span>
+            <span>多次執行</span>
           </button>
           <button type="button" class="list-group-item list-group-item-action">
             內容介紹： <br />
-            方法為
-            <code>arc(x,y,半徑,起始角,結束角)</code>
-            圓形的角度設置使用的是弧度。一個圓的弧度是 2π，半個圓是 π。使用
-            Math.PI 可以取得 π，再用 <code>stroke()</code>或
-            <code>fill()</code> 方法在畫布上繪製弧形 <br />
-            圓形: <br />
-            <code>ctx.beginPath()</code><br />
-            <code>ctx.arc(x,y,r,0,Math.PI*2)</code><br />
-            <code>ctx.stroke()</code><br />
-            弧形: <br />
-            <code>ctx.beginPath()</code><br />
-            <code>ctx.arc(x,y,r,0,Math.PI/2)</code><br />
-            <code>ctx.stroke()</code><br />
-            <span> </span>
-            <span class="badge bg-secondary"> beginPath() </span>
-            <span class="badge bg-secondary"> Math.PI </span>
-            <span class="badge bg-secondary"> arc(x,y,r,0,Math.PI*2) </span>
-            <span class="badge bg-secondary"> stroke() </span>
+            給予條件式、判斷式讓函數能在符合條件時重複執行 <br />
+            範例: <br />
+            <code
+              >function drawCircle(x, y, r) { <br />
+              &emsp;&emsp;&emsp;&emsp;&emsp;ctx.beginPath();<br />
+              &emsp;&emsp;&emsp;&emsp;&emsp;ctx.arc(x, y, r, 0, 2 * Math.PI);<br />
+              &emsp;&emsp;&emsp;&emsp;&emsp;ctx.stroke();<br />
+              &emsp;&emsp;&emsp;&emsp;&emsp;if (r > 2) { 半徑大於2時執行<br />
+              &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;drawCircle(x + r,
+              y, r / 2);<br />
+              &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;drawCircle(x - r,
+              y, r / 2);<br />
+              &emsp;&emsp;&emsp;&emsp;&emsp;}<br />
+              }</code
+            >
+            <br />
           </button>
           <button type="button" class="list-group-item list-group-item-action">
             完成後可獲得積分數：
@@ -224,43 +206,15 @@
     >
       <div class="col">
         <img
-          src="https://i.imgur.com/F76uOcb.jpg"
-          alt="線段"
+          src="https://i.imgur.com/IYopA8j.jpg"
+          alt="使用函數"
           class="rounded-2"
         />
       </div>
       <div class="col">
         <img
-          src="https://i.imgur.com/CB9r9is.jpg"
-          alt="填色矩形"
-          class="rounded-2"
-        />
-      </div>
-      <div class="col">
-        <img
-          src="https://i.imgur.com/EH219nE.jpg"
-          alt="線段矩形"
-          class="rounded-2"
-        />
-      </div>
-      <div class="col">
-        <img
-          src="https://i.imgur.com/Px5rkY1.jpg"
-          alt="三角形"
-          class="rounded-2"
-        />
-      </div>
-      <div class="col">
-        <img
-          src="https://i.imgur.com/9vwYzgp.jpg"
-          alt="圓形"
-          class="rounded-2"
-        />
-      </div>
-      <div class="col">
-        <img
-          src="https://i.imgur.com/XKgGdwS.jpg"
-          alt="弧形"
+          src="https://i.imgur.com/17wFLB8.jpg"
+          alt="重複執行"
           class="rounded-2"
         />
       </div>

@@ -67,66 +67,105 @@
   <div class="container">
     <div class="row row-cols-1 border-bottom gy-4">
       <div class="col d-flex align-items-center">
-        <div class="title fs-3 bg-light2 rounded-5 p-2 shadow">
-          初級主題
+        <div class="title fs-3 bg-light2 rounded-5 p-2 shadow w-100">
+          困難主題
           <p class="fs-5 mt-2">
-            &emsp;&emsp;Canvas是HTML5中一個用來繪製圖形、動畫和其他可視化內容的標準。使用Canvas，開發者可以透過JavaScript來操作畫布上的元素，包括形狀、線條、圖像等，也可以創建動畫效果和遊戲等互動應用。
+            &emsp;&emsp;使用函數方法和遞迴能畫出複雜幾何圖形(The Recursive Tree)
             <br />
-            &emsp;&emsp;HTML Canvas繪製需透過下列步驟:
+            &emsp;&emsp;The Recursive Tree需透過下列步驟:
             <br />
-            - 新增畫布
+            - 新增函數
             <br />
-            &emsp;&emsp;在 HTML 中建立 canvas 元素，新增畫布。
-            為了後續操作，給予 id 名稱 mycanvas。
-            <br />
-            - 取得畫布
-            <br />
-            &emsp;&emsp;canvas 元素會產生一塊畫布，<code>getContext() </code>
-            方法能夠取得這塊畫布及各個繪圖方法。
-            <br />
-            &emsp;&emsp;<code
-              >let canvas = document.querySelector('#fractal')</code
+            <code>
+              function draw(startX, startY, len, angle) { <br />
+              &emsp;&emsp;ctx.beginPath(); <br />
+              &emsp;&emsp;ctx.save(); <br />
+
+              &emsp;&emsp;ctx.translate(startX, startY); <br />
+              &emsp;&emsp;ctx.rotate(angle * Math.PI/180); <br />
+              &emsp;&emsp;ctx.moveTo(0, 0); <br />
+              &emsp;&emsp;ctx.lineTo(0, -len); <br />
+              &emsp;&emsp;ctx.stroke(); <br />
+
+              &emsp;&emsp;if(len < 40) { <br />
+              &emsp;&emsp;&emsp;&emsp;ctx.restore(); <br />
+              &emsp;&emsp;&emsp;&emsp;return; <br />
+              &emsp;&emsp;} <br />
+
+              &emsp;&emsp;draw(0, -len, len*0.8, -15); <br />
+              &emsp;&emsp;draw(0, -len, len*0.8, +15); <br />
+
+              &emsp;&emsp;ctx.restore(); <br />
+              }</code
             >
             <br />
-            &emsp;&emsp;<code>let ctx = canvas.getContext("2d")</code>
+            - 繪製單一樹幹、分支
             <br />
-            - 開始繪圖
+            &emsp;&emsp;使用 <code>translate()</code>、 <code>rotate()</code>、
+            <code>moveTo()</code>
+            方法來移動畫布、原點來控制樹的生長方向。
             <br />
-            &emsp;&emsp;Canvas 的
-            2d基本繪製，為一個座標繪製。原點在畫布的左上方。往右為
-            x，往下為y。(如下圖)
-            <img src="https://i.imgur.com/zrSrAIK.png" alt="canvas座標圖" />
+            <code>
+              &emsp;&emsp;ctx.translate(startX, startY); <br />
+              &emsp;&emsp;ctx.rotate(angle * Math.PI/180); <br />
+              &emsp;&emsp;ctx.moveTo(0, 0); <br />&emsp;&emsp;ctx.lineTo(0,
+              -len); <br />&emsp;&emsp;ctx.stroke();</code
+            ><br />
+            - 增加遞迴條件式
+            <br />
+            &emsp;&emsp;透過遞迴方法增生出茂密的樹
+            <code>
+              <br />
+              &emsp;&emsp;if(len < 40) { <br />
+              &emsp;&emsp;&emsp;&emsp;ctx.restore(); <br />
+              &emsp;&emsp;&emsp;&emsp;return; <br />
+              &emsp;&emsp;} <br
+            /></code>
           </p>
         </div>
       </div>
       <div class="col">
         <div class="list-group fs-4 shadow">
           <button type="button" class="list-group-item list-group-item-action">
-            <span>線段</span>
+            <span>建立函數</span>
           </button>
           <button type="button" class="list-group-item list-group-item-action">
-            內容介紹：
             <span>
-              <br />
-              開始路徑 :
-              <code>beginPath()</code> ，產生路徑，開始繪製路徑。 <br />
-              結束路徑 :
-              <code>closePath()</code> ，封閉路徑，完成路徑繪製 。<br />
-              移動 :
-              <code>moveTo(x,y)</code> ，將畫筆移動到 (x,y) 。<br />
-              畫出直線 :
-              <code>lineTo(x,y) </code>，從目前的所在點，繪製一條直線至 (x,y)<br />
-              填滿路徑區域 :
-              <code>fill()</code> ，填滿路徑區域。<br />
-              繪製路徑線條 :
-              <code>stroke() </code>，繪製出路徑的線條、框線。<br />
-              常用指令 :
+              以下列方式建立函數--- <br />
+              參數解釋: <br />
+              &emsp;&emsp;-startX(起始X座標) <br />
+              &emsp;&emsp;-startY(起始Y座標) <br />
+              &emsp;&emsp;-len(樹枝長度) <br />
+              &emsp;&emsp;-angle(樹枝角度) <br />
+              <code>
+                function draw(startX, startY, len, angle) { <br />
+                &emsp;&emsp;ctx.beginPath(); <br />
+                &emsp;&emsp;ctx.save(); //儲存當前狀態<br />
+
+                &emsp;&emsp;ctx.translate(startX, startY); <br />
+                &emsp;&emsp;ctx.rotate(angle * Math.PI/180); <br />
+                &emsp;&emsp;ctx.moveTo(0, 0); <br />
+                &emsp;&emsp;ctx.lineTo(0, -len); <br />
+                &emsp;&emsp;ctx.stroke(); <br />
+
+                &emsp;&emsp;if(len < 40) { <br />
+                &emsp;&emsp;&emsp;&emsp;ctx.restore(); <br />
+                &emsp;&emsp;&emsp;&emsp;return; <br />
+                &emsp;&emsp;} <br />
+
+                &emsp;&emsp;draw(0, -len, len*0.8, -15); <br />
+                &emsp;&emsp;draw(0, -len, len*0.8, +15); <br />
+
+                &emsp;&emsp;ctx.restore(); //恢復上一個狀態<br />
+                }</code
+              ><br />
+
+              關鍵字 :
             </span>
-            <span class="badge bg-secondary"> beginPath() </span>
-            <span class="badge bg-secondary"> closePath() </span>
-            <span class="badge bg-secondary"> moveTo(x,y) </span>
-            <span class="badge bg-secondary"> lineTo(x,y) </span>
-            <span class="badge bg-secondary"> stroke() </span>
+            <span class="badge bg-secondary"> save(); </span>
+            <span class="badge bg-secondary"> rotate(angle) </span>
+            <span class="badge bg-secondary"> translate(x,y)</span>
+            <span class="badge bg-secondary"> restore() </span>
           </button>
           <button type="button" class="list-group-item list-group-item-action">
             完成後可獲得積分數：
@@ -140,35 +179,18 @@
       <div class="col">
         <div class="list-group fs-4 shadow">
           <button type="button" class="list-group-item list-group-item-action">
-            <span>基本圖形</span>
+            <span>生成中間樹幹</span>
           </button>
           <button type="button" class="list-group-item list-group-item-action">
             內容介紹： <br />
-            Canvas 僅支援一種基本圖型：矩形。其他形狀都需要利用路徑繪製。
-            <span>
-              <br />
-              繪製填滿的實心矩形 ，x、y為起點、width為矩形寬、height為矩形長:
-              <code>fillRect(x, y, width, height)</code><br />
-              僅有外框的空心矩形，x、y為起點、width為矩形寬、height為矩形長:
-              <code>strokeRect(x, y, width, height)</code> <br />
-              繪製三角形，利用路徑繪製移動座標點並連接 <br />
-              <code>ctx.beginPath()</code><br />
-              <code>ctx.moveTo(x,y)</code><br />
-              <code>ctx.lineTo(X2,y2)</code><br />
-              <code>ctx.lineTo(x,y2)</code><br />
-              <code>ctx.closePath()</code><br />
-              <code>ctx.stroke();</code><br />
-            </span>
-            <span class="badge bg-secondary">
-              fillRect(x, y, width, height)
-            </span>
-            <span class="badge bg-secondary">
-              strokeRect(x, y, width, height)</span
-            >
-            <span class="badge bg-secondary"> beginPath() </span>
-            <span class="badge bg-secondary"> moveTo(x,y) </span>
-            <span class="badge bg-secondary"> lineTo(x,y) </span>
-            <span class="badge bg-secondary"> closePath() </span>
+            &emsp;&emsp;透過移動畫布、原點方式讓樹幹由下而上生長 <br />
+            <code>
+              &emsp;&emsp;ctx.translate(startX, startY); <br />
+              &emsp;&emsp;ctx.rotate(angle * Math.PI/180); <br />
+              &emsp;&emsp;ctx.moveTo(0, 0); <br />
+              &emsp;&emsp;ctx.lineTo(0, -len); <br />
+              &emsp;&emsp;ctx.stroke(); <br /></code
+            ><br />
           </button>
           <button type="button" class="list-group-item list-group-item-action">
             完成後可獲得積分數：
@@ -183,28 +205,27 @@
       <div class="col">
         <div class="list-group fs-4 shadow">
           <button type="button" class="list-group-item list-group-item-action">
-            <span>圓形、弧形</span>
+            <span>產生分支、遞迴限制</span>
           </button>
           <button type="button" class="list-group-item list-group-item-action">
             內容介紹： <br />
-            方法為
-            <code>arc(x,y,半徑,起始角,結束角)</code>
-            圓形的角度設置使用的是弧度。一個圓的弧度是 2π，半個圓是 π。使用
-            Math.PI 可以取得 π，再用 <code>stroke()</code>或
-            <code>fill()</code> 方法在畫布上繪製弧形 <br />
-            圓形: <br />
-            <code>ctx.beginPath()</code><br />
-            <code>ctx.arc(x,y,r,0,Math.PI*2)</code><br />
-            <code>ctx.stroke()</code><br />
-            弧形: <br />
-            <code>ctx.beginPath()</code><br />
-            <code>ctx.arc(x,y,r,0,Math.PI/2)</code><br />
-            <code>ctx.stroke()</code><br />
-            <span> </span>
-            <span class="badge bg-secondary"> beginPath() </span>
-            <span class="badge bg-secondary"> Math.PI </span>
-            <span class="badge bg-secondary"> arc(x,y,r,0,Math.PI*2) </span>
-            <span class="badge bg-secondary"> stroke() </span>
+            符合條件下不斷產生左、右2邊分支 <br />
+            遞迴限制: <br />
+            <code
+              >&emsp;&emsp;if(len < 40) { //用樹枝長度限制，數字越少樹越高<br />
+              &emsp;&emsp;&emsp;&emsp;ctx.restore(); <br />
+              &emsp;&emsp;&emsp;&emsp;return; <br />
+              &emsp;&emsp;} <br
+            /></code>
+            分支產生: <br />
+            <code>
+              &emsp;&emsp;draw(0, -len, len*0.8, -15); <br />
+              &emsp;&emsp;draw(0, -len, len*0.8, +15); <br />
+
+              &emsp;&emsp;ctx.restore();
+              //恢復上一個狀態，讓分支能從中間樹幹頂端生長<br
+            /></code>
+            <br />
           </button>
           <button type="button" class="list-group-item list-group-item-action">
             完成後可獲得積分數：
@@ -224,43 +245,29 @@
     >
       <div class="col">
         <img
-          src="https://i.imgur.com/F76uOcb.jpg"
-          alt="線段"
+          src="https://i.imgur.com/9ou2RsP.jpg"
+          alt="單一樹"
           class="rounded-2"
         />
       </div>
       <div class="col">
         <img
-          src="https://i.imgur.com/CB9r9is.jpg"
-          alt="填色矩形"
+          src="https://i.imgur.com/bNGIWFL.jpg"
+          alt="重複執行，2層樹"
           class="rounded-2"
         />
       </div>
       <div class="col">
         <img
-          src="https://i.imgur.com/EH219nE.jpg"
-          alt="線段矩形"
+          src="https://i.imgur.com/RvJ9bN0.jpg"
+          alt="重複執行，3層樹"
           class="rounded-2"
         />
       </div>
       <div class="col">
         <img
-          src="https://i.imgur.com/Px5rkY1.jpg"
-          alt="三角形"
-          class="rounded-2"
-        />
-      </div>
-      <div class="col">
-        <img
-          src="https://i.imgur.com/9vwYzgp.jpg"
-          alt="圓形"
-          class="rounded-2"
-        />
-      </div>
-      <div class="col">
-        <img
-          src="https://i.imgur.com/XKgGdwS.jpg"
-          alt="弧形"
+          src="https://i.imgur.com/KBxXV99.jpg"
+          alt="重複執行，多層樹"
           class="rounded-2"
         />
       </div>
@@ -289,7 +296,7 @@
     </div>
     <!-- codemirror  -->
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 mt-5">
-      <div class="col border">
+      <div class="col border h-100">
         <div class="top d-flex justify-content-between my-3">
           <div class="title fs-4">程式輸入區</div>
           <button class="btn btn-primary text-light" id="run">

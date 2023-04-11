@@ -2,6 +2,10 @@
   padding-bottom: 80px;
   border-bottom: 1px solid #111; }
 
+.title p img {
+  display: block;
+  max-width: 360px; }
+
 img {
   display: block;
   width: 100%;
@@ -15,15 +19,7 @@ img {
   -o-transition: .5s;
   transition: .5s; }
 
-.iview body {
-  margin: 0; }
-
-canvas {
-  display: block;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -o-user-select: none;
-  -ms-user-select: none;
-      user-select: none; }
+.col img {
+  max-width: 360px; }
 
 /*# sourceMappingURL=courseDetail.css.map */

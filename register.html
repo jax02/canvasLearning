@@ -1,52 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>註冊頁</title>
+    <link rel="stylesheet" href="./assets/style/all.css" />
+    <!-- codemirror -->
+    <script src="../app/codemirror-5.65.8/lib/codemirror.js"></script>
+    <link rel="stylesheet" href="../app/codemirror-5.65.8/lib/codemirror.css" />
+    <script src="../app/codemirror-5.65.8/mode/javascript/javascript.js"></script>
+    <link rel="stylesheet" href="../app/codemirror-5.65.8/theme/darcula.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>註冊頁</title>
-  <link rel="stylesheet" href="./assets/style/all.css">
-  <!-- codemirror -->
-  <script src="../app/codemirror-5.65.8/lib/codemirror.js"></script>
-  <link rel="stylesheet" href="../app/codemirror-5.65.8/lib/codemirror.css">
-  <script src="../app/codemirror-5.65.8/mode/javascript/javascript.js"></script>
-  <link rel="stylesheet" href="../app/codemirror-5.65.8/theme/darcula.css">
-</head>
-
-<body>
-  <header class="header bg-light3">
-    <nav class="navbar navbar-expand-lg">
-      <div class="container">
-        <a class="navbar-brand fs-2 fw-bold" href="index.html"><span class="logo">c</span>anvas <span class="logo">A</span>cademy</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse d-lg-flex justify-content-lg-around justify-content-center" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link fs-5 fw-bold" aria-current="page" href="#">介紹</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link  fs-5 fw-bold" href="#">課程預覽</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link  fs-5 fw-bold" href="#">課程預覽</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link  fs-5 fw-bold" href="#">排行榜</a>
-            </li>
-          </ul>
-          <div class="btnArea">
-            <!-- <a href="#" class="text-light fs-5 bg-gradient fw-semibold register text-decoration-none py-1 px-3 rounded-pill me-3">註冊</a> -->
-            <a href="login.html" class="text-light fs-5 bg-gradient fw-semibold login text-decoration-none py-1 px-3 rounded-pill">登入</a>
+  <body>
+    <header class="header bg-light3">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <a class="navbar-brand fs-2 fw-bold" href="index.html"
+            ><span class="logo">c</span>anvas
+            <span class="logo">A</span>cademy</a
+          >
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="collapse navbar-collapse d-lg-flex justify-content-lg-around justify-content-center"
+            id="navbarNav"
+          >
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a
+                  class="nav-link fs-5 fw-bold btn-0 btn-5"
+                  aria-current="page"
+                  href="#"
+                  >介紹</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fs-5 fw-bold btn-0 btn-5" href="#"
+                  >課程預覽</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fs-5 fw-bold btn-0 btn-5" href="#"
+                  >課程預覽</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fs-5 fw-bold btn-0 btn-5" href="#">排行榜</a>
+              </li>
+            </ul>
+            <div class="btnArea">
+              <!-- <a href="#" class="text-light fs-5 bg-gradient fw-semibold register text-decoration-none py-1 px-3 rounded-pill me-3">註冊</a> -->
+              <a
+                href="login.html"
+                class="text-light fs-5 bg-gradient fw-semibold login text-decoration-none py-1 px-3 rounded-pill"
+                >登入</a
+              >
+            </div>
           </div>
         </div>
-      </div>
-    </nav>
-  </header>
+      </nav>
+    </header>
 
-  <div class="register pt-4">
+    <div class="register pt-4">
   <div class="container">
       <div class="tittle text-center">
           <span class="fs-3 text-dark">註冊成為會員</span>
@@ -105,7 +131,7 @@
                         <input type="text" class="form-control" id="nickName" placeholder="小明">
                       </div>
                     </div>
-                  <button type="button" class="btn btn-primary w-100 text-light fs-5" id="signUp">註冊</button>
+                  <button type="submit" class="btn btn-primary w-100 text-light fs-5">註冊</button>
                   <div class="under-line my-4 bg-primary"></div>
                   <span class="text-dark">已經有帳號了？<a href="login.html" class="text-decoration-none bg-primary text-light p-1 rounded-3">登入</a></span>
                 </form>
@@ -114,16 +140,19 @@
   </div>
 </div>
 
-  <!-- <footer class="footer bg-dark py-2">
+    <!-- <footer class="footer bg-dark py-2">
     <div class="container d-flex justify-content-between align-items-center">
       <div></div>
       <div class="content text-light fw-semibold">ⓒ 2022 僅供練習使用，無商業用途</div>
       <div class="admin"><a href="#" class="btn text-light border py-1 px-3 rounded-2">後臺管理</a></div>
     </div>
   </footer> -->
-  <script src="./assets/js/vendors.js"></script>
-  <script src="./assets/js/all.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-</body>
-
+    <script src="./assets/js/vendors.js"></script>
+    <script src="./assets/js/all.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
