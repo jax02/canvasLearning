@@ -2,24 +2,65 @@
 .ranking{
     height: 100%;
     width: 100%;
-    // background-color: rgba(235, 156, 55, .3);
-    // background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);
-    background: linear-gradient( 35deg,#eeca38 50%,transparent 50%),
-    url(https://media.istockphoto.com/illustrations/geometric-minimalist-abstract-illustration-id955851432?k=20&m=955851432&s=612x612&w=0&h=4Fumj6r-pxbjLX73iYKYXY5ln75TU6iF4LSWtJZOZqM=)left bottom / 100% 100% ;
-    @media (max-width:992px) {
-        background: linear-gradient( 35deg,#f1c40f 30%,transparent 50%),
-    url(https://media.istockphoto.com/photos/three-people-are-standing-near-the-tower-of-cubes-with-the-word-goal-picture-id1128537795?k=20&m=1128537795&s=612x612&w=0&h=ubWoLL6RIrcFGMSPNq3kEzvWW5lPtkoPszPyLKMwfQc=)left bottom / 100% 100% ;
-    }
-    // background: linear-gradient( 35deg,#f1c40f 50%,transparent 50%),
-    // url(https://media.istockphoto.com/photos/three-people-are-standing-near-the-tower-of-cubes-with-the-word-goal-picture-id1128537795?k=20&m=1128537795&s=612x612&w=0&h=ubWoLL6RIrcFGMSPNq3kEzvWW5lPtkoPszPyLKMwfQc=)left bottom / auto 100% ;
-    .col-lg-3{
-        a{
-            &:hover{
-                background-color: #F1C40F !important;
-            }
-        }
-    }
+    background-image: url(https://i.imgur.com/gUhw05m.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
+.btn-0 {
+    border: 1px solid transparent;
+    color: #fff;
+    cursor: pointer;
+    font-size:16px;
+    font-weight: 400;
+    line-height: 45px;
+    margin: 0 0 2em;
+    max-width: 160px; 
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 100%; 
+    @media(min-width: 600px) {
+        
+      margin: 0 1em 2em;
+    }
+    
+    &:hover { text-decoration: none; }
+    
+  }
+.btn-1 {
+    background: darken(#EB9C37, 1.5%);
+    font-weight: 100;
+    
+    svg {
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0; 
+      width: 100%; 
+    }
+    
+    rect {
+      fill: none;
+      stroke: darken(#dd4c57, 15%);
+      stroke-width: 3;
+      stroke-dasharray: 422, 0;
+      transition: all 0.35s linear;
+    }
+  }
+  
+  .btn-1:hover {
+    background: rgba(#d44b4b, 0);
+    font-weight: 900;
+    letter-spacing: 1px;
+    
+    rect {
+      stroke-width: 5;
+      stroke-dasharray: 15, 310;
+      stroke-dashoffset: 48;
+      transition: all 1.35s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+  }
+  
 .circle-number{
     width: 80px;
     height: 80px;

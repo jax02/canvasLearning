@@ -4,91 +4,262 @@ layout: ./app/userHeader.ejs
 engine: ejs
 current: index
 ---
+
 <div class="detail pt-5">
-    <div class="container">
-        <div class="row row-cols-1 row-cols-lg-2 border-bottom gy-4">
-            <div class="col d-flex align-items-center">
-                <div class="title fs-3 bg-light2 rounded-5 p-2 shadow">    
-                    弧形 <span class="fs-4">(arc)</span>
-                    <p class="fs-5 mt-2">arc( ) 方法是以一個中心點和半徑來畫圓弧路徑，五個參數分別是：x, y 代表圓心座標點；radius 代表半徑；startAngle, endAngle 代表沿著弧形曲線上的起始點與結束點的弧度；弧度測量是相對於 x 軸，anticlockwise 為 true 代表逆時針作圖、false 代表順時針作圖，arc() 方法用的是弧度（radians）而非角度（degrees）</p>
-                </div>
-            </div>
-            <div class="col">
-                <div class="list-group fs-4 shadow">
-                    <button type="button" class="list-group-item list-group-item-action">主題： 
-                        <span>弧形(arc)</span>
-                    </button>
-                    <button type="button" class="list-group-item list-group-item-action">常用語法： 
-                        <span>
-                            <br> arc(x, y, radius, startAngle, endAngle, anticlockwise) <br> radians = (Math.PI/180)*degrees <br>
-                        </span>
-                        <span class="badge bg-secondary">
-                            弧形(arc)
-                        </span>
-                        <span class="badge bg-secondary">
-                            startAngle
-                        </span>
-                        <span class="badge bg-secondary">
-                            endAngle
-                        </span>
-                        <span class="badge bg-secondary">
-                            radius
-                        </span>
-                    </button>
-                    <button type="button" class="list-group-item list-group-item-action">完成後可獲得積分數： 
-                        <span>
-                            <i class="fa-solid fa-star fa-1x text-primary"></i>
-                            <i class="fa-solid fa-star fa-1x text-primary"></i>
-                        </span> </button>
-                  </div>
-            </div>
+  <div class="container">
+    <div class="row row-cols-1 border-bottom gy-4">
+      <div class="col d-flex align-items-center">
+        <div class="title fs-3 bg-light2 rounded-5 p-2 shadow">
+          初級主題
+          <p class="fs-5 mt-2">
+            &emsp;&emsp;Canvas是HTML5中一個用來繪製圖形、動畫和其他可視化內容的標準。使用Canvas，開發者可以透過JavaScript來操作畫布上的元素，包括形狀、線條、圖像等，也可以創建動畫效果和遊戲等互動應用。
+            <br />
+            &emsp;&emsp;HTML Canvas繪製需透過下列步驟:
+            <br />
+            - 新增畫布
+            <br />
+            &emsp;&emsp;在 HTML 中建立 canvas 元素，新增畫布。
+            為了後續操作，給予 id 名稱 mycanvas。
+            <br />
+            - 取得畫布
+            <br />
+            &emsp;&emsp;canvas 元素會產生一塊畫布，<code>getContext() </code>
+            方法能夠取得這塊畫布及各個繪圖方法。
+            <br />
+            &emsp;&emsp;<code
+              >let canvas = document.querySelector('#fractal')</code
+            >
+            <br />
+            &emsp;&emsp;<code>let ctx = canvas.getContext("2d")</code>
+            <br />
+            - 開始繪圖
+            <br />
+            &emsp;&emsp;Canvas 的
+            2d基本繪製，為一個座標繪製。原點在畫布的左上方。往右為
+            x，往下為y。(如下圖)
+            <img src="https://i.imgur.com/zrSrAIK.png" alt="canvas座標圖" />
+          </p>
         </div>
-        <div class="title mt-5 fs-3">範例圖</div>
-        <div class="row row-cols-lg-4 row-col-md-3 row-cols-1 mt-1 gy-2 border-bottom example-img">
-            <div class="col">
-                <img src="https://images.unsplash.com/photo-1469980098053-382eb10ba017?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2lyY2xlJTIwbWF0aHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60" alt="" class="rounded-2">
-            </div>
-            <div class="col">
-                <img src="https://images.unsplash.com/photo-1496711914408-534a237d7e26?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGNpcmNsZSUyMG1hdGh8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60" alt="" class="rounded-2">
-            </div>
-            <div class="col">
-                <img src="https://media.istockphoto.com/photos/blue-glowing-symmetrical-fractal-circles-picture-id497279894?k=20&m=497279894&s=612x612&w=0&h=5XZk5JdJM4CQkKtQuJLte9m5njDGifD3Eq9anputyVA=" alt="" class="rounded-2">
-            </div>
+      </div>
+      <div class="col">
+        <div class="list-group fs-4 shadow">
+          <button type="button" class="list-group-item list-group-item-action">
+            <span>線段</span>
+          </button>
+          <button type="button" class="list-group-item list-group-item-action">
+            內容介紹：
+            <span>
+              <br />
+              開始路徑 :
+              <code>beginPath()</code> ，產生路徑，開始繪製路徑。 <br />
+              結束路徑 :
+              <code>closePath()</code> ，封閉路徑，完成路徑繪製 。<br />
+              移動 :
+              <code>moveTo(x,y)</code> ，將畫筆移動到 (x,y) 。<br />
+              畫出直線 :
+              <code>lineTo(x,y) </code>，從目前的所在點，繪製一條直線至 (x,y)<br />
+              填滿路徑區域 :
+              <code>fill()</code> ，填滿路徑區域。<br />
+              繪製路徑線條 :
+              <code>stroke() </code>，繪製出路徑的線條、框線。<br />
+              常用指令 :
+            </span>
+            <span class="badge bg-secondary"> beginPath() </span>
+            <span class="badge bg-secondary"> closePath() </span>
+            <span class="badge bg-secondary"> moveTo(x,y) </span>
+            <span class="badge bg-secondary"> lineTo(x,y) </span>
+            <span class="badge bg-secondary"> stroke() </span>
+          </button>
+          <button type="button" class="list-group-item list-group-item-action">
+            完成後可獲得積分數：
+            <span>
+              <i class="fa-solid fa-star fa-1x text-primary"></i>
+              <i class="fa-solid fa-star fa-1x text-primary"></i>
+            </span>
+          </button>
         </div>
-        <div class="title mt-5 fs-3 d-flex align-items-center justify-content-between">實作區
-            <button type="button" class="btn btn-primary">
-                儲存至學習記錄
-            </button>
+      </div>
+      <div class="col">
+        <div class="list-group fs-4 shadow">
+          <button type="button" class="list-group-item list-group-item-action">
+            <span>基本圖形</span>
+          </button>
+          <button type="button" class="list-group-item list-group-item-action">
+            內容介紹： <br />
+            Canvas 僅支援一種基本圖型：矩形。其他形狀都需要利用路徑繪製。
+            <span>
+              <br />
+              繪製填滿的實心矩形 ，x、y為起點、width為矩形寬、height為矩形長:
+              <code>fillRect(x, y, width, height)</code><br />
+              僅有外框的空心矩形，x、y為起點、width為矩形寬、height為矩形長:
+              <code>strokeRect(x, y, width, height)</code> <br />
+              繪製三角形，利用路徑繪製移動座標點並連接 <br />
+              <code>ctx.beginPath()</code><br />
+              <code>ctx.moveTo(x,y)</code><br />
+              <code>ctx.lineTo(X2,y2)</code><br />
+              <code>ctx.lineTo(x,y2)</code><br />
+              <code>ctx.closePath()</code><br />
+              <code>ctx.stroke();</code><br />
+            </span>
+            <span class="badge bg-secondary">
+              fillRect(x, y, width, height)
+            </span>
+            <span class="badge bg-secondary">
+              strokeRect(x, y, width, height)</span
+            >
+            <span class="badge bg-secondary"> beginPath() </span>
+            <span class="badge bg-secondary"> moveTo(x,y) </span>
+            <span class="badge bg-secondary"> lineTo(x,y) </span>
+            <span class="badge bg-secondary"> closePath() </span>
+          </button>
+          <button type="button" class="list-group-item list-group-item-action">
+            完成後可獲得積分數：
+            <span>
+              <i class="fa-solid fa-star fa-1x text-primary"></i>
+              <i class="fa-solid fa-star fa-1x text-primary"></i>
+              <i class="fa-solid fa-star fa-1x text-primary"></i>
+            </span>
+          </button>
         </div>
-        <div class="row mt-3">
-            <div class="col">
-                <div class="progress">
-                    <div class="progress-bar bg-primary" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                  </div>
-            </div>
+      </div>
+      <div class="col">
+        <div class="list-group fs-4 shadow">
+          <button type="button" class="list-group-item list-group-item-action">
+            <span>圓形、弧形</span>
+          </button>
+          <button type="button" class="list-group-item list-group-item-action">
+            內容介紹： <br />
+            方法為
+            <code>arc(x,y,半徑,起始角,結束角)</code>
+            圓形的角度設置使用的是弧度。一個圓的弧度是 2π，半個圓是 π。使用
+            Math.PI 可以取得 π，再用 <code>stroke()</code>或
+            <code>fill()</code> 方法在畫布上繪製弧形 <br />
+            圓形: <br />
+            <code>ctx.beginPath()</code><br />
+            <code>ctx.arc(x,y,r,0,Math.PI*2)</code><br />
+            <code>ctx.stroke()</code><br />
+            弧形: <br />
+            <code>ctx.beginPath()</code><br />
+            <code>ctx.arc(x,y,r,0,Math.PI/2)</code><br />
+            <code>ctx.stroke()</code><br />
+            <span> </span>
+            <span class="badge bg-secondary"> beginPath() </span>
+            <span class="badge bg-secondary"> Math.PI </span>
+            <span class="badge bg-secondary"> arc(x,y,r,0,Math.PI*2) </span>
+            <span class="badge bg-secondary"> stroke() </span>
+          </button>
+          <button type="button" class="list-group-item list-group-item-action">
+            完成後可獲得積分數：
+            <span>
+              <i class="fa-solid fa-star fa-1x text-primary"></i>
+              <i class="fa-solid fa-star fa-1x text-primary"></i>
+              <i class="fa-solid fa-star fa-1x text-primary"></i>
+              <i class="fa-solid fa-star fa-1x text-primary"></i>
+            </span>
+          </button>
         </div>
-        <!-- codemirror  -->
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 mt-5">
-            <div class="col border">
-                <div class="top d-flex justify-content-between my-3">
-                    <div class="title fs-4">程式輸入區</div>
-                    <button class="btn btn-primary text-light" id="run" >執行並檢查</button>
-                </div>
-               <textarea name="" id="editor">123</textarea>
-            </div>
-            <div class="col border">
-                <div class="top d-flex justify-content-between my-3">
-                    <div class="title fs-4">效果顯示區</div>
-                    <button class="btn btn-primary text-light" onclick="prev()">上一題</button>
-                    <button class="btn btn-primary text-light" onclick="reset()">reset</button>
-                    <button class="btn btn-primary text-light" onclick="check()">check</button>
-                    <button class="btn btn-primary text-light" onclick="next()">下一題</button>
-                </div>
-                <div class="view h-100">
-                    <iframe id="iview" class="w-100">
-                    </iframe>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+    <div class="title mt-5 fs-3">範例圖</div>
+    <div
+      class="row row-cols-lg-4 row-col-md-3 row-cols-1 mt-1 gy-2 border-bottom example-img"
+    >
+      <div class="col">
+        <img
+          src="https://i.imgur.com/F76uOcb.jpg"
+          alt="線段"
+          class="rounded-2"
+        />
+      </div>
+      <div class="col">
+        <img
+          src="https://i.imgur.com/CB9r9is.jpg"
+          alt="填色矩形"
+          class="rounded-2"
+        />
+      </div>
+      <div class="col">
+        <img
+          src="https://i.imgur.com/EH219nE.jpg"
+          alt="線段矩形"
+          class="rounded-2"
+        />
+      </div>
+      <div class="col">
+        <img
+          src="https://i.imgur.com/Px5rkY1.jpg"
+          alt="三角形"
+          class="rounded-2"
+        />
+      </div>
+      <div class="col">
+        <img
+          src="https://i.imgur.com/9vwYzgp.jpg"
+          alt="圓形"
+          class="rounded-2"
+        />
+      </div>
+      <div class="col">
+        <img
+          src="https://i.imgur.com/XKgGdwS.jpg"
+          alt="弧形"
+          class="rounded-2"
+        />
+      </div>
+    </div>
+    <div
+      class="title mt-5 fs-3 d-flex align-items-center justify-content-between"
+    >
+      實作區
+      <button type="button" class="btn btn-primary">儲存至學習記錄</button>
+    </div>
+    <div class="row mt-3">
+      <div class="col">
+        <div class="progress">
+          <div
+            class="progress-bar bg-primary"
+            role="progressbar"
+            style="width: 25%"
+            aria-valuenow="25"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          >
+            25%
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- codemirror  -->
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 mt-5">
+      <div class="col border">
+        <div class="top d-flex justify-content-between my-3">
+          <div class="title fs-4">程式輸入區</div>
+          <button class="btn btn-primary text-light" id="run">
+            執行並檢查
+          </button>
+        </div>
+        <textarea name="" id="editor">123</textarea>
+      </div>
+      <div class="col border">
+        <div class="top d-flex justify-content-between my-3">
+          <div class="title fs-4">效果顯示區</div>
+          <button class="btn btn-primary text-light" onclick="prev()">
+            上一題
+          </button>
+          <button class="btn btn-primary text-light" onclick="reset()">
+            reset
+          </button>
+          <button class="btn btn-primary text-light" onclick="check()">
+            check
+          </button>
+          <button class="btn btn-primary text-light" onclick="next()">
+            下一題
+          </button>
+        </div>
+        <div class="view h-100">
+          <iframe id="iview" class="h-100 w-100"> </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
