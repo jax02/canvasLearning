@@ -15689,7 +15689,7 @@ textarea.form-control-lg {
 .banner {
   overflow: hidden;
   height: 720px;
-  background-image: url("https://s3-alpha-sig.figma.com/img/d7cb/9cc6/5e4ce0bd07cbfa920b0241f31552a551?Expires=1681084800&Signature=kP-49mSmYXrtBPxpGCd1wnj-UsmJs6NXmo8S-2K-bLJq4Hsxka1wzYYOWu-B3wdInG4oJPihtGWKuciWeVLDuGuIiRqSy~RGoC~l85wPatUs55ttGhV2gcgY~~c4Gi2IzwduX~mWAlDI0-SnwYvHijCXde-CHaYONZjzmCd~HAw3IAYtPiwm0HT9c~El4RfGryGgDp8RZ9ME7WDx2H-v39JrZKwpdzFYWwyM8-M7hz8QuQS29gGBsTTNkz0Y78vCSKewwn~trqct8UT77teAKN5JqBqCbixr3EwHjmOheiY4zPnd3CeG0CmNeOx~weOVltKISvVnBLpXqfKhu6bE~w__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4");
+  background-image: url("https://i.imgur.com/qEynSnr.jpg");
   background-repeat: no-repeat;
   background-size: cover; }
   .banner .col-md-8 {
@@ -15719,7 +15719,8 @@ textarea.form-control-lg {
     color: transparent; }
   .about .title h2, .about .title .h2 {
     height: 188px;
-    line-height: 188px; }
+    line-height: 188px;
+    text-shadow: 1px 5px 20px #9c9b9a; }
   .about .about-card {
     border-radius: 30px;
     -webkit-box-shadow: -15px 15px 8px -3px #b0b0b0;
@@ -15729,6 +15730,8 @@ textarea.form-control-lg {
   .about .col {
     position: static;
     z-index: 1; }
+  .about p.fs-5 {
+    text-shadow: 1px 5px 5px #9c9b9a; }
 
 .steps {
   overflow: hidden; }
