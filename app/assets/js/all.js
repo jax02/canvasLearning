@@ -14,9 +14,20 @@ loader ();
     let str = "";
     let userName = nickName.value;
     str = userName;
+    let user={
+      name:str,
+      rate:0,
+      finished:[false,false,false,false,false,false,false,false,false],
+      percentage:0,
+    };
     console.log(str);
-    users.push(str)
-    console.log(users);
+    users.push(user);
+    localStorage.setItem("userInfo",JSON.stringify(users));
+    let userInfo = JSON.parse(localStorage.getItem("userInfo"))
+    console.log(userInfo);
+    swal("Good job!", `成功建立使用者 ： ${str}`, "success", {
+      button: "確認",
+    });
   }
 addUser.addEventListener("click", getName);
 
