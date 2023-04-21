@@ -1,202 +1,223 @@
 "use strict";
 
-console.log('all start'); //loader
-
-var load = document.querySelector('.loader');
-
-function loader() {
-  setTimeout(function () {
-    load.style.display = 'none';
-  }, 3000);
+var users = [];
+if (location.pathname == "/index.html") {
+  var loader = function loader() {
+    setTimeout(function () {
+      load.style.display = 'none';
+    }, 3000);
+  };
+  var getName = function getName(value) {
+    var str = "";
+    var userName = nickName.value;
+    str = userName;
+    console.log(str);
+    users.push(str);
+    console.log(users);
+  };
+  //loader
+  var load = document.querySelector('.loader');
+  loader();
+  var nickName = document.querySelector("#nickName");
+  var addUser = document.querySelector("#addUser");
+  addUser.addEventListener("click", getName);
 }
 
-loader(); //swiper
-
-var swiper = new Swiper(".courseSwiper", {
-  slidesPerView: 'auto',
-  spaceBetween: 20,
-  // slidesPerGroup: 3,
-  loop: true,
-  loopFillGroupWithBlank: true,
-  // pagination: {
-  //   el: ".swiper-pagination",
-  //   clickable: true,
-  // },
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev"
-  }
-});
-var chart = c3.generate({
-  bindto: "#chart",
-  data: {
-    columns: [['已完成', 11], ['未完成', 9]],
-    colors: {
-      已完成: '#DD4C57',
-      未完成: '#EB9C37'
-    },
-    type: 'donut',
-    onclick: function onclick(d, i) {
-      console.log("onclick", d, i);
-    },
-    onmouseover: function onmouseover(d, i) {
-      console.log("onmouseover", d, i);
-    },
-    onmouseout: function onmouseout(d, i) {
-      console.log("onmouseout", d, i);
+//swiper
+if (location.pathname == "/courseDetail.html") {
+  var swiper = new Swiper(".courseSwiper", {
+    slidesPerView: 'auto',
+    spaceBetween: 20,
+    // slidesPerGroup: 3,
+    loop: true,
+    loopFillGroupWithBlank: true,
+    // pagination: {
+    //   el: ".swiper-pagination",
+    //   clickable: true,
+    // },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev"
     }
-  },
-  donut: {
-    title: "積分數：11/20"
-  }
-});
-setTimeout(function () {
-  chart.load({
-    columns: [["已完成", 11], ["未完成", 9]]
   });
-}, 2500);
-var chart2 = c3.generate({
-  bindto: "#chart2",
-  data: {
-    columns: [['已完成', 91], ['剩餘關卡', 9]],
-    colors: {
-      已完成: "#03A9F4",
-      剩餘關卡: "#76FF03"
+}
+if (location.pathname == "/record.html") {
+  var chart = c3.generate({
+    bindto: "#chart",
+    data: {
+      columns: [['已完成', 11], ['未完成', 9]],
+      colors: {
+        已完成: '#DD4C57',
+        未完成: '#EB9C37'
+      },
+      type: 'donut',
+      onclick: function onclick(d, i) {
+        console.log("onclick", d, i);
+      },
+      onmouseover: function onmouseover(d, i) {
+        console.log("onmouseover", d, i);
+      },
+      onmouseout: function onmouseout(d, i) {
+        console.log("onmouseout", d, i);
+      }
     },
-    type: 'donut',
-    onclick: function onclick(d, i) {
-      console.log("onclick", d, i);
-    },
-    onmouseover: function onmouseover(d, i) {
-      console.log("onmouseover", d, i);
-    },
-    onmouseout: function onmouseout(d, i) {
-      console.log("onmouseout", d, i);
+    donut: {
+      title: "積分數：11/20"
     }
-  },
-  donut: {
-    title: "完成比例：91%"
-  }
-});
-setTimeout(function () {
-  chart2.load({
-    columns: [["已完成", 91], ["剩餘關卡", 9]]
   });
-}, 1500);
-var chart3 = c3.generate({
-  bindto: "#chart3",
-  data: {
-    x: 'x',
-    columns: [['x', '2022-09-01', '2022-09-02', '2022-09-03', '2022-09-04', '2022-09-05', '2022-09-06', '2022-09-07'], ['已完成', 3, 5, 6, 7, 9, 11], ['剩餘關卡', 30, 27, 24, 22, 19, 19]]
-  },
-  axis: {
-    x: {
-      type: 'timeseries',
-      tick: {
-        format: '%Y-%m-%d'
+  setTimeout(function () {
+    chart.load({
+      columns: [["已完成", 11], ["未完成", 9]]
+    });
+  }, 2500);
+  var chart2 = c3.generate({
+    bindto: "#chart2",
+    data: {
+      columns: [['已完成', 91], ['剩餘關卡', 9]],
+      colors: {
+        已完成: "#03A9F4",
+        剩餘關卡: "#76FF03"
+      },
+      type: 'donut',
+      onclick: function onclick(d, i) {
+        console.log("onclick", d, i);
+      },
+      onmouseover: function onmouseover(d, i) {
+        console.log("onmouseover", d, i);
+      },
+      onmouseout: function onmouseout(d, i) {
+        console.log("onmouseout", d, i);
+      }
+    },
+    donut: {
+      title: "完成比例：91%"
+    }
+  });
+  setTimeout(function () {
+    chart2.load({
+      columns: [["已完成", 91], ["剩餘關卡", 9]]
+    });
+  }, 1500);
+  var chart3 = c3.generate({
+    bindto: "#chart3",
+    data: {
+      x: 'x',
+      columns: [['x', '2022-09-01', '2022-09-02', '2022-09-03', '2022-09-04', '2022-09-05', '2022-09-06', '2022-09-07'], ['已完成', 3, 5, 6, 7, 9, 11], ['剩餘關卡', 30, 27, 24, 22, 19, 19]]
+    },
+    axis: {
+      x: {
+        type: 'timeseries',
+        tick: {
+          format: '%Y-%m-%d'
+        }
       }
     }
-  }
-});
-setTimeout(function () {
-  chart3.load({
-    columns: [["獲得積分數", 12, 13, 15, 17, 19, 21]]
   });
-}, 1500);
+  setTimeout(function () {
+    chart3.load({
+      columns: [["獲得積分數", 12, 13, 15, 17, 19, 21]]
+    });
+  }, 1500);
+}
 console.log('all end');
-"use strict";
+// var chart = c3.generate({
+//     bindto: "#chart",
+//     data: {
+//         columns: [
+//             ['已完成', 11],
+//             ['未完成', 9],
+//         ],
+//         colors: {
+//           已完成: '#DD4C57',
+//           未完成: '#EB9C37',
+//         },
+//         type : 'donut',
+//         onclick: function (d, i) { console.log("onclick", d, i); },
+//         onmouseover: function (d, i) { console.log("onmouseover", d, i); },
+//         onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+//     },
+//     donut: {
+//         title: "積分數：11/20"
+//     }
+//   });
+//   setTimeout(function () {
+//     chart.load({
+//         columns: [
+//             ["已完成", 11],
+//             ["未完成", 9],
+//         ]
+//     });
+//   }, 2500);
 
-var chart = c3.generate({
-  bindto: "#chart",
-  data: {
-    columns: [['已完成', 11], ['未完成', 9]],
-    colors: {
-      已完成: '#DD4C57',
-      未完成: '#EB9C37'
-    },
-    type: 'donut',
-    onclick: function onclick(d, i) {
-      console.log("onclick", d, i);
-    },
-    onmouseover: function onmouseover(d, i) {
-      console.log("onmouseover", d, i);
-    },
-    onmouseout: function onmouseout(d, i) {
-      console.log("onmouseout", d, i);
-    }
-  },
-  donut: {
-    title: "積分數：11/20"
-  }
-});
-setTimeout(function () {
-  chart.load({
-    columns: [["已完成", 11], ["未完成", 9]]
-  });
-}, 2500);
-var chart2 = c3.generate({
-  bindto: "#chart2",
-  data: {
-    columns: [['已完成', 91], ['剩餘關卡', 9]],
-    colors: {
-      已完成: "#03A9F4",
-      剩餘關卡: "#76FF03"
-    },
-    type: 'donut',
-    onclick: function onclick(d, i) {
-      console.log("onclick", d, i);
-    },
-    onmouseover: function onmouseover(d, i) {
-      console.log("onmouseover", d, i);
-    },
-    onmouseout: function onmouseout(d, i) {
-      console.log("onmouseout", d, i);
-    }
-  },
-  donut: {
-    title: "完成比例：91%"
-  }
-});
-setTimeout(function () {
-  chart2.load({
-    columns: [["已完成", 91], ["剩餘關卡", 9]]
-  });
-}, 1500);
-var chart3 = c3.generate({
-  bindto: "#chart3",
-  data: {
-    x: 'x',
-    columns: [['x', '2022-09-01', '2022-09-02', '2022-09-03', '2022-09-04', '2022-09-05', '2022-09-06', '2022-09-07'], ['已完成', 3, 5, 6, 7, 9, 11], ['剩餘關卡', 30, 27, 24, 22, 19, 19]]
-  },
-  axis: {
-    x: {
-      type: 'timeseries',
-      tick: {
-        format: '%Y-%m-%d'
-      }
-    }
-  }
-});
-setTimeout(function () {
-  chart3.load({
-    columns: [["獲得積分數", 12, 13, 15, 17, 19, 21]]
-  });
-}, 1500);
+//   var chart2 = c3.generate({
+//     bindto: "#chart2",
+//     data: {
+//         columns: [
+//             ['已完成', 91],
+//             ['剩餘關卡', 9],
+//         ],
+//         colors: {
+//           已完成: "#03A9F4",
+//           剩餘關卡: "#76FF03",
+//         },
+//         type : 'donut',
+//         onclick: function (d, i) { console.log("onclick", d, i); },
+//         onmouseover: function (d, i) { console.log("onmouseover", d, i); },
+//         onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+//     },
+//     donut: {
+//         title: "完成比例：91%"
+//     }
+//   });
+
+//   setTimeout(function () {
+//     chart2.load({
+//         columns: [
+//             ["已完成", 91],
+//             ["剩餘關卡", 9],
+//         ]
+//     });
+//   }, 1500);
+
+//   var chart3 = c3.generate({
+//     bindto: "#chart3",
+//     data: {
+//       x: 'x',
+//       columns: [
+//           ['x', '2022-09-01', '2022-09-02', '2022-09-03', '2022-09-04', '2022-09-05', '2022-09-06', '2022-09-07'],
+//           ['已完成', 3, 5, 6, 7, 9, 11 ],
+//           ['剩餘關卡', 30, 27, 24, 22, 19, 19]
+//       ]
+//   },
+//   axis: {
+//       x: {
+//           type: 'timeseries',
+//           tick: {
+//               format: '%Y-%m-%d'
+//           }
+//       }
+//   }
+//   });
+//   setTimeout(function () {
+//     chart3.load({
+//         columns: [
+//             ["獲得積分數", 12,13,15,17,19,21],
+//         ]
+//     });
+//   }, 1500);
+"use strict";
 "use strict";
 
 var load = document.querySelector('.loader');
-
 function loader() {
   setTimeout(function () {
     load.style.display = 'none';
   }, 3000);
 }
-
 loader();
 "use strict";
 
 console.log("mirror start");
-
 if (location.pathname == "/courseDetail.html") {
   current_lesson = 0;
 } else if (location.pathname == "/courseDetail-mid.html") {
@@ -204,7 +225,6 @@ if (location.pathname == "/courseDetail.html") {
 } else {
   current_lesson = 9;
 }
-
 var lessons = [{
   title: "lesson 1",
   description: "線段",
@@ -286,25 +306,28 @@ var lessons = [{
     imageDiff: 823,
     totalPixels: 3164
   }
-}]; //編輯器樣式
+}];
 
+//編輯器樣式
 var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
   mode: "javascript",
   theme: "dracula",
-  lineNumbers: "true" //   // lineWrapping: true,
+  lineNumbers: "true"
+  //   // lineWrapping: true,
   //   // styleActiveLine: true,
   //   // matchBrackets: true,
   //   // autoCloseBrackets: true,
   //   // autoCloseTags: true,
   //   // theme:'dracula',
   //   // mode: "htmlmixed",
+});
 
-}); //執行按鈕
-
+//執行按鈕
 var run = document.querySelector("#run");
 var code = editor.getValue();
-var canvasPrepare = "var canvas = document.getElementById('fractal');\n\n canvas.setAttribute('width',innerWidth);\n\n canvas.setAttribute('height',innerHeight);\n\n var ctx =  canvas.getContext('2d');"; //執行按鈕點擊觸發
+var canvasPrepare = "var canvas = document.getElementById('fractal');\n\n canvas.setAttribute('width',innerWidth);\n\n canvas.setAttribute('height',innerHeight);\n\n var ctx =  canvas.getContext('2d');";
 
+//執行按鈕點擊觸發
 run.addEventListener("onload", function () {
   // resizeCanvas();
   var htmlCode = "<canvas id='fractal'></canvas>";
@@ -313,41 +336,33 @@ run.addEventListener("onload", function () {
   doc.open();
   doc.write(htmlCode + jsCode);
   previewWindow.close();
-}); //改變canvas大小,撐滿空間
+});
 
+//改變canvas大小,撐滿空間
 function resizeCanvas() {
   var width = document.querySelector(".view").clientWidth;
   var height = document.querySelector(".view").clientHeight;
   document.querySelector("#iview").setAttribute("height", "".concat(height));
-  document.querySelector("#iview").setAttribute("width", "".concat(width)); // document.querySelector("#iview").setAttribute("overflow", "hidden");
+  document.querySelector("#iview").setAttribute("width", "".concat(width));
+  // document.querySelector("#iview").setAttribute("overflow", "hidden");
 }
 
 var images; // images for comparison
-
 var doc; // user source code
-
 var width; // width of editor
-
 var height; // height of editor
-
 var canvasCode; // declaring canvas
-
 var current_lesson;
 var instruction;
 var code2Learn; // the code lesson
-
 var destinationCode; // used to compare user source code
-
 var sourceCode; // user source code
 // var code;
-
 var preview; // flag for preview
-
 var verification = "\n \n    image2 = ctx.getImageData(0,0,canvas.width,canvas.height);\n    totalPixels = 0;\n    imageDiff = 0;\n    for (let i=0; i<image1.data.length;i++){\n        if(image1.data[i]!=0) totalPixels++; \n        if(image1.data[i]!=image2.data[i]) imageDiff ++;\n    }\n    console.log(\"totalPixels\", totalPixels);\n    console.log(\"imageDiff\", imageDiff);\n    localStorage.setItem(\"totalPixels\", totalPixels);                                         \n    localStorage.setItem(\"imageDiff\", imageDiff);\n";
 var clearScreen = "ctx.clearRect(0,0,canvas.width,canvas.height);";
 var showSample = "ctx.clearRect(0,0,canvas.width,canvas.height);\n  ctx.putImageData(image1,0,0);";
 init();
-
 function init() {
   images = "\n    \n var image1 = ctx.getImageData(0, 0, canvas.width,canvas.height);\n    \n var image2;  \n    \n var image3 = ctx.createImageData(canvas.width,canvas.height);\n    \n var totalPixels = 0;\n    \n var imageDiff = 0\n    ";
   doc = document.getElementById("iview").contentWindow.document;
@@ -355,16 +370,18 @@ function init() {
   height = document.getElementById("iview").clientHeight;
   canvasCode = "<canvas id=\"fractal\"></canvas> \n";
   getSignatures();
-  /* start to learn */
 
+  /* start to learn */
   current_lesson;
   code2Learn = lessons[current_lesson].code2Learn;
   instruction = lessons[current_lesson].instruction;
   destinationCode = canvasCode + "<scri" + "pt>" + code2Learn + images + "\n</scri" + "pt>";
-  editor.setValue(instruction); // write original code  (code to learn )to produce image 1
+  editor.setValue(instruction);
 
+  // write original code  (code to learn )to produce image 1
   doc.open();
   doc.write(destinationCode); // open until user done editing
+
   // preview=true;   // flag to quick response user coding
   // correct = 0;    // the number of correct coding
 }
@@ -381,14 +398,13 @@ function getSignatures() {
     console.log(destinationCode);
   }
 }
-
 function check() {
   doc.write("<scri" + "pt>" + clearScreen + editor.getValue() + verification + "\n</scri" + "pt>");
   var imageDiff = parseInt(localStorage.getItem("imageDiff"));
   var totalPixels = parseInt(localStorage.getItem("totalPixels"));
-  var distanceSquare = (imageDiff - lessons[current_lesson].signature.imageDiff) * (imageDiff - lessons[current_lesson].signature.imageDiff) + (totalPixels - lessons[current_lesson].signature.totalPixels) * (totalPixels - lessons[current_lesson].signature.totalPixels); //alert(`imageDiff:${lessons[current_lesson].signature.imageDiff}`);
+  var distanceSquare = (imageDiff - lessons[current_lesson].signature.imageDiff) * (imageDiff - lessons[current_lesson].signature.imageDiff) + (totalPixels - lessons[current_lesson].signature.totalPixels) * (totalPixels - lessons[current_lesson].signature.totalPixels);
+  //alert(`imageDiff:${lessons[current_lesson].signature.imageDiff}`);
   //alert(`totalPixels:${lessons[current_lesson].signature.totalPixels}`);
-
   if (distanceSquare < 20) {
     alert("great success !!!");
     correct++;
@@ -398,19 +414,17 @@ function check() {
     alert("try again !!!");
   }
 }
-
 var delay;
 editor.on("change", function () {
   clearTimeout(delay);
   if (preview) delay = setTimeout(updatePreview, 300);
 });
-
 function updatePreview() {
   code = editor.getValue().replace(/^\s*/, "");
   sourceCode = "<scri" + "pt>" + showSample + code + "\n</scri" + "pt>";
   doc.write(sourceCode);
-} //          delay = setTimeout(updatePreview, 1000);
-
+}
+//          delay = setTimeout(updatePreview, 1000);
 
 function reset() {
   if (location.pathname == "/courseDetail.html") {
@@ -420,17 +434,14 @@ function reset() {
   } else {
     current_lesson = 9;
   }
-
   code2Learn = lessons[current_lesson].code2Learn;
   destinationCode = canvasCode + "<scri" + "pt>" + code2Learn + images + "\n</scri" + "pt>";
   instruction = lessons[current_lesson].instruction;
   editor.setValue(instruction);
   doc.close(); // close last action
-
   doc.open();
   doc.write(destinationCode);
 }
-
 function next() {
   getSignatures();
   current_lesson = (current_lesson + 1) % lessons.length;
@@ -439,11 +450,9 @@ function next() {
   instruction = lessons[current_lesson].instruction;
   editor.setValue(instruction);
   doc.close(); // close last action
-
   doc.open();
   doc.write(destinationCode);
 }
-
 function prev() {
   current_lesson = (current_lesson - 1 + lessons.length) % lessons.length;
   code2Learn = lessons[current_lesson].code2Learn;
@@ -451,11 +460,9 @@ function prev() {
   instruction = lessons[current_lesson].instruction;
   editor.setValue(instruction);
   doc.close(); // close last action
-
   doc.open();
   doc.write(destinationCode);
 }
-
 console.log("mirror end");
 "use strict";
 
