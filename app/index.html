@@ -6,7 +6,7 @@ current: index
 ---
 
 <div class="loader loader-curtain is-active"></div>
-<div class="banner">
+<div class="banner" id="top">
   <div class="container">
     <div class="row">
       <div class="col-md-8 offset-md-4 bg-light2 rounded-3">
@@ -14,11 +14,25 @@ current: index
           <h2 class="mb-5 fs-2 fw-bold">
             動手繪製<br />學習 <span class="special-text">HTML Canvas</span>
           </h2>
-          <a
+          <form class="form border border-primary border-2 bg-light bg-opacity-75 my-5 p-4 rounded-4">
+            <div class="mb-3 row text-dark">
+              <label for="nickName" class="col-xl-2 col-form-label d-flex align-items-center">
+                  <span class="material-symbols-outlined me-1">
+                      person
+                  </span>
+                  暱稱
+              </label>
+              <div class="col-xl-10">
+                <input type="text"  class="form-control" id="nickName" placeholder="王小明">
+              </div>
+            </div>
+          <button type="button" id="addUser" class="my-3 btn btn-primary w-100 text-light fs-5 bg-opacity-25">建立使用者</button>
+          </form>
+          <!-- <a
             href="#"
             class="fs-5 fw-semibold bg-gradient text-light py-1 px-6 text-decoration-none rounded-pill"
             >馬上開始</a
-          >
+          > -->
         </div>
       </div>
     </div>
