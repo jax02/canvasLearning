@@ -1,6 +1,100 @@
 "use strict";
 
 var users = [];
+var finishedData;
+var unFinishedData;
+var rate;
+var lessons = [{
+  title: "lesson 1",
+  description: "線段",
+  code2Learn: "\nvar canvas = document.getElementById('fractal');\n      \nvar ctx = canvas.getContext('2d');\n      \nctx.fillStyle = '#333';\n      \nctx.fillRect(0, 0, canvas.width, canvas.height);\n      // \nctx.clearRect(0,0,canvas.width,canvas.height);\n      //\nctx.moveTo(10,10);\n      //\nctx.lineTo(150,50);\n      //\nctx.stroke();\n      ",
+  instruction: "// \u756B\u7DDA\u6BB5\uFF0C\u5F9E(10,10)\u5230(150,50)\n      ",
+  signature: {
+    imageDiff: 100,
+    totalPixels: 4708
+  },
+  rate: 2
+}, {
+  title: "lesson 2",
+  description: "矩形",
+  code2Learn: "\nvar canvas = document.getElementById('fractal');\n      \nvar ctx = canvas.getContext('2d');\n      \nctx.clearRect(0,0,canvas.width,canvas.height);\n      \nctx.fillRect(10, 10, 50, 50);\n      ",
+  instruction: "//  \u756B\u77E9\u5F62\uFF0C\u539F\u9EDE (10,10) \u9577\u3001\u5BEC 50 \n      ",
+  signature: {
+    imageDiff: 0,
+    totalPixels: 4708
+  },
+  rate: 3
+}, {
+  title: "lesson 3",
+  description: "三角形",
+  code2Learn: "\nvar canvas = document.getElementById('fractal');\n      \nvar ctx = canvas.getContext('2d');\n      \nctx.clearRect(0,0,canvas.width,canvas.height);\n      \nctx.beginPath();\n      \nctx.moveTo(100,50);\n      \nctx.lineTo(60,90);\n      \nctx.lineTo(140,90);\n      \nctx.closePath();\n      \nctx.stroke();\n      ",
+  instruction: "//  \u756B\u4E09\u89D2\u5F62\uFF0C\u4E09\u9EDE\u5206\u5225\u70BA(100,50)\u3001(60,90)\u3001(140,90)\n      ",
+  signature: {
+    imageDiff: 0,
+    totalPixels: 4708
+  },
+  rate: 4
+}, {
+  title: "lesson 4",
+  description: "圓形",
+  code2Learn: "\nvar canvas = document.getElementById('fractal');\n      \n var ctx = canvas.getContext('2d');\n      \n ctx.clearRect(0,0,canvas.width,canvas.height);\n      \n ctx.beginPath();\n      \n ctx.arc(100, 75, 50, 0, 2 * Math.PI);\n      \n ctx.stroke();\n      ",
+  instruction: "//   \u5283\u4E00\u500B\u7121\u586B\u6EFF\u5713\uFF0C\u4E2D\u5FC3\u9EDE(100,75)\u534A\u5F9150\n      ",
+  signature: {
+    imageDiff: 823,
+    totalPixels: 3164
+  },
+  rate: 3
+}, {
+  title: "lesson 5",
+  description: "弧形",
+  code2Learn: "\nvar canvas = document.getElementById('fractal');\n      \n var ctx = canvas.getContext('2d');\n      \n ctx.clearRect(0,0,canvas.width,canvas.height);\n      \n ctx.beginPath();\n      \n ctx.arc(100, 60, 50, Math.PI/2*3, Math.PI/2);\n      \n ctx.stroke();\n      ",
+  instruction: "//   \u756B\u8D77\u59CB\u89D2270\u5EA6\u3001\u7D50\u675F\u89D290\u5EA6\u5F27\u578B\uFF0C\u4E2D\u5FC3\u9EDE(100,60)\u534A\u5F9150\n      ",
+  signature: {
+    imageDiff: 823,
+    totalPixels: 3164
+  },
+  rate: 3
+}, {
+  title: "lesson 6",
+  description: "用函數畫圖",
+  code2Learn: "\nvar canvas = document.getElementById('fractal');\n      \n var ctx = canvas.getContext('2d');\n      \n ctx.clearRect(0,0,canvas.width,canvas.height);\n      \n function drawCircle(x,y,r){\n      \n ctx.beginPath();\n      \n ctx.arc(x,y,r,0,2*Math.PI);\n      \n ctx.stroke();\n      \n}\n      \n drawCircle(100,100,50);\n      ",
+  instruction: "//   \u65B0\u589E\u756B\u5713\u51FD\u6578\u4E26\u57F7\u884C\uFF0C\u4E2D\u5FC3\u9EDE(100,100)\u534A\u5F9150\n      ",
+  signature: {
+    imageDiff: 823,
+    totalPixels: 3164
+  },
+  rate: 4
+}, {
+  title: "lesson 7",
+  description: "使用函數重複執行",
+  code2Learn: "\nvar canvas = document.getElementById('fractal');\n      \n var ctx = canvas.getContext('2d');\n      \n ctx.clearRect(0,0,canvas.width,canvas.height);\n      \n function drawCircle(x,y,r){\n      \n ctx.beginPath();\n      \n ctx.arc(x,y,r,0,2*Math.PI);\n      \n ctx.stroke();\n      \n}\n      \n drawCircle(100,100,50);\n      \n drawCircle(50,100,50);\n      \n drawCircle(150,100,50);\n      ",
+  instruction: "//   \u65B0\u589E\u756B\u5713\u51FD\u6578\u4E26\u57F7\u884C\n//\u4E2D\u5FC3\u9EDE\u5206\u5225\u70BA(100,100)\u3001(50,100)\u3001(150,100)\u534A\u5F9150\n      ",
+  signature: {
+    imageDiff: 823,
+    totalPixels: 3164
+  },
+  rate: 4
+}, {
+  title: "lesson 8",
+  description: "多次執行",
+  code2Learn: "\nvar canvas = document.getElementById('fractal');\n      \n var ctx = canvas.getContext('2d');\n      \n ctx.clearRect(0,0,canvas.width,canvas.height);\n      \n function drawCircle(x,y,r){\n      \n ctx.beginPath();\n      \n ctx.arc(x,y,r,0,2*Math.PI);\n      \n ctx.stroke();\n      if (r > 2) { // condition for drawing similarity\n        drawCircle(x + r, y, r / 2);\n        drawCircle(x - r, y, r / 2);\n        }\n      \n}\n      \n drawCircle(100,100,50);\n      ",
+  instruction: "//\u52A0\u5165\u689D\u4EF6\u5F0F\u8B93\u51FD\u6578\u57F7\u884C\u591A\u6B21\uFF0C\u5C0D\u7A31\u5716\u65B9\u5F0F\u5982\u4E0B:\n    // if (r > 2) { \n//drawCircle(x + r, y, r / 2);\n//drawCircle(x - r, y, r / 2);\n//}",
+  signature: {
+    imageDiff: 823,
+    totalPixels: 3164
+  },
+  rate: 5
+}, {
+  title: "lesson 9",
+  description: "遞迴樹",
+  code2Learn: "\nvar canvas = document.getElementById('fractal');\n      \n var ctx = canvas.getContext('2d');\n      \n canvas.width = window.innerWidth; // \u756B\u5E03\u5BEC = \u8996\u7A97\u5167\u7684\u5BEC\n      \n canvas.height = window.innerHeight; // \u756B\u5E03\u9AD8 = \u8996\u7A97\u5167\u7684\u9AD8\n      \n ctx.fillStyle = '#fff5a5';\n      \n ctx.fillRect(0, 0, canvas.width, canvas.height);\n      \n ctx.clearRect(0,0,canvas.width,canvas.height);\n      \n function draw(startX, startY, len, angle) {\n      \n  ctx.beginPath();\n      \n  ctx.save();\n        \n        //\u4E2D\u9593\u6A39\u5E79\n      \n  ctx.translate(startX, startY);\n      \n  ctx.rotate(angle * Math.PI/180);\n      \n  ctx.moveTo(0, 0);\n      \n  ctx.lineTo(0, -len);\n      \n  ctx.stroke();\n\n      \n  if(len < 10) {\n        \n      ctx.restore();\n        \n   return;\n        \n  }\n        \n  draw(0, -len, len*0.8, -15);//\u5DE6\u908A\u5206\u4E4B\n        \ndraw(0, -len, len*0.8, +15);//\u53F3\u908A\u5206\u652F\n        \nctx.restore();//\u6062\u5FA9\u9810\u8A2D\u503C\uFF0C\u5206\u652F\u624D\u6703\u5F9E\u4E2D\u9593\u6A39\u5E79\u9802\u9EDE\u958B\u59CB\u751F\u9577\n        \n}\n        \ndraw(300, 250, 50, 0)   \n      ",
+  instruction: "//\u7E6A\u88FD\u905E\u8FF4\u6A39\u521D\u59CB\u9EDE(300,250)\u3001\u521D\u59CB\u6A39\u679D\u9577\u5EA650\n//\u89D2\u5EA60\u5EA6\u958B\u59CB\u751F\u9577\uFF0C\u905E\u8FF4\u689D\u4EF6\u9650\u5236\u65BC\u9577\u5EA6\u5C0F\u65BC10\u505C\u6B62\n",
+  signature: {
+    imageDiff: 823,
+    totalPixels: 3164
+  },
+  rate: 5
+}];
 
 if (location.pathname == "/index.html") {
   var loader = function loader() {
@@ -16,7 +110,7 @@ if (location.pathname == "/index.html") {
     var user = {
       name: str,
       rate: 0,
-      finished: [false, false, false, false, false, false, false, false, false],
+      finished: [true, true, false, false, false, false, false, true, true],
       percentage: 0
     };
     console.log(str);
@@ -27,6 +121,19 @@ if (location.pathname == "/index.html") {
     swal("Good job!", "\u6210\u529F\u5EFA\u7ACB\u4F7F\u7528\u8005 \uFF1A ".concat(str), "success", {
       button: "確認"
     });
+    var userfinishedData = userInfo[0].finished.filter(function (value) {
+      return value == true;
+    });
+    ;
+
+    if (userfinishedData.length == 0) {
+      finishedData = userfinishedData.length + 1;
+    } else {
+      finishedData = userfinishedData.length;
+    }
+
+    unFinishedData = 9 - finishedData;
+    console.log(finishedData, unFinishedData);
   };
 
   //loader
@@ -38,7 +145,7 @@ if (location.pathname == "/index.html") {
 } //swiper
 
 
-if (location.pathname == "/courseDetail.html") {
+if (location.pathname == "/course.html") {
   var swiper = new Swiper(".courseSwiper", {
     slidesPerView: 'auto',
     spaceBetween: 20,
@@ -57,10 +164,35 @@ if (location.pathname == "/courseDetail.html") {
 }
 
 if (location.pathname == "/record.html") {
+  var userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  var userfinishedData = userInfo[0].finished.filter(function (value) {
+    return value == true;
+  });
+  ;
+
+  if (userfinishedData.length == 0) {
+    finishedData = userfinishedData.length + 1;
+  } else {
+    finishedData = userfinishedData.length;
+  }
+
+  unFinishedData = 9 - finishedData;
+  var percentage = (finishedData / 9 * 100).toFixed(2);
+  document.querySelector("#percentage").innerHTML = "<span class=\"text-primary\" >".concat(percentage, "%</span>");
+  document.querySelector("#userName").innerHTML = " <div class=\"fs-3 mb-2 text-center\" >".concat(userInfo[0].name, "</div>");
+  document.querySelector("#rate").innerHTML = " <span class=\"text-primary\" >".concat(userInfo[0].rate, "</span>");
+  userInfo[0].finished.forEach(function (e, index) {
+    if (e == true) {
+      var str = "".concat(index + 1);
+      document.querySelector("#item".concat(str)).setAttribute("class", "list-group-item ");
+    } else {
+      ;
+    }
+  });
   var chart = c3.generate({
     bindto: "#chart",
     data: {
-      columns: [['已完成', 11], ['未完成', 9]],
+      columns: [['已完成', "".concat(finishedData)], ['未完成', "".concat(unFinishedData)]],
       colors: {
         已完成: '#DD4C57',
         未完成: '#EB9C37'
@@ -77,18 +209,18 @@ if (location.pathname == "/record.html") {
       }
     },
     donut: {
-      title: "積分數：11/20"
+      title: "\u7A4D\u5206\u6578\uFF1A".concat(userInfo[0].rate, "/33")
     }
   });
   setTimeout(function () {
     chart.load({
-      columns: [["已完成", 11], ["未完成", 9]]
+      columns: [["已完成", "".concat(finishedData)], ["未完成", "".concat(unFinishedData)]]
     });
   }, 2500);
   var chart2 = c3.generate({
     bindto: "#chart2",
     data: {
-      columns: [['已完成', 91], ['剩餘關卡', 9]],
+      columns: [['已完成', "".concat(finishedData)], ['剩餘關卡', "".concat(unFinishedData)]],
       colors: {
         已完成: "#03A9F4",
         剩餘關卡: "#76FF03"
@@ -105,12 +237,12 @@ if (location.pathname == "/record.html") {
       }
     },
     donut: {
-      title: "完成比例：91%"
+      title: "\u5B8C\u6210\u6BD4\u4F8B : ".concat(percentage, "%")
     }
   });
   setTimeout(function () {
     chart2.load({
-      columns: [["已完成", 91], ["剩餘關卡", 9]]
+      columns: [["已完成", "".concat(finishedData)], ["剩餘關卡", "".concat(unFinishedData)]]
     });
   }, 1500);
   var chart3 = c3.generate({
@@ -233,6 +365,7 @@ loader();
 "use strict";
 
 console.log("mirror start");
+var userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
 if (location.pathname == "/courseDetail.html") {
   current_lesson = 0;
@@ -246,11 +379,12 @@ var lessons = [{
   title: "lesson 1",
   description: "線段",
   code2Learn: "\nvar canvas = document.getElementById('fractal');\n      \nvar ctx = canvas.getContext('2d');\n      \nctx.fillStyle = '#333';\n      \nctx.fillRect(0, 0, canvas.width, canvas.height);\n      // \nctx.clearRect(0,0,canvas.width,canvas.height);\n      //\nctx.moveTo(10,10);\n      //\nctx.lineTo(150,50);\n      //\nctx.stroke();\n      ",
-  instruction: "// \u756B\u7DDA\u6BB5\uFF0C\u5F9E\u539F\u9EDE\u5230(50,50)\n      ",
+  instruction: "// \u756B\u7DDA\u6BB5\uFF0C\u5F9E(10,10)\u5230(150,50)\n      ",
   signature: {
     imageDiff: 100,
     totalPixels: 4708
-  }
+  },
+  rate: 2
 }, {
   title: "lesson 2",
   description: "矩形",
@@ -259,7 +393,8 @@ var lessons = [{
   signature: {
     imageDiff: 0,
     totalPixels: 4708
-  }
+  },
+  rate: 3
 }, {
   title: "lesson 3",
   description: "三角形",
@@ -268,7 +403,8 @@ var lessons = [{
   signature: {
     imageDiff: 0,
     totalPixels: 4708
-  }
+  },
+  rate: 4
 }, {
   title: "lesson 4",
   description: "圓形",
@@ -277,7 +413,8 @@ var lessons = [{
   signature: {
     imageDiff: 823,
     totalPixels: 3164
-  }
+  },
+  rate: 3
 }, {
   title: "lesson 5",
   description: "弧形",
@@ -286,7 +423,8 @@ var lessons = [{
   signature: {
     imageDiff: 823,
     totalPixels: 3164
-  }
+  },
+  rate: 3
 }, {
   title: "lesson 6",
   description: "用函數畫圖",
@@ -295,7 +433,8 @@ var lessons = [{
   signature: {
     imageDiff: 823,
     totalPixels: 3164
-  }
+  },
+  rate: 4
 }, {
   title: "lesson 7",
   description: "使用函數重複執行",
@@ -304,7 +443,8 @@ var lessons = [{
   signature: {
     imageDiff: 823,
     totalPixels: 3164
-  }
+  },
+  rate: 4
 }, {
   title: "lesson 8",
   description: "多次執行",
@@ -313,7 +453,8 @@ var lessons = [{
   signature: {
     imageDiff: 823,
     totalPixels: 3164
-  }
+  },
+  rate: 5
 }, {
   title: "lesson 9",
   description: "遞迴樹",
@@ -322,7 +463,8 @@ var lessons = [{
   signature: {
     imageDiff: 823,
     totalPixels: 3164
-  }
+  },
+  rate: 5
 }]; //編輯器樣式
 
 var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
@@ -428,6 +570,10 @@ function check() {
 
   if (distanceSquare < 20) {
     alert("great success !!!");
+    userInfo[0].rate += lessons[current_lesson].rate;
+    alert(userInfo[0].rate);
+    userInfo[0].finished.splice("urrent_lesson", 1, 'true');
+    localStorage.setItem("userInfo", JSON.stringify(userInfo));
     correct++;
     document.getElementById("progress").style.width = "".concat(correct / lessons.length * 100, "%");
     document.getElementById("progress").innerHTML = " <h6>".concat(correct, "/").concat(lessons.length, "</h6>");
