@@ -1,5 +1,4 @@
 console.log("mirror start");
-
 if (location.pathname == "/courseDetail.html") {
   current_lesson = 0;
 } else if (location.pathname == "/courseDetail-mid.html") {
@@ -15,14 +14,15 @@ const lessons = [
       \nvar ctx = canvas.getContext('2d');
       \nctx.fillStyle = '#333';
       \nctx.fillRect(0, 0, canvas.width, canvas.height);
-      // \nctx.clearRect(0,0,canvas.width,canvas.height);
+      \nctx.clearRect(0,0,canvas.width,canvas.height);
       //\nctx.moveTo(10,10);
       //\nctx.lineTo(150,50);
       //\nctx.stroke();
       `,
-    instruction: `// 畫線段，從原點到(50,50)
+    instruction: `// 畫線段，從(10,10)到(150,50)
       `,
     signature: { imageDiff: 100, totalPixels: 4708 },
+    rate:2,
   },
   {
     title: "lesson 2",
@@ -35,6 +35,7 @@ const lessons = [
     instruction: `//  畫矩形，原點 (10,10) 長、寬 50 
       `,
     signature: { imageDiff: 0, totalPixels: 4708 },
+    rate:3,
   },
   {
     title: "lesson 3",
@@ -52,6 +53,7 @@ const lessons = [
     instruction: `//  畫三角形，三點分別為(100,50)、(60,90)、(140,90)
       `,
     signature: { imageDiff: 0, totalPixels: 4708 },
+    rate:4,
   },
   {
     title: "lesson 4",
@@ -66,6 +68,7 @@ const lessons = [
     instruction: `//   劃一個無填滿圓，中心點(100,75)半徑50
       `,
     signature: { imageDiff: 823, totalPixels: 3164 },
+    rate:3,
   },
   {
     title: "lesson 5",
@@ -80,6 +83,7 @@ const lessons = [
     instruction: `//   畫起始角270度、結束角90度弧型，中心點(100,60)半徑50
       `,
     signature: { imageDiff: 823, totalPixels: 3164 },
+    rate:3,
   },
   {
     title: "lesson 6",
@@ -97,6 +101,7 @@ const lessons = [
     instruction: `//   新增畫圓函數並執行，中心點(100,100)半徑50
       `,
     signature: { imageDiff: 823, totalPixels: 3164 },
+    rate:4,
   },
   {
     title: "lesson 7",
@@ -117,6 +122,7 @@ const lessons = [
 //中心點分別為(100,100)、(50,100)、(150,100)半徑50
       `,
     signature: { imageDiff: 823, totalPixels: 3164 },
+    rate:4,
   },
   {
     title: "lesson 8",
@@ -141,6 +147,7 @@ const lessons = [
 //drawCircle(x - r, y, r / 2);
 //}`,
     signature: { imageDiff: 823, totalPixels: 3164 },
+    rate:5,
   },
   {
     title: "lesson 9",
@@ -177,6 +184,7 @@ const lessons = [
 //角度0度開始生長，遞迴條件限制於長度小於10停止
 `,
     signature: { imageDiff: 823, totalPixels: 3164 },
+    rate:5,
   },
 ];
 
@@ -283,7 +291,6 @@ function init() {
   doc.write(destinationCode); // open until user done editing
 
   // preview=true;   // flag to quick response user coding
-  // correct = 0;    // the number of correct coding
 }
 function getSignatures() {
   for (let i = 0; i < lessons.length; i++) {
@@ -311,6 +318,12 @@ function getSignatures() {
     console.log(destinationCode);
   }
 }
+
+let userInfo = JSON.parse(localStorage.getItem("userInfo"))
+let userfinishedData = userInfo[0].finished.filter(function(value) {
+  return value == true;
+});
+let correct = parseInt(userfinishedData.length);   // the number of correct coding
 function check() {
   doc.write(
     "<scri" +
@@ -332,13 +345,19 @@ function check() {
   //alert(`totalPixels:${lessons[current_lesson].signature.totalPixels}`);
   if (distanceSquare < 20) {
     alert("great success !!!");
-    correct++;
+    userInfo[0].rate+=lessons[current_lesson].rate;
+    alert(userInfo[0].rate);
+    userInfo[0].finished.splice(`${current_lesson}`,1,true);
+    localStorage.setItem("userInfo",JSON.stringify(userInfo));
+    // correct++;
     document.getElementById("progress").style.width = `${
       (correct / lessons.length) * 100
     }%`;
+    document.querySelector("#progress").classList.add('progress','bg-primary')
     document.getElementById(
       "progress"
-    ).innerHTML = ` <h6>${correct}/${lessons.length}</h6>`;
+    ).innerHTML = `<h6 class="text-center w-100">${correct}/${lessons.length}</h6>`;
+
   } else {
     alert("try again !!!");
   }

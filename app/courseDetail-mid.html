@@ -1,6 +1,6 @@
 ---
 title: 課程細節
-layout: ./app/userHeader.ejs
+layout: ./app/layout.ejs
 engine: ejs
 current: index
 ---
@@ -69,6 +69,7 @@ current: index
           <button type="button" class="list-group-item list-group-item-action">
             完成後可獲得積分數：
             <span>
+              <i class="fa-solid fa-star fa-1x text-primary"></i>
               <i class="fa-solid fa-star fa-1x text-primary"></i>
               <i class="fa-solid fa-star fa-1x text-primary"></i>
             </span>
@@ -169,7 +170,7 @@ current: index
     </div>
     <div class="row mt-3">
       <div class="col">
-        <div class="progress">
+        <div class="progress" id="progress">
           <div
             class="progress-bar bg-primary"
             role="progressbar"
