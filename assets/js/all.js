@@ -110,7 +110,7 @@ if (location.pathname == "/index.html") {
     var user = {
       name: str,
       rate: 0,
-      finished: [true, true, false, false, false, false, false, true, true],
+      finished: [false, false, false, false, false, false, false, false, false],
       percentage: 0
     };
     console.log(str);
@@ -121,6 +121,7 @@ if (location.pathname == "/index.html") {
     swal("Good job!", "\u6210\u529F\u5EFA\u7ACB\u4F7F\u7528\u8005 \uFF1A ".concat(str), "success", {
       button: "確認"
     });
+    localStorage.removeItem('correct');
     var userfinishedData = userInfo[0].finished.filter(function (value) {
       return value == true;
     });
@@ -133,7 +134,6 @@ if (location.pathname == "/index.html") {
     }
 
     unFinishedData = 9 - finishedData;
-    console.log(finishedData, unFinishedData);
   };
 
   //loader
@@ -244,27 +244,32 @@ if (location.pathname == "/record.html") {
     chart2.load({
       columns: [["已完成", "".concat(finishedData)], ["剩餘關卡", "".concat(unFinishedData)]]
     });
-  }, 1500);
-  var chart3 = c3.generate({
-    bindto: "#chart3",
-    data: {
-      x: 'x',
-      columns: [['x', '2022-09-01', '2022-09-02', '2022-09-03', '2022-09-04', '2022-09-05', '2022-09-06', '2022-09-07'], ['已完成', 3, 5, 6, 7, 9, 11], ['剩餘關卡', 30, 27, 24, 22, 19, 19]]
-    },
-    axis: {
-      x: {
-        type: 'timeseries',
-        tick: {
-          format: '%Y-%m-%d'
-        }
-      }
-    }
-  });
-  setTimeout(function () {
-    chart3.load({
-      columns: [["獲得積分數", 12, 13, 15, 17, 19, 21]]
-    });
-  }, 1500);
+  }, 3500); // var chart3 = c3.generate({
+  //   bindto: "#chart3",
+  //   data: {
+  //     x: 'x',
+  //     columns: [
+  //         ['x', '2022-09-01', '2022-09-02', '2022-09-03', '2022-09-04', '2022-09-05', '2022-09-06', '2022-09-07'],
+  //         ['已完成', 3, 5, 6, 7, 9, 11 ],
+  //         ['剩餘關卡', 30, 27, 24, 22, 19, 19]
+  //     ]
+  // },
+  // axis: {
+  //     x: {
+  //         type: 'timeseries',
+  //         tick: {
+  //             format: '%Y-%m-%d'
+  //         }
+  //     }
+  // }
+  // });
+  // setTimeout(function () {
+  //   chart3.load({
+  //       columns: [
+  //           ["獲得積分數", 12,13,15,17,19,21],
+  //       ]
+  //   });
+  // }, 1500);
 }
 
 console.log('all end');
@@ -365,7 +370,6 @@ loader();
 "use strict";
 
 console.log("mirror start");
-var userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
 if (location.pathname == "/courseDetail.html") {
   current_lesson = 0;
@@ -378,7 +382,7 @@ if (location.pathname == "/courseDetail.html") {
 var lessons = [{
   title: "lesson 1",
   description: "線段",
-  code2Learn: "\nvar canvas = document.getElementById('fractal');\n      \nvar ctx = canvas.getContext('2d');\n      \nctx.fillStyle = '#333';\n      \nctx.fillRect(0, 0, canvas.width, canvas.height);\n      // \nctx.clearRect(0,0,canvas.width,canvas.height);\n      //\nctx.moveTo(10,10);\n      //\nctx.lineTo(150,50);\n      //\nctx.stroke();\n      ",
+  code2Learn: "\nvar canvas = document.getElementById('fractal');\n      \nvar ctx = canvas.getContext('2d');\n      \nctx.fillStyle = '#333';\n      \nctx.fillRect(0, 0, canvas.width, canvas.height);\n      \nctx.clearRect(0,0,canvas.width,canvas.height);\n      //\nctx.moveTo(10,10);\n      //\nctx.lineTo(150,50);\n      //\nctx.stroke();\n      ",
   instruction: "// \u756B\u7DDA\u6BB5\uFF0C\u5F9E(10,10)\u5230(150,50)\n      ",
   signature: {
     imageDiff: 100,
@@ -545,7 +549,6 @@ function init() {
   doc.open();
   doc.write(destinationCode); // open until user done editing
   // preview=true;   // flag to quick response user coding
-  // correct = 0;    // the number of correct coding
 }
 
 function getSignatures() {
@@ -561,6 +564,12 @@ function getSignatures() {
   }
 }
 
+var userInfo = JSON.parse(localStorage.getItem("userInfo"));
+var userfinishedData = userInfo[0].finished.filter(function (value) {
+  return value == true;
+});
+var correct = parseInt(userfinishedData.length); // the number of correct coding
+
 function check() {
   doc.write("<scri" + "pt>" + clearScreen + editor.getValue() + verification + "\n</scri" + "pt>");
   var imageDiff = parseInt(localStorage.getItem("imageDiff"));
@@ -572,11 +581,12 @@ function check() {
     alert("great success !!!");
     userInfo[0].rate += lessons[current_lesson].rate;
     alert(userInfo[0].rate);
-    userInfo[0].finished.splice("urrent_lesson", 1, 'true');
-    localStorage.setItem("userInfo", JSON.stringify(userInfo));
-    correct++;
+    userInfo[0].finished.splice("".concat(current_lesson), 1, true);
+    localStorage.setItem("userInfo", JSON.stringify(userInfo)); // correct++;
+
     document.getElementById("progress").style.width = "".concat(correct / lessons.length * 100, "%");
-    document.getElementById("progress").innerHTML = " <h6>".concat(correct, "/").concat(lessons.length, "</h6>");
+    document.querySelector("#progress").classList.add('progress', 'bg-primary');
+    document.getElementById("progress").innerHTML = "<h6 class=\"text-center w-100\">".concat(correct, "/").concat(lessons.length, "</h6>");
   } else {
     alert("try again !!!");
   }
