@@ -324,6 +324,13 @@ let userfinishedData = userInfo[0].finished.filter(function(value) {
   return value == true;
 });
 let correct = parseInt(userfinishedData.length);   // the number of correct coding
+let players;
+if(JSON.parse(localStorage.getItem("players"))){
+  players= JSON.parse(localStorage.getItem("players"));
+}else{
+  players={};
+}
+
 function check() {
   doc.write(
     "<scri" +
@@ -346,6 +353,9 @@ function check() {
   if (distanceSquare < 20) {
     alert("great success !!!");
     userInfo[0].rate+=lessons[current_lesson].rate;
+    players[`${userInfo[0].name}`] = {"rate":`${userInfo[0].rate}`};
+    console.log(players);
+    localStorage.setItem("players",JSON.stringify(players));
     alert(userInfo[0].rate);
     userInfo[0].finished.splice(`${current_lesson}`,1,true);
     localStorage.setItem("userInfo",JSON.stringify(userInfo));

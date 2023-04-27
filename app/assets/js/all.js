@@ -183,6 +183,25 @@ const lessons = [
     rate:5,
   },
 ];
+//leaderboard
+if(location.pathname == "/course.html"){
+  let leaderboard=[];
+  let players = JSON.parse(localStorage.getItem("players"));
+  let sortedPlayers = Object.keys(players).sort(function(a,b){
+  return players[b].rate - players[a].rate;
+  });
+  for (let i = 0; i < sortedPlayers.length; i++) {
+    let playerName = sortedPlayers[i];
+    let playerScore = players[playerName].rate;
+    leaderboard.push({"name": playerName, "rate": playerScore, "rank": i + 1});
+}
+for(let i=0; i<leaderboard.length; i++){
+  document.querySelector(`#rank${i+1}`).innerHTML = `<h5 class="fs-3" id="rank${i+1}">${leaderboard[i].name}</h5>`
+  document.querySelector(`#rank${i+1}Rate`).innerHTML = `<h5 class="fs-3" id="rank${i+1}">(${leaderboard[i].rate})</h5>`
+}
+  console.log(leaderboard);
+}
+
 if(location.pathname == "/index.html"){
   //loader
   const load = document.querySelector('.loader');
