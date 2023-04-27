@@ -94,7 +94,32 @@ var lessons = [{
     totalPixels: 3164
   },
   rate: 5
-}];
+}]; //leaderboard
+
+if (location.pathname == "/course.html") {
+  var leaderboard = [];
+  var players = JSON.parse(localStorage.getItem("players"));
+  var sortedPlayers = Object.keys(players).sort(function (a, b) {
+    return players[b].rate - players[a].rate;
+  });
+
+  for (var i = 0; i < sortedPlayers.length; i++) {
+    var playerName = sortedPlayers[i];
+    var playerScore = players[playerName].rate;
+    leaderboard.push({
+      "name": playerName,
+      "rate": playerScore,
+      "rank": i + 1
+    });
+  }
+
+  for (var _i = 0; _i < leaderboard.length; _i++) {
+    document.querySelector("#rank".concat(_i + 1)).innerHTML = "<h5 class=\"fs-3\" id=\"rank".concat(_i + 1, "\">").concat(leaderboard[_i].name, "</h5>");
+    document.querySelector("#rank".concat(_i + 1, "Rate")).innerHTML = "<h5 class=\"fs-3\" id=\"rank".concat(_i + 1, "\">(").concat(leaderboard[_i].rate, ")</h5>");
+  }
+
+  console.log(leaderboard);
+}
 
 if (location.pathname == "/index.html") {
   var loader = function loader() {
@@ -570,6 +595,14 @@ var userfinishedData = userInfo[0].finished.filter(function (value) {
 });
 var correct = parseInt(userfinishedData.length); // the number of correct coding
 
+var players;
+
+if (JSON.parse(localStorage.getItem("players"))) {
+  players = JSON.parse(localStorage.getItem("players"));
+} else {
+  players = {};
+}
+
 function check() {
   doc.write("<scri" + "pt>" + clearScreen + editor.getValue() + verification + "\n</scri" + "pt>");
   var imageDiff = parseInt(localStorage.getItem("imageDiff"));
@@ -580,6 +613,11 @@ function check() {
   if (distanceSquare < 20) {
     alert("great success !!!");
     userInfo[0].rate += lessons[current_lesson].rate;
+    players["".concat(userInfo[0].name)] = {
+      "rate": "".concat(userInfo[0].rate)
+    };
+    console.log(players);
+    localStorage.setItem("players", JSON.stringify(players));
     alert(userInfo[0].rate);
     userInfo[0].finished.splice("".concat(current_lesson), 1, true);
     localStorage.setItem("userInfo", JSON.stringify(userInfo)); // correct++;
