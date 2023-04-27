@@ -96,7 +96,7 @@ var lessons = [{
   rate: 5
 }]; //leaderboard
 
-if (location.pathname == "/course.html") {
+if (location.pathname == "/canvasLearning/course.html") {
   var leaderboard = [];
   var players = JSON.parse(localStorage.getItem("players"));
   var sortedPlayers = Object.keys(players).sort(function (a, b) {
@@ -121,7 +121,7 @@ if (location.pathname == "/course.html") {
   console.log(leaderboard);
 }
 
-if (location.pathname == "/index.html") {
+if (location.pathname == "/canvasLearning/index.html") {
   var loader = function loader() {
     setTimeout(function () {
       load.style.display = 'none';
@@ -170,7 +170,7 @@ if (location.pathname == "/index.html") {
 } //swiper
 
 
-if (location.pathname == "/course.html") {
+if (location.pathname == "/canvasLearning/course.html") {
   var swiper = new Swiper(".courseSwiper", {
     slidesPerView: 'auto',
     spaceBetween: 20,
@@ -188,7 +188,7 @@ if (location.pathname == "/course.html") {
   });
 }
 
-if (location.pathname == "/record.html") {
+if (location.pathname == "/canvasLearning/record.html") {
   var userInfo = JSON.parse(localStorage.getItem("userInfo"));
   var userfinishedData = userInfo[0].finished.filter(function (value) {
     return value == true;
