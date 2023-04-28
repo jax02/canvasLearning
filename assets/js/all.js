@@ -172,7 +172,7 @@ if (location.pathname == "/canvasLearning/index.html") {
 } //swiper
 
 
-if (location.pathname == "/canvasLearning/course.html") {
+if (location.pathname == '/canvasLearning/course.html') {
   var swiper = new Swiper(".courseSwiper", {
     slidesPerView: 'auto',
     spaceBetween: 20,
