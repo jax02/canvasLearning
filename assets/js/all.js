@@ -104,7 +104,7 @@ localStorage.setItem("players", JSON.stringify(players)); //leaderboard
 //localhost的pathname=/course.html
 //github Pages的pathname=/canvasLearning/course.html
 
-if (location.pathname == "/canvasLearning/course.html") {
+if (location.pathname == "/canvasLearning/course.html" || location.pathname == "/course.html") {
   var leaderboard = [];
 
   var _players = JSON.parse(localStorage.getItem("players"));
@@ -147,7 +147,7 @@ if (location.pathname == "/canvasLearning/course.html") {
   });
 }
 
-if (location.pathname == "/canvasLearning/index.html" || location.pathname == "/canvasLearning/") {
+if (location.pathname == "/canvasLearning/index.html" || location.pathname == "/index.html") {
   var loader = function loader() {
     setTimeout(function () {
       load.style.display = 'none';
@@ -195,7 +195,7 @@ if (location.pathname == "/canvasLearning/index.html" || location.pathname == "/
   addUser.addEventListener("click", getName);
 }
 
-if (location.pathname == "/canvasLearning/record.html") {
+if (location.pathname == "/canvasLearning/record.html" || location.pathname == "/record.html") {
   var userInfo = JSON.parse(localStorage.getItem("userInfo"));
   var userfinishedData = userInfo[0].finished.filter(function (value) {
     return value == true;
@@ -400,9 +400,9 @@ console.log('all end');
 
 console.log("mirror start");
 
-if (location.pathname == "/canvasLearning/courseDetail.html") {
+if (location.pathname == "/canvasLearning/courseDetail.html" || location.pathname == "/courseDetail.html") {
   current_lesson = 0;
-} else if (location.pathname == "/canvasLearning/courseDetail-mid.html") {
+} else if (location.pathname == "/canvasLearning/courseDetail-mid.html" || location.pathname == "/courseDetail-mid.html") {
   current_lesson = 6;
 } else {
   current_lesson = 9;
@@ -417,7 +417,8 @@ var lessons = [{
     imageDiff: 100,
     totalPixels: 4708
   },
-  rate: 2
+  rate: 2,
+  init: "ctx.moveTo(10,10);\n    ctx.lineTo(150,50);\n    ctx.stroke();"
 }, {
   title: "lesson 2",
   description: "矩形",
@@ -427,7 +428,8 @@ var lessons = [{
     imageDiff: 0,
     totalPixels: 4708
   },
-  rate: 3
+  rate: 3,
+  init: "ctx.fillRect(10, 10, 50, 50);"
 }, {
   title: "lesson 3",
   description: "三角形",
@@ -437,7 +439,8 @@ var lessons = [{
     imageDiff: 0,
     totalPixels: 4708
   },
-  rate: 4
+  rate: 4,
+  init: "ctx.beginPath();\n    ctx.moveTo(100,50);\n    ctx.lineTo(60,90);\n    ctx.lineTo(140,90);\n    ctx.closePath();\n    ctx.stroke();"
 }, {
   title: "lesson 4",
   description: "圓形",
@@ -447,7 +450,8 @@ var lessons = [{
     imageDiff: 823,
     totalPixels: 3164
   },
-  rate: 3
+  rate: 3,
+  init: "ctx.beginPath();\n    ctx.arc(100, 75, 50, 0, 2 * Math.PI);\n    ctx.stroke();"
 }, {
   title: "lesson 5",
   description: "弧形",
@@ -457,7 +461,8 @@ var lessons = [{
     imageDiff: 823,
     totalPixels: 3164
   },
-  rate: 3
+  rate: 3,
+  init: " ctx.beginPath();\n    ctx.arc(100, 60, 50, Math.PI/2*3, Math.PI/2);\n    ctx.stroke();"
 }, {
   title: "lesson 6",
   description: "用函數畫圖",
@@ -467,7 +472,8 @@ var lessons = [{
     imageDiff: 823,
     totalPixels: 3164
   },
-  rate: 4
+  rate: 4,
+  init: "function drawCircle(x,y,r){\n      ctx.beginPath();\n      ctx.arc(x,y,r,0,2*Math.PI);\n      ctx.stroke();\n      }\n      drawCircle(100,100,50);"
 }, {
   title: "lesson 7",
   description: "使用函數重複執行",
@@ -477,7 +483,8 @@ var lessons = [{
     imageDiff: 823,
     totalPixels: 3164
   },
-  rate: 4
+  rate: 4,
+  init: "function drawCircle(x,y,r){\n      ctx.beginPath();\n      ctx.arc(x,y,r,0,2*Math.PI);\n      ctx.stroke();\n      }\n      drawCircle(100,100,50);\n      drawCircle(50,100,50);\n      drawCircle(150,100,50);"
 }, {
   title: "lesson 8",
   description: "多次執行",
@@ -487,7 +494,8 @@ var lessons = [{
     imageDiff: 823,
     totalPixels: 3164
   },
-  rate: 5
+  rate: 5,
+  init: "function drawCircle(x,y,r){\n      ctx.beginPath();\n      ctx.arc(x,y,r,0,2*Math.PI);\n      ctx.stroke();\n      if (r > 2) { // condition for drawing similarity\n        drawCircle(x + r, y, r / 2);\n        drawCircle(x - r, y, r / 2);\n        }\n      }\n      drawCircle(100,100,50);"
 }, {
   title: "lesson 9",
   description: "遞迴樹",
@@ -497,7 +505,8 @@ var lessons = [{
     imageDiff: 823,
     totalPixels: 3164
   },
-  rate: 5
+  rate: 5,
+  init: "function draw(startX, startY, len, angle) {\n        ctx.beginPath();\n        ctx.save();\n        \n        //\u4E2D\u9593\u6A39\u5E79\n        ctx.translate(startX, startY);\n        ctx.rotate(angle * Math.PI/180);\n        ctx.moveTo(0, 0);\n        ctx.lineTo(0, -len);\n        ctx.stroke();\n\n        if(len < 10) {\n              ctx.restore();\n           return;\n          }\n          draw(0, -len, len*0.8, -15);//\u5DE6\u908A\u5206\u4E4B\n        draw(0, -len, len*0.8, +15);//\u53F3\u908A\u5206\u652F\n        ctx.restore();//\u6062\u5FA9\u9810\u8A2D\u503C\uFF0C\u5206\u652F\u624D\u6703\u5F9E\u4E2D\u9593\u6A39\u5E79\u9802\u9EDE\u958B\u59CB\u751F\u9577\n        }\n        draw(300, 250, 50, 0) "
 }]; //編輯器樣式
 
 var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
@@ -631,6 +640,19 @@ function check() {
     document.getElementById("progress").innerHTML = "<h6 class=\"text-center w-100\">".concat(correct, "/").concat(lessons.length, "</h6>");
   } else {
     alert("try again !!!");
+    Swal.fire({
+      title: '需要幫忙嗎?',
+      text: "觀看提示內容幫助過關!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: '是的我需要!'
+    }).then(function (result) {
+      if (result.isConfirmed) {
+        Swal.fire("".concat(lessons[current_lesson].init), '再試試看吧', 'success');
+      }
+    });
   }
 }
 
@@ -648,9 +670,9 @@ function updatePreview() {
 
 
 function reset() {
-  if (location.pathname == "/canvasLearning/courseDetail.html") {
+  if (location.pathname == "/canvasLearning/courseDetail.html" || location.pathname == "/courseDetail.html") {
     current_lesson = 0;
-  } else if (location.pathname == "/canvasLearning/courseDetail-mid.html") {
+  } else if (location.pathname == "/canvasLearning/courseDetail-mid.html" || location.pathname == "/courseDetail-mid.html") {
     current_lesson = 6;
   } else {
     current_lesson = 9;
