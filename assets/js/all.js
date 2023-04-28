@@ -383,17 +383,14 @@ console.log('all end');
 //     });
 //   }, 1500);
 "use strict";
+// const load = document.querySelector('.loader');
+// function loader (){
+//   setTimeout(() => { 
+//     load.style.display = 'none';}
+//     , 3000);
+// }
+// loader ();
 "use strict";
-
-var load = document.querySelector('.loader');
-
-function loader() {
-  setTimeout(function () {
-    load.style.display = 'none';
-  }, 3000);
-}
-
-loader();
 "use strict";
 
 console.log("mirror start");
@@ -690,23 +687,22 @@ function prev() {
 }
 
 console.log("mirror end");
+// console.log('swiper start');
+// let swiper = new Swiper(".courseSwiper", {
+//     slidesPerView: 'auto',
+//     spaceBetween: 20,
+//     // slidesPerGroup: 3,
+//     loop: true,
+//     loopFillGroupWithBlank: true,
+//     // pagination: {
+//     //   el: ".swiper-pagination",
+//     //   clickable: true,
+//     // },
+//     navigation: {
+//       nextEl: ".swiper-button-next",
+//       prevEl: ".swiper-button-prev",
+//     },
+//   });
+//   console.log('swiper end');
 "use strict";
-
-console.log('swiper start');
-var swiper = new Swiper(".courseSwiper", {
-  slidesPerView: 'auto',
-  spaceBetween: 20,
-  // slidesPerGroup: 3,
-  loop: true,
-  loopFillGroupWithBlank: true,
-  // pagination: {
-  //   el: ".swiper-pagination",
-  //   clickable: true,
-  // },
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev"
-  }
-});
-console.log('swiper end');
 //# sourceMappingURL=all.js.map
