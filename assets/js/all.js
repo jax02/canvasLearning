@@ -94,33 +94,38 @@ var lessons = [{
     totalPixels: 3164
   },
   rate: 5
-}]; //leaderboard
+}];
+var players = {
+  "王小明": {
+    "rate": 15
+  }
+};
+localStorage.setItem("players", JSON.stringify(players)); //leaderboard
 //localhost的pathname=/course.html
 //github Pages的pathname=/canvasLearning/course.html
 
 if (location.pathname == "/canvasLearning/course.html") {
   var leaderboard = [];
 
-  if (JSON.parse(localStorage.getItem("players"))) {
-    var players = JSON.parse(localStorage.getItem("players"));
-    var sortedPlayers = Object.keys(players).sort(function (a, b) {
-      return players[b].rate - players[a].rate;
+  var _players = JSON.parse(localStorage.getItem("players"));
+
+  var sortedPlayers = Object.keys(_players).sort(function (a, b) {
+    return _players[b].rate - _players[a].rate;
+  });
+
+  for (var i = 0; i < sortedPlayers.length; i++) {
+    var playerName = sortedPlayers[i];
+    var playerScore = _players[playerName].rate;
+    leaderboard.push({
+      "name": playerName,
+      "rate": playerScore,
+      "rank": i + 1
     });
+  }
 
-    for (var i = 0; i < sortedPlayers.length; i++) {
-      var playerName = sortedPlayers[i];
-      var playerScore = players[playerName].rate;
-      leaderboard.push({
-        "name": playerName,
-        "rate": playerScore,
-        "rank": i + 1
-      });
-    }
-
-    for (var _i = 0; _i < leaderboard.length; _i++) {
-      document.querySelector("#rank".concat(_i + 1)).innerHTML = "<h5 class=\"fs-3\" id=\"rank".concat(_i + 1, "\">").concat(leaderboard[_i].name, "</h5>");
-      document.querySelector("#rank".concat(_i + 1, "Rate")).innerHTML = "<h5 class=\"fs-3\" id=\"rank".concat(_i + 1, "\">(").concat(leaderboard[_i].rate, ")</h5>");
-    }
+  for (var _i = 0; _i < leaderboard.length; _i++) {
+    document.querySelector("#rank".concat(_i + 1)).innerHTML = "<h5 class=\"fs-3\" id=\"rank".concat(_i + 1, "\">").concat(leaderboard[_i].name, "</h5>");
+    document.querySelector("#rank".concat(_i + 1, "Rate")).innerHTML = "<h5 class=\"fs-3\" id=\"rank".concat(_i + 1, "\">(").concat(leaderboard[_i].rate, ")</h5>");
   }
 
   console.log(leaderboard); //swiper
