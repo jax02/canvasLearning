@@ -172,23 +172,21 @@ if (location.pathname == "/canvasLearning/index.html") {
 } //swiper
 
 
-if (location.pathname == '/canvasLearning/course.html') {
-  var swiper = new Swiper(".courseSwiper", {
-    slidesPerView: 'auto',
-    spaceBetween: 20,
-    // slidesPerGroup: 3,
-    loop: true,
-    loopFillGroupWithBlank: true,
-    // pagination: {
-    //   el: ".swiper-pagination",
-    //   clickable: true,
-    // },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev"
-    }
-  });
-}
+var swiper = new Swiper(".courseSwiper", {
+  slidesPerView: 'auto',
+  spaceBetween: 20,
+  // slidesPerGroup: 3,
+  loop: true,
+  loopFillGroupWithBlank: true,
+  // pagination: {
+  //   el: ".swiper-pagination",
+  //   clickable: true,
+  // },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev"
+  }
+});
 
 if (location.pathname == "/canvasLearning/record.html") {
   var userInfo = JSON.parse(localStorage.getItem("userInfo"));
