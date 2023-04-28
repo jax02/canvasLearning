@@ -100,24 +100,27 @@ var lessons = [{
 
 if (location.pathname == "/canvasLearning/course.html") {
   var leaderboard = [];
-  var players = JSON.parse(localStorage.getItem("players"));
-  var sortedPlayers = Object.keys(players).sort(function (a, b) {
-    return players[b].rate - players[a].rate;
-  });
 
-  for (var i = 0; i < sortedPlayers.length; i++) {
-    var playerName = sortedPlayers[i];
-    var playerScore = players[playerName].rate;
-    leaderboard.push({
-      "name": playerName,
-      "rate": playerScore,
-      "rank": i + 1
+  if (JSON.parse(localStorage.getItem("players"))) {
+    var players = JSON.parse(localStorage.getItem("players"));
+    var sortedPlayers = Object.keys(players).sort(function (a, b) {
+      return players[b].rate - players[a].rate;
     });
-  }
 
-  for (var _i = 0; _i < leaderboard.length; _i++) {
-    document.querySelector("#rank".concat(_i + 1)).innerHTML = "<h5 class=\"fs-3\" id=\"rank".concat(_i + 1, "\">").concat(leaderboard[_i].name, "</h5>");
-    document.querySelector("#rank".concat(_i + 1, "Rate")).innerHTML = "<h5 class=\"fs-3\" id=\"rank".concat(_i + 1, "\">(").concat(leaderboard[_i].rate, ")</h5>");
+    for (var i = 0; i < sortedPlayers.length; i++) {
+      var playerName = sortedPlayers[i];
+      var playerScore = players[playerName].rate;
+      leaderboard.push({
+        "name": playerName,
+        "rate": playerScore,
+        "rank": i + 1
+      });
+    }
+
+    for (var _i = 0; _i < leaderboard.length; _i++) {
+      document.querySelector("#rank".concat(_i + 1)).innerHTML = "<h5 class=\"fs-3\" id=\"rank".concat(_i + 1, "\">").concat(leaderboard[_i].name, "</h5>");
+      document.querySelector("#rank".concat(_i + 1, "Rate")).innerHTML = "<h5 class=\"fs-3\" id=\"rank".concat(_i + 1, "\">(").concat(leaderboard[_i].rate, ")</h5>");
+    }
   }
 
   console.log(leaderboard); //swiper
