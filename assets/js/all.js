@@ -139,7 +139,7 @@ if (location.pathname == "/canvasLearning/course.html") {
   });
 }
 
-if (location.pathname == "/canvasLearning/index.html" || '/canvasLearning/') {
+if (location.pathname == "/canvasLearning/index.html" || location.pathname == '/canvasLearning/') {
   var loader = function loader() {
     setTimeout(function () {
       load.style.display = 'none';
