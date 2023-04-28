@@ -94,7 +94,23 @@ var lessons = [{
     totalPixels: 3164
   },
   rate: 5
-}]; //leaderboard
+}]; //swiper
+
+var swiper = new Swiper(".courseSwiper", {
+  slidesPerView: 'auto',
+  spaceBetween: 20,
+  // slidesPerGroup: 3,
+  loop: true,
+  loopFillGroupWithBlank: true,
+  // pagination: {
+  //   el: ".swiper-pagination",
+  //   clickable: true,
+  // },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev"
+  }
+}); //leaderboard
 //localhost的pathname=/course.html
 //github Pages的pathname=/canvasLearning/course.html
 
@@ -123,7 +139,7 @@ if (location.pathname == "/canvasLearning/course.html") {
   console.log(leaderboard);
 }
 
-if (location.pathname == "/canvasLearning/index.html") {
+if (location.pathname == "/canvasLearning/index.html" || '/canvasLearning/') {
   var loader = function loader() {
     setTimeout(function () {
       load.style.display = 'none';
@@ -169,24 +185,7 @@ if (location.pathname == "/canvasLearning/index.html") {
   var nickName = document.querySelector("#nickName");
   var addUser = document.querySelector("#addUser");
   addUser.addEventListener("click", getName);
-} //swiper
-
-
-var swiper = new Swiper(".courseSwiper", {
-  slidesPerView: 'auto',
-  spaceBetween: 20,
-  // slidesPerGroup: 3,
-  loop: true,
-  loopFillGroupWithBlank: true,
-  // pagination: {
-  //   el: ".swiper-pagination",
-  //   clickable: true,
-  // },
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev"
-  }
-});
+}
 
 if (location.pathname == "/canvasLearning/record.html") {
   var userInfo = JSON.parse(localStorage.getItem("userInfo"));
