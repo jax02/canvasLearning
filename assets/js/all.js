@@ -94,23 +94,7 @@ var lessons = [{
     totalPixels: 3164
   },
   rate: 5
-}]; //swiper
-
-var swiper = new Swiper(".courseSwiper", {
-  slidesPerView: 'auto',
-  spaceBetween: 20,
-  // slidesPerGroup: 3,
-  loop: true,
-  loopFillGroupWithBlank: true,
-  // pagination: {
-  //   el: ".swiper-pagination",
-  //   clickable: true,
-  // },
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev"
-  }
-}); //leaderboard
+}]; //leaderboard
 //localhost的pathname=/course.html
 //github Pages的pathname=/canvasLearning/course.html
 
@@ -136,7 +120,23 @@ if (location.pathname == "/canvasLearning/course.html") {
     document.querySelector("#rank".concat(_i + 1, "Rate")).innerHTML = "<h5 class=\"fs-3\" id=\"rank".concat(_i + 1, "\">(").concat(leaderboard[_i].rate, ")</h5>");
   }
 
-  console.log(leaderboard);
+  console.log(leaderboard); //swiper
+
+  var swiper = new Swiper(".courseSwiper", {
+    slidesPerView: 'auto',
+    spaceBetween: 20,
+    // slidesPerGroup: 3,
+    loop: true,
+    loopFillGroupWithBlank: true,
+    // pagination: {
+    //   el: ".swiper-pagination",
+    //   clickable: true,
+    // },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev"
+    }
+  });
 }
 
 if (location.pathname == "/canvasLearning/index.html" || '/canvasLearning/') {
