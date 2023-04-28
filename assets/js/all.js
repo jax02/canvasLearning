@@ -95,6 +95,8 @@ var lessons = [{
   },
   rate: 5
 }]; //leaderboard
+//localhost的pathname=/course.html
+//github Pages的pathname=/canvasLearning/course.html
 
 if (location.pathname == "/canvasLearning/course.html") {
   var leaderboard = [];
@@ -396,9 +398,9 @@ loader();
 
 console.log("mirror start");
 
-if (location.pathname == "/courseDetail.html") {
+if (location.pathname == "/canvasLearning/courseDetail.html") {
   current_lesson = 0;
-} else if (location.pathname == "/courseDetail-mid.html") {
+} else if (location.pathname == "/canvasLearning/courseDetail-mid.html") {
   current_lesson = 6;
 } else {
   current_lesson = 9;
@@ -644,9 +646,9 @@ function updatePreview() {
 
 
 function reset() {
-  if (location.pathname == "/courseDetail.html") {
+  if (location.pathname == "/canvasLearning/courseDetail.html") {
     current_lesson = 0;
-  } else if (location.pathname == "/courseDetail-mid.html") {
+  } else if (location.pathname == "/canvasLearning/courseDetail-mid.html") {
     current_lesson = 6;
   } else {
     current_lesson = 9;
