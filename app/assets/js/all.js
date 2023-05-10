@@ -183,8 +183,15 @@ const lessons = [
     rate:5,
   },
 ];
+
+let players = {
+  "王小明":{"rate":15}
+}
+localStorage.setItem("players",JSON.stringify(players));
 //leaderboard
-if(location.pathname == "/course.html"){
+//localhost的pathname=/course.html
+//github Pages的pathname=/canvasLearning/course.html
+if(location.pathname == "/canvasLearning/course.html"||location.pathname == "/course.html"){
   let leaderboard=[];
   let players = JSON.parse(localStorage.getItem("players"));
   let sortedPlayers = Object.keys(players).sort(function(a,b){
@@ -200,9 +207,25 @@ for(let i=0; i<leaderboard.length; i++){
   document.querySelector(`#rank${i+1}Rate`).innerHTML = `<h5 class="fs-3" id="rank${i+1}">(${leaderboard[i].rate})</h5>`
 }
   console.log(leaderboard);
+//swiper
+let swiper = new Swiper(".courseSwiper", {
+  slidesPerView: 'auto',
+  spaceBetween: 20,
+  // slidesPerGroup: 3,
+  loop: true,
+  loopFillGroupWithBlank: true,
+  // pagination: {
+  //   el: ".swiper-pagination",
+  //   clickable: true,
+  // },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+});
 }
 
-if(location.pathname == "/index.html"){
+if(location.pathname == "/canvasLearning/index.html"||location.pathname =="/index.html"){
   //loader
   const load = document.querySelector('.loader');
   function loader (){
@@ -248,27 +271,11 @@ addUser.addEventListener("click", getName);
 
 
 
-//swiper
-if(location.pathname == "/course.html"){
-  let swiper = new Swiper(".courseSwiper", {
-    slidesPerView: 'auto',
-    spaceBetween: 20,
-    // slidesPerGroup: 3,
-    loop: true,
-    loopFillGroupWithBlank: true,
-    // pagination: {
-    //   el: ".swiper-pagination",
-    //   clickable: true,
-    // },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-  });
-}
 
 
-if(location.pathname == "/record.html"){
+
+
+if(location.pathname == "/canvasLearning/record.html"||location.pathname == "/record.html"){
 let userInfo = JSON.parse(localStorage.getItem("userInfo"));
 let userfinishedData = userInfo[0].finished.filter(function(value) {
   return value == true;

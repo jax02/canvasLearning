@@ -1,7 +1,8 @@
 console.log("mirror start");
-if (location.pathname == "/courseDetail.html") {
+//eccc20
+if (location.pathname == "/canvasLearning/courseDetail.html"||location.pathname == "/courseDetail.html") {
   current_lesson = 0;
-} else if (location.pathname == "/courseDetail-mid.html") {
+} else if (location.pathname == "/canvasLearning/courseDetail-mid.html"||location.pathname == "/courseDetail-mid.html") {
   current_lesson = 6;
 } else {
   current_lesson = 9;
@@ -15,14 +16,17 @@ const lessons = [
       \nctx.fillStyle = '#333';
       \nctx.fillRect(0, 0, canvas.width, canvas.height);
       \nctx.clearRect(0,0,canvas.width,canvas.height);
-      //\nctx.moveTo(10,10);
-      //\nctx.lineTo(150,50);
-      //\nctx.stroke();
+      \nctx.moveTo(10,10);
+      \nctx.lineTo(150,50);
+      \nctx.stroke();
       `,
     instruction: `// 畫線段，從(10,10)到(150,50)
       `,
     signature: { imageDiff: 100, totalPixels: 4708 },
     rate:2,
+    init:`ctx.moveTo(10,10);
+    ctx.lineTo(150,50);
+    ctx.stroke();`,
   },
   {
     title: "lesson 2",
@@ -36,6 +40,7 @@ const lessons = [
       `,
     signature: { imageDiff: 0, totalPixels: 4708 },
     rate:3,
+    init:`ctx.fillRect(10, 10, 50, 50);`
   },
   {
     title: "lesson 3",
@@ -54,6 +59,12 @@ const lessons = [
       `,
     signature: { imageDiff: 0, totalPixels: 4708 },
     rate:4,
+    init:`ctx.beginPath();
+    ctx.moveTo(100,50);
+    ctx.lineTo(60,90);
+    ctx.lineTo(140,90);
+    ctx.closePath();
+    ctx.stroke();`
   },
   {
     title: "lesson 4",
@@ -69,6 +80,9 @@ const lessons = [
       `,
     signature: { imageDiff: 823, totalPixels: 3164 },
     rate:3,
+    init:`ctx.beginPath();
+    ctx.arc(100, 75, 50, 0, 2 * Math.PI);
+    ctx.stroke();`
   },
   {
     title: "lesson 5",
@@ -84,6 +98,9 @@ const lessons = [
       `,
     signature: { imageDiff: 823, totalPixels: 3164 },
     rate:3,
+    init:` ctx.beginPath();
+    ctx.arc(100, 60, 50, Math.PI/2*3, Math.PI/2);
+    ctx.stroke();`
   },
   {
     title: "lesson 6",
@@ -102,6 +119,12 @@ const lessons = [
       `,
     signature: { imageDiff: 823, totalPixels: 3164 },
     rate:4,
+    init:`function drawCircle(x,y,r){
+      ctx.beginPath();
+      ctx.arc(x,y,r,0,2*Math.PI);
+      ctx.stroke();
+      }
+      drawCircle(100,100,50);`
   },
   {
     title: "lesson 7",
@@ -123,6 +146,14 @@ const lessons = [
       `,
     signature: { imageDiff: 823, totalPixels: 3164 },
     rate:4,
+    init:`function drawCircle(x,y,r){
+      ctx.beginPath();
+      ctx.arc(x,y,r,0,2*Math.PI);
+      ctx.stroke();
+      }
+      drawCircle(100,100,50);
+      drawCircle(50,100,50);
+      drawCircle(150,100,50);`
   },
   {
     title: "lesson 8",
@@ -148,6 +179,16 @@ const lessons = [
 //}`,
     signature: { imageDiff: 823, totalPixels: 3164 },
     rate:5,
+    init:`function drawCircle(x,y,r){
+      ctx.beginPath();
+      ctx.arc(x,y,r,0,2*Math.PI);
+      ctx.stroke();
+      if (r > 2) { // condition for drawing similarity
+        drawCircle(x + r, y, r / 2);
+        drawCircle(x - r, y, r / 2);
+        }
+      }
+      drawCircle(100,100,50);`
   },
   {
     title: "lesson 9",
@@ -185,6 +226,26 @@ const lessons = [
 `,
     signature: { imageDiff: 823, totalPixels: 3164 },
     rate:5,
+    init:`function draw(startX, startY, len, angle) {
+        ctx.beginPath();
+        ctx.save();
+        
+        //中間樹幹
+        ctx.translate(startX, startY);
+        ctx.rotate(angle * Math.PI/180);
+        ctx.moveTo(0, 0);
+        ctx.lineTo(0, -len);
+        ctx.stroke();
+
+        if(len < 10) {
+              ctx.restore();
+           return;
+          }
+          draw(0, -len, len*0.8, -15);//左邊分之
+        draw(0, -len, len*0.8, +15);//右邊分支
+        ctx.restore();//恢復預設值，分支才會從中間樹幹頂點開始生長
+        }
+        draw(300, 250, 50, 0) `
   },
 ];
 
@@ -201,6 +262,11 @@ let editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
   //   // theme:'dracula',
   //   // mode: "htmlmixed",
 });
+//卡片按鈕回應
+function clickAlert(){
+  Swal.fire('閱讀後可至下方進行實作挑戰！');
+}
+
 
 //執行按鈕
 const run = document.querySelector("#run");
@@ -351,12 +417,18 @@ function check() {
   //alert(`imageDiff:${lessons[current_lesson].signature.imageDiff}`);
   //alert(`totalPixels:${lessons[current_lesson].signature.totalPixels}`);
   if (distanceSquare < 20) {
-    alert("great success !!!");
+    // alert("great success !!!");
+    Swal.fire({
+      title: '正確!',
+      text: `共獲得${lessons[current_lesson].rate}積分`,
+      icon: 'success',
+      html:`共獲得${lessons[current_lesson].rate}積分`
+    })
     userInfo[0].rate+=lessons[current_lesson].rate;
     players[`${userInfo[0].name}`] = {"rate":`${userInfo[0].rate}`};
     console.log(players);
     localStorage.setItem("players",JSON.stringify(players));
-    alert(userInfo[0].rate);
+    // alert(userInfo[0].rate);
     userInfo[0].finished.splice(`${current_lesson}`,1,true);
     localStorage.setItem("userInfo",JSON.stringify(userInfo));
     // correct++;
@@ -369,7 +441,31 @@ function check() {
     ).innerHTML = `<h6 class="text-center w-100">${correct}/${lessons.length}</h6>`;
 
   } else {
-    alert("try again !!!");
+    // alert("try again !!!");
+    Swal.fire({
+      title: '需要幫忙嗎?',
+      text: "觀看提示內容幫助過關!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: '是的我需要!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          `${lessons[current_lesson].init}`,
+          '再試試看吧',
+          'success'
+        )
+      }
+    })
+    doc.write(
+      "<scri" +
+        "pt>" +
+        clearScreen +
+        "\n</scri" +
+        "pt>"
+    );
   }
 }
 
@@ -381,15 +477,16 @@ editor.on("change", function () {
 
 function updatePreview() {
   code = editor.getValue().replace(/^\s*/, "");
-  sourceCode = "<scri" + "pt>" + showSample + code + "\n</scri" + "pt>";
+  // sourceCode = "<scri" + "pt>" + showSample + code + "\n</scri" + "pt>";
+  sourceCode = "<scri" + "pt>" + code + "\n</scri" + "pt>";
   doc.write(sourceCode);
 }
-//          delay = setTimeout(updatePreview, 1000);
+delay = setTimeout(updatePreview, 1000);
 
 function reset() {
-  if (location.pathname == "/courseDetail.html") {
+  if (location.pathname == "/canvasLearning/courseDetail.html" ||location.pathname == "/courseDetail.html") {
     current_lesson = 0;
-  } else if (location.pathname == "/courseDetail-mid.html") {
+  } else if (location.pathname == "/canvasLearning/courseDetail-mid.html"||location.pathname == "/courseDetail-mid.html") {
     current_lesson = 6;
   } else {
     current_lesson = 9;
