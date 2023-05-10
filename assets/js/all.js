@@ -411,7 +411,7 @@ if (location.pathname == "/canvasLearning/courseDetail.html" || location.pathnam
 var lessons = [{
   title: "lesson 1",
   description: "線段",
-  code2Learn: "\nvar canvas = document.getElementById('fractal');\n      \nvar ctx = canvas.getContext('2d');\n      \nctx.fillStyle = '#333';\n      \nctx.fillRect(0, 0, canvas.width, canvas.height);\n      \nctx.clearRect(0,0,canvas.width,canvas.height);\n      //\nctx.moveTo(10,10);\n      //\nctx.lineTo(150,50);\n      //\nctx.stroke();\n      ",
+  code2Learn: "\nvar canvas = document.getElementById('fractal');\n      \nvar ctx = canvas.getContext('2d');\n      \nctx.fillStyle = '#333';\n      \nctx.fillRect(0, 0, canvas.width, canvas.height);\n      \nctx.clearRect(0,0,canvas.width,canvas.height);\n      \nctx.moveTo(10,10);\n      \nctx.lineTo(150,50);\n      \nctx.stroke();\n      ",
   instruction: "// \u756B\u7DDA\u6BB5\uFF0C\u5F9E(10,10)\u5230(150,50)\n      ",
   signature: {
     imageDiff: 100,
@@ -641,8 +641,8 @@ function check() {
       "rate": "".concat(userInfo[0].rate)
     };
     console.log(players);
-    localStorage.setItem("players", JSON.stringify(players));
-    alert(userInfo[0].rate);
+    localStorage.setItem("players", JSON.stringify(players)); // alert(userInfo[0].rate);
+
     userInfo[0].finished.splice("".concat(current_lesson), 1, true);
     localStorage.setItem("userInfo", JSON.stringify(userInfo)); // correct++;
 
@@ -664,6 +664,7 @@ function check() {
         Swal.fire("".concat(lessons[current_lesson].init), '再試試看吧', 'success');
       }
     });
+    doc.write("<scri" + "pt>" + clearScreen + "\n</scri" + "pt>");
   }
 }
 
@@ -674,11 +675,13 @@ editor.on("change", function () {
 });
 
 function updatePreview() {
-  code = editor.getValue().replace(/^\s*/, "");
-  sourceCode = "<scri" + "pt>" + showSample + code + "\n</scri" + "pt>";
-  doc.write(sourceCode);
-} //          delay = setTimeout(updatePreview, 1000);
+  code = editor.getValue().replace(/^\s*/, ""); // sourceCode = "<scri" + "pt>" + showSample + code + "\n</scri" + "pt>";
 
+  sourceCode = "<scri" + "pt>" + code + "\n</scri" + "pt>";
+  doc.write(sourceCode);
+}
+
+delay = setTimeout(updatePreview, 1000);
 
 function reset() {
   if (location.pathname == "/canvasLearning/courseDetail.html" || location.pathname == "/courseDetail.html") {
