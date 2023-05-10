@@ -398,7 +398,7 @@ console.log('all end');
 "use strict";
 "use strict";
 
-console.log("mirror start");
+console.log("mirror start"); //eccc20
 
 if (location.pathname == "/canvasLearning/courseDetail.html" || location.pathname == "/courseDetail.html") {
   current_lesson = 0;
@@ -624,7 +624,13 @@ function check() {
   //alert(`totalPixels:${lessons[current_lesson].signature.totalPixels}`);
 
   if (distanceSquare < 20) {
-    alert("great success !!!");
+    // alert("great success !!!");
+    Swal.fire({
+      title: '正確!',
+      text: "\u5171\u7372\u5F97".concat(lessons[current_lesson].rate, "\u7A4D\u5206"),
+      icon: 'success',
+      html: "\u5171\u7372\u5F97".concat(lessons[current_lesson].rate, "\u7A4D\u5206")
+    });
     userInfo[0].rate += lessons[current_lesson].rate;
     players["".concat(userInfo[0].name)] = {
       "rate": "".concat(userInfo[0].rate)
@@ -639,7 +645,7 @@ function check() {
     document.querySelector("#progress").classList.add('progress', 'bg-primary');
     document.getElementById("progress").innerHTML = "<h6 class=\"text-center w-100\">".concat(correct, "/").concat(lessons.length, "</h6>");
   } else {
-    alert("try again !!!");
+    // alert("try again !!!");
     Swal.fire({
       title: '需要幫忙嗎?',
       text: "觀看提示內容幫助過關!",
