@@ -520,7 +520,12 @@ var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
   //   // theme:'dracula',
   //   // mode: "htmlmixed",
 
-}); //執行按鈕
+}); //卡片按鈕回應
+
+function clickAlert() {
+  Swal.fire('閱讀後可至下方進行實作挑戰！');
+} //執行按鈕
+
 
 var run = document.querySelector("#run");
 var code = editor.getValue();
