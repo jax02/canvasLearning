@@ -617,6 +617,24 @@ var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
 
 function clickAlert() {
   Swal.fire('閱讀後可至下方進行實作挑戰！');
+} //儲存鈕回應
+
+
+function saveData() {
+  Swal.fire({
+    title: '將資料儲存進個人頁面?',
+    showDenyButton: true,
+    showCancelButton: true,
+    confirmButtonText: '儲存',
+    denyButtonText: "\u5148\u4E0D\u8981"
+  }).then(function (result) {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      Swal.fire('儲存成功!', '', 'success');
+    } else if (result.isDenied) {
+      Swal.fire('資料未儲存，僅保留系統儲存資料', '', 'info');
+    }
+  });
 } //執行按鈕
 
 
@@ -761,15 +779,7 @@ function check() {
     doc.close(); // close last action
 
     doc.open();
-    doc.write(destinationCode); // doc.write(
-    //   "<scri" +
-    //     "pt>" +
-    //     clearScreen +
-    //     editor.getValue() +
-    //     verification +
-    //     "\n</scri" +
-    //     "pt>"
-    // );
+    doc.write(destinationCode);
   }
 }
 
