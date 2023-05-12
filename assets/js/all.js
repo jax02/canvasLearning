@@ -491,8 +491,8 @@ console.log('all end');
 "use strict";
 "use strict";
 
-console.log("mirror start"); //eccc20
-
+// console.log("mirror start");
+//eccc20
 if (location.pathname == "/canvasLearning/courseDetail.html" || location.pathname == "/courseDetail.html") {
   current_lesson = 0;
 } else if (location.pathname == "/canvasLearning/courseDetail-mid.html" || location.pathname == "/courseDetail-mid.html") {
@@ -529,8 +529,8 @@ var lessons = [{
   code2Learn: "\nvar canvas = document.getElementById('fractal');\n      \nvar ctx = canvas.getContext('2d');\n      \nctx.clearRect(0,0,canvas.width,canvas.height);\n      \nctx.beginPath();\n      \nctx.moveTo(100,50);\n      \nctx.lineTo(60,90);\n      \nctx.lineTo(140,90);\n      \nctx.closePath();\n      \nctx.stroke();\n      ",
   instruction: "//  \u756B\u4E09\u89D2\u5F62\uFF0C\u4E09\u9EDE\u5206\u5225\u70BA(100,50)\u3001(60,90)\u3001(140,90)\n      ",
   signature: {
-    imageDiff: 0,
-    totalPixels: 4708
+    imageDiff: 238,
+    totalPixels: 398
   },
   rate: 4,
   init: "ctx.beginPath();\n    ctx.moveTo(100,50);\n    ctx.lineTo(60,90);\n    ctx.lineTo(140,90);\n    ctx.closePath();\n    ctx.stroke();"
@@ -605,8 +605,8 @@ var lessons = [{
 var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
   mode: "javascript",
   theme: "dracula",
-  lineNumbers: "true" //   // lineWrapping: true,
-  //   // styleActiveLine: true,
+  lineNumbers: "true",
+  lineWrapping: "true" //   // styleActiveLine: true,
   //   // matchBrackets: true,
   //   // autoCloseBrackets: true,
   //   // autoCloseTags: true,
@@ -662,13 +662,13 @@ var sourceCode; // user source code
 
 var preview; // flag for preview
 
-var verification = "\n \n    image2 = ctx.getImageData(0,0,canvas.width,canvas.height);\n    totalPixels = 0;\n    imageDiff = 0;\n    for (let i=0; i<image1.data.length;i++){\n        if(image1.data[i]!=0) totalPixels++; \n        if(image1.data[i]!=image2.data[i]) imageDiff ++;\n    }\n    console.log(\"totalPixels\", totalPixels);\n    console.log(\"imageDiff\", imageDiff);\n    localStorage.setItem(\"totalPixels\", totalPixels);                                         \n    localStorage.setItem(\"imageDiff\", imageDiff);\n";
+var verification = "\n \n    image2 = ctx.getImageData(0,0,canvas.width,canvas.height);\n    totalPixels = 0;\n    imageDiff = 0;\n    for (let i=0; i<image1.data.length;i++){\n        if(image1.data[i]!=0) totalPixels++; \n        if(image1.data[i]!=image2.data[i]) imageDiff ++;\n    }\n    console.log(\"totalPixels\", totalPixels);\n    console.log(\"imageDiff\", imageDiff);\n    console.log(image2.data);\n    localStorage.setItem(\"totalPixels\", totalPixels);                                         \n    localStorage.setItem(\"imageDiff\", imageDiff);\n";
 var clearScreen = "ctx.clearRect(0,0,canvas.width,canvas.height);";
 var showSample = "ctx.clearRect(0,0,canvas.width,canvas.height);\n  ctx.putImageData(image1,0,0);";
 init();
 
 function init() {
-  images = "\n    \n var image1 = ctx.getImageData(0, 0, canvas.width,canvas.height);\n    \n var image2;  \n    \n var image3 = ctx.createImageData(canvas.width,canvas.height);\n    \n var totalPixels = 0;\n    \n var imageDiff = 0\n    ";
+  images = "\n    \n var image1 = ctx.getImageData(0, 0, canvas.width,canvas.height);\n    \n var image2;  \n    \n var image3 = ctx.createImageData(canvas.width,canvas.height);\n    \n var totalPixels = 0;\n    \n var imageDiff = 0;";
   doc = document.getElementById("iview").contentWindow.document;
   width = document.getElementById("iview").clientWidth;
   height = document.getElementById("iview").clientHeight;
@@ -695,8 +695,7 @@ function getSignatures() {
     doc.write(destinationCode);
     doc.close();
     lessons[i].signature.imageDiff = parseInt(localStorage.getItem("imageDiff"));
-    lessons[i].signature.totalPixels = parseInt(localStorage.getItem("totalPixels"));
-    console.log(destinationCode);
+    lessons[i].signature.totalPixels = parseInt(localStorage.getItem("totalPixels")); // console.log(destinationCode);
   }
 }
 
@@ -718,6 +717,7 @@ function check() {
   doc.write("<scri" + "pt>" + clearScreen + editor.getValue() + verification + "\n</scri" + "pt>");
   var imageDiff = parseInt(localStorage.getItem("imageDiff"));
   var totalPixels = parseInt(localStorage.getItem("totalPixels"));
+  console.log("\n  ".concat(verification, " Diff:").concat(imageDiff, "total:").concat(totalPixels));
   var distanceSquare = (imageDiff - lessons[current_lesson].signature.imageDiff) * (imageDiff - lessons[current_lesson].signature.imageDiff) + (totalPixels - lessons[current_lesson].signature.totalPixels) * (totalPixels - lessons[current_lesson].signature.totalPixels); //alert(`imageDiff:${lessons[current_lesson].signature.imageDiff}`);
   //alert(`totalPixels:${lessons[current_lesson].signature.totalPixels}`);
 
@@ -732,8 +732,8 @@ function check() {
     userInfo[0].rate += lessons[current_lesson].rate;
     players["".concat(userInfo[0].name)] = {
       "rate": "".concat(userInfo[0].rate)
-    };
-    console.log(players);
+    }; // console.log(players);
+
     localStorage.setItem("players", JSON.stringify(players)); // alert(userInfo[0].rate);
 
     userInfo[0].finished.splice("".concat(current_lesson), 1, true);
@@ -757,7 +757,19 @@ function check() {
         Swal.fire("".concat(lessons[current_lesson].init), '再試試看吧', 'success');
       }
     });
-    doc.write("<scri" + "pt>" + clearScreen + "\n</scri" + "pt>");
+    destinationCode = canvasCode + "<scri" + "pt>" + code2Learn + images + editor.getValue() + "\n</scri" + "pt>";
+    doc.close(); // close last action
+
+    doc.open();
+    doc.write(destinationCode); // doc.write(
+    //   "<scri" +
+    //     "pt>" +
+    //     clearScreen +
+    //     editor.getValue() +
+    //     verification +
+    //     "\n</scri" +
+    //     "pt>"
+    // );
   }
 }
 
@@ -768,13 +780,13 @@ editor.on("change", function () {
 });
 
 function updatePreview() {
-  code = editor.getValue().replace(/^\s*/, ""); // sourceCode = "<scri" + "pt>" + showSample + code + "\n</scri" + "pt>";
+  code = editor.getValue().replace(/^\s*/, "");
+  sourceCode = "<scri" + "pt>" + showSample + code + "\n</scri" + "pt>"; //sourceCode = "<scri" + "pt>" + code + "\n</scri" + "pt>";
 
-  sourceCode = "<scri" + "pt>" + code + "\n</scri" + "pt>";
   doc.write(sourceCode);
 }
 
-delay = setTimeout(updatePreview, 1000);
+delay = setTimeout(updatePreview(), 1000);
 
 function reset() {
   if (location.pathname == "/canvasLearning/courseDetail.html" || location.pathname == "/courseDetail.html") {
@@ -818,9 +830,7 @@ function prev() {
 
   doc.open();
   doc.write(destinationCode);
-}
-
-console.log("mirror end");
+} // console.log("mirror end");
 // console.log('swiper start');
 // let swiper = new Swiper(".courseSwiper", {
 //     slidesPerView: 'auto',
