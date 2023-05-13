@@ -239,7 +239,7 @@ if (location.pathname == "/canvasLearning/course.html" || location.pathname == "
   });
 }
 
-if (location.pathname == "/canvasLearning/index.html" || location.pathname == "/index.html" || location.pathname == "/") {
+if (location.pathname == "/canvasLearning/index.html" || location.pathname == "/index.html" || location.pathname == "/" || location.pathname == "/canvasLearning/") {
   var loader = function loader() {
     setTimeout(function () {
       load.style.display = 'none';
