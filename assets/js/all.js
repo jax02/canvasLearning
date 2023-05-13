@@ -762,11 +762,9 @@ function check() {
   // );
   var imageDiff = parseInt(localStorage.getItem("imageDiff"));
   var totalPixels = parseInt(localStorage.getItem("totalPixels"));
-  var distanceSquare = (imageDiff - lessons[current_lesson].signature.imageDiff) * (imageDiff - lessons[current_lesson].signature.imageDiff) + (totalPixels - lessons[current_lesson].signature.totalPixels) * (totalPixels - lessons[current_lesson].signature.totalPixels); //alert(`imageDiff:${lessons[current_lesson].signature.imageDiff}`);
-  //alert(`totalPixels:${lessons[current_lesson].signature.totalPixels}`);
+  var distanceSquare = (imageDiff - lessons[current_lesson].signature.imageDiff) * (imageDiff - lessons[current_lesson].signature.imageDiff) + (totalPixels - lessons[current_lesson].signature.totalPixels) * (totalPixels - lessons[current_lesson].signature.totalPixels);
 
   if (distanceSquare < 20) {
-    // alert("great success !!!");
     rateCount();
     Swal.fire({
       title: '正確!',
