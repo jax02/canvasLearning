@@ -751,15 +751,7 @@ function rateCount() {
 }
 
 function check() {
-  // doc.write(
-  //   "<scri" +
-  //     "pt>" +
-  //     clearScreen +
-  //     editor.getValue() +
-  //     verification +
-  //     "\n</scri" +
-  //     "pt>"
-  // );
+  doc.write("<scri" + "pt>" + clearScreen + editor.getValue() + verification + "\n</scri" + "pt>");
   var imageDiff = parseInt(localStorage.getItem("imageDiff"));
   var totalPixels = parseInt(localStorage.getItem("totalPixels"));
   var distanceSquare = (imageDiff - lessons[current_lesson].signature.imageDiff) * (imageDiff - lessons[current_lesson].signature.imageDiff) + (totalPixels - lessons[current_lesson].signature.totalPixels) * (totalPixels - lessons[current_lesson].signature.totalPixels);
