@@ -1,5 +1,3 @@
-console.log("mirror start");
-//eccc20
 if (location.pathname == "/canvasLearning/courseDetail.html"||location.pathname == "/courseDetail.html") {
   current_lesson = 0;
 } else if (location.pathname == "/canvasLearning/courseDetail-mid.html"||location.pathname == "/courseDetail-mid.html") {
@@ -57,7 +55,7 @@ const lessons = [
       `,
     instruction: `//  畫三角形，三點分別為(100,50)、(60,90)、(140,90)
       `,
-    signature: { imageDiff: 0, totalPixels: 4708 },
+    signature: { imageDiff: 238, totalPixels: 398 },
     rate:4,
     init:`ctx.beginPath();
     ctx.moveTo(100,50);
@@ -254,7 +252,7 @@ let editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
   mode: "javascript",
   theme: "dracula",
   lineNumbers: "true",
-  //   // lineWrapping: true,
+  lineWrapping: "true",
   //   // styleActiveLine: true,
   //   // matchBrackets: true,
   //   // autoCloseBrackets: true,
@@ -265,6 +263,23 @@ let editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
 //卡片按鈕回應
 function clickAlert(){
   Swal.fire('閱讀後可至下方進行實作挑戰！');
+}
+//儲存鈕回應
+function saveData(){
+  Swal.fire({
+    title: '將資料儲存進個人頁面?',
+    showDenyButton: true,
+    showCancelButton: true,
+    confirmButtonText: '儲存',
+    denyButtonText: `先不要`,
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      Swal.fire('儲存成功!', '', 'success')
+    } else if (result.isDenied) {
+      Swal.fire('資料未儲存，僅保留系統儲存資料', '', 'info')
+    }
+  })
 }
 
 
@@ -318,8 +333,6 @@ const verification = `\n
         if(image1.data[i]!=0) totalPixels++; 
         if(image1.data[i]!=image2.data[i]) imageDiff ++;
     }
-    console.log("totalPixels", totalPixels);
-    console.log("imageDiff", imageDiff);
     localStorage.setItem("totalPixels", totalPixels);                                         
     localStorage.setItem("imageDiff", imageDiff);
 `;
@@ -334,14 +347,12 @@ function init() {
     \n var image2;  
     \n var image3 = ctx.createImageData(canvas.width,canvas.height);
     \n var totalPixels = 0;
-    \n var imageDiff = 0
-    `;
+    \n var imageDiff = 0;`
 
   doc = document.getElementById("iview").contentWindow.document;
   width = document.getElementById("iview").clientWidth;
   height = document.getElementById("iview").clientHeight;
   canvasCode = `<canvas id="fractal"></canvas> \n`;
-
   getSignatures();
 
   /* start to learn */
@@ -381,7 +392,6 @@ function getSignatures() {
     lessons[i].signature.totalPixels = parseInt(
       localStorage.getItem("totalPixels")
     );
-    console.log(destinationCode);
   }
 }
 
@@ -395,6 +405,30 @@ if(JSON.parse(localStorage.getItem("players"))){
   players= JSON.parse(localStorage.getItem("players"));
 }else{
   players={};
+}
+//改變progress
+function progressCheck(){
+  let correctArray = userInfo[0].finished.filter(function(value) {
+    return value == true;
+  });
+  let correctNum = parseInt(correctArray.length);
+  document.getElementById("progress").style.width = `${
+    (correctNum / lessons.length) * 100
+  }%`;
+  document.querySelector("#progress").classList.add('progress','bg-primary')
+  document.getElementById(
+    "progress"
+  ).innerHTML = `<h6 class="text-center w-100">${correctNum}/${lessons.length}</h6>`;
+}
+//積分累加
+function rateCount(){
+  let status = userInfo[0].finished[current_lesson];
+  if(status){
+    ;
+  }else{
+    userInfo[0].rate+=lessons[current_lesson].rate;
+    players[`${userInfo[0].name}`] = {"rate":`${userInfo[0].rate}`};
+  }
 }
 
 function check() {
@@ -414,34 +448,20 @@ function check() {
       (imageDiff - lessons[current_lesson].signature.imageDiff) +
     (totalPixels - lessons[current_lesson].signature.totalPixels) *
       (totalPixels - lessons[current_lesson].signature.totalPixels);
-  //alert(`imageDiff:${lessons[current_lesson].signature.imageDiff}`);
-  //alert(`totalPixels:${lessons[current_lesson].signature.totalPixels}`);
   if (distanceSquare < 20) {
-    // alert("great success !!!");
+    rateCount();
     Swal.fire({
       title: '正確!',
       text: `共獲得${lessons[current_lesson].rate}積分`,
       icon: 'success',
       html:`共獲得${lessons[current_lesson].rate}積分`
     })
-    userInfo[0].rate+=lessons[current_lesson].rate;
-    players[`${userInfo[0].name}`] = {"rate":`${userInfo[0].rate}`};
-    console.log(players);
     localStorage.setItem("players",JSON.stringify(players));
-    // alert(userInfo[0].rate);
     userInfo[0].finished.splice(`${current_lesson}`,1,true);
     localStorage.setItem("userInfo",JSON.stringify(userInfo));
-    // correct++;
-    document.getElementById("progress").style.width = `${
-      (correct / lessons.length) * 100
-    }%`;
-    document.querySelector("#progress").classList.add('progress','bg-primary')
-    document.getElementById(
-      "progress"
-    ).innerHTML = `<h6 class="text-center w-100">${correct}/${lessons.length}</h6>`;
-
+    progressCheck();
+    next();
   } else {
-    // alert("try again !!!");
     Swal.fire({
       title: '需要幫忙嗎?',
       text: "觀看提示內容幫助過關!",
@@ -459,13 +479,11 @@ function check() {
         )
       }
     })
-    doc.write(
-      "<scri" +
-        "pt>" +
-        clearScreen +
-        "\n</scri" +
-        "pt>"
-    );
+    destinationCode =
+    canvasCode + "<scri" + "pt>" + code2Learn  + editor.getValue()+ "\n</scri" + "pt>";
+  doc.close(); // close last action
+  doc.open();
+  doc.write(destinationCode);
   }
 }
 
@@ -477,11 +495,11 @@ editor.on("change", function () {
 
 function updatePreview() {
   code = editor.getValue().replace(/^\s*/, "");
-  // sourceCode = "<scri" + "pt>" + showSample + code + "\n</scri" + "pt>";
-  sourceCode = "<scri" + "pt>" + code + "\n</scri" + "pt>";
+   sourceCode = "<scri" + "pt>" + showSample + code + "\n</scri" + "pt>";
+  //sourceCode = "<scri" + "pt>" + code + "\n</scri" + "pt>";
   doc.write(sourceCode);
 }
-delay = setTimeout(updatePreview, 1000);
+delay = setTimeout(updatePreview(), 1000);
 
 function reset() {
   if (location.pathname == "/canvasLearning/courseDetail.html" ||location.pathname == "/courseDetail.html") {
@@ -526,5 +544,4 @@ function prev() {
   doc.open();
   doc.write(destinationCode);
 }
-
-console.log("mirror end");
+progressCheck();
