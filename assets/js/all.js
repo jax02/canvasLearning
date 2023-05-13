@@ -768,6 +768,7 @@ function check() {
     userInfo[0].finished.splice("".concat(current_lesson), 1, true);
     localStorage.setItem("userInfo", JSON.stringify(userInfo));
     progressCheck();
+    next();
   } else {
     Swal.fire({
       title: '需要幫忙嗎?',
@@ -782,7 +783,7 @@ function check() {
         Swal.fire("".concat(lessons[current_lesson].init), '再試試看吧', 'success');
       }
     });
-    destinationCode = canvasCode + "<scri" + "pt>" + code2Learn + images + editor.getValue() + "\n</scri" + "pt>";
+    destinationCode = canvasCode + "<scri" + "pt>" + code2Learn + editor.getValue() + "\n</scri" + "pt>";
     doc.close(); // close last action
 
     doc.open();
