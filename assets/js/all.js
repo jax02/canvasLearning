@@ -755,6 +755,7 @@ function check() {
   var imageDiff = parseInt(localStorage.getItem("imageDiff"));
   var totalPixels = parseInt(localStorage.getItem("totalPixels"));
   var distanceSquare = (imageDiff - lessons[current_lesson].signature.imageDiff) * (imageDiff - lessons[current_lesson].signature.imageDiff) + (totalPixels - lessons[current_lesson].signature.totalPixels) * (totalPixels - lessons[current_lesson].signature.totalPixels);
+  alert(distanceSquare);
 
   if (distanceSquare < 20) {
     rateCount();
