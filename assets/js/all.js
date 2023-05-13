@@ -498,10 +498,10 @@ if (location.pathname == "/canvasLearning/courseDetail.html" || location.pathnam
 var lessons = [{
   title: "lesson 1",
   description: "線段",
-  code2Learn: "\nvar canvas = document.getElementById('fractal');\n      \nvar ctx = canvas.getContext('2d');\n      \nctx.clearRect(0,0,canvas.width,canvas.height);\n      //\nctx.moveTo(10,10);\n      //\nctx.lineTo(150,50);\n      //\nctx.stroke();\n      ",
-  instruction: "// \u756B\u7DDA\u6BB5\uFF0C\u5F9E(10,10)\u5230(150,50)\n      ",
+  code2Learn: "\nvar canvas = document.getElementById('fractal');\n      \nvar ctx = canvas.getContext('2d');\n      \nctx.clearRect(0,0,canvas.width,canvas.height);\n      \nctx.moveTo(10,10);\n      \nctx.lineTo(150,50);\n      \nctx.stroke();\n      ",
+  instruction: "// \u756B\u7DDA\u6BB5\uFF0C\u5F9E(10,10)\u5230(150,50)",
   signature: {
-    imageDiff: 100,
+    imageDiff: 0,
     totalPixels: 4708
   },
   rate: 2,
@@ -792,7 +792,7 @@ function check() {
 }
 
 var delay;
-editor.on("change", function () {
+editor.addEventListener("change", function () {
   clearTimeout(delay);
   if (preview) delay = setTimeout(updatePreview, 300);
 });
