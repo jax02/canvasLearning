@@ -219,9 +219,8 @@ if (location.pathname == "/canvasLearning/course.html" || location.pathname == "
   for (var _i = 0; _i < leaderboard.length; _i++) {
     document.querySelector("#rank".concat(_i + 1)).innerHTML = "<h5 class=\"fs-3\" id=\"rank".concat(_i + 1, "\">").concat(leaderboard[_i].name, "</h5>");
     document.querySelector("#rank".concat(_i + 1, "Rate")).innerHTML = "<h5 class=\"fs-3\" id=\"rank".concat(_i + 1, "\">(").concat(leaderboard[_i].rate, ")</h5>");
-  }
+  } //swiper
 
-  console.log(leaderboard); //swiper
 
   var swiper = new Swiper(".courseSwiper", {
     slidesPerView: 'auto',
@@ -240,7 +239,7 @@ if (location.pathname == "/canvasLearning/course.html" || location.pathname == "
   });
 }
 
-if (location.pathname == "/canvasLearning/index.html" || location.pathname == "/index.html") {
+if (location.pathname == "/canvasLearning/index.html" || location.pathname == "/index.html" || location.pathname == "/") {
   var loader = function loader() {
     setTimeout(function () {
       load.style.display = 'none';
@@ -257,11 +256,9 @@ if (location.pathname == "/canvasLearning/index.html" || location.pathname == "/
       finished: [false, false, false, false, false, false, false, false, false],
       percentage: 0
     };
-    console.log(str);
     users.push(user);
     localStorage.setItem("userInfo", JSON.stringify(users));
     var userInfo = JSON.parse(localStorage.getItem("userInfo"));
-    console.log(userInfo);
     swal("Good job!", "\u6210\u529F\u5EFA\u7ACB\u4F7F\u7528\u8005 \uFF1A ".concat(str), "success", {
       button: "確認"
     });
@@ -289,20 +286,21 @@ if (location.pathname == "/canvasLearning/index.html" || location.pathname == "/
 }
 
 if (location.pathname == "/canvasLearning/record.html" || location.pathname == "/record.html") {
+  var percentage = 0;
   var userInfo = JSON.parse(localStorage.getItem("userInfo"));
   var userfinishedData = userInfo[0].finished.filter(function (value) {
     return value == true;
   });
-  ;
 
   if (userfinishedData.length == 0) {
-    finishedData = userfinishedData.length + 1;
+    finishedData = 0;
+    percentage = 0;
   } else {
     finishedData = userfinishedData.length;
+    percentage = (finishedData / 9 * 100).toFixed(2);
   }
 
   unFinishedData = 9 - finishedData;
-  var percentage = (finishedData / 9 * 100).toFixed(2);
   document.querySelector("#percentage").innerHTML = "<span class=\"text-primary\" >".concat(percentage, "%</span>");
   document.querySelector("#userName").innerHTML = " <div class=\"fs-3 mb-2 text-center\" >".concat(userInfo[0].name, "</div>");
   document.querySelector("#rate").innerHTML = " <span class=\"text-primary\" >".concat(userInfo[0].rate, "</span>");
@@ -396,8 +394,6 @@ if (location.pathname == "/canvasLearning/record.html" || location.pathname == "
   //   });
   // }, 1500);
 }
-
-console.log('all end');
 // var chart = c3.generate({
 //     bindto: "#chart",
 //     data: {
@@ -491,8 +487,6 @@ console.log('all end');
 "use strict";
 "use strict";
 
-// console.log("mirror start");
-//eccc20
 if (location.pathname == "/canvasLearning/courseDetail.html" || location.pathname == "/courseDetail.html") {
   current_lesson = 0;
 } else if (location.pathname == "/canvasLearning/courseDetail-mid.html" || location.pathname == "/courseDetail-mid.html") {
@@ -680,7 +674,7 @@ var sourceCode; // user source code
 
 var preview; // flag for preview
 
-var verification = "\n \n    image2 = ctx.getImageData(0,0,canvas.width,canvas.height);\n    totalPixels = 0;\n    imageDiff = 0;\n    for (let i=0; i<image1.data.length;i++){\n        if(image1.data[i]!=0) totalPixels++; \n        if(image1.data[i]!=image2.data[i]) imageDiff ++;\n    }\n    console.log(\"totalPixels\", totalPixels);\n    console.log(\"imageDiff\", imageDiff);\n    console.log(image2.data);\n    localStorage.setItem(\"totalPixels\", totalPixels);                                         \n    localStorage.setItem(\"imageDiff\", imageDiff);\n";
+var verification = "\n \n    image2 = ctx.getImageData(0,0,canvas.width,canvas.height);\n    totalPixels = 0;\n    imageDiff = 0;\n    for (let i=0; i<image1.data.length;i++){\n        if(image1.data[i]!=0) totalPixels++; \n        if(image1.data[i]!=image2.data[i]) imageDiff ++;\n    }\n    localStorage.setItem(\"totalPixels\", totalPixels);                                         \n    localStorage.setItem(\"imageDiff\", imageDiff);\n";
 var clearScreen = "ctx.clearRect(0,0,canvas.width,canvas.height);";
 var showSample = "ctx.clearRect(0,0,canvas.width,canvas.height);\n  ctx.putImageData(image1,0,0);";
 init();
@@ -713,7 +707,7 @@ function getSignatures() {
     doc.write(destinationCode);
     doc.close();
     lessons[i].signature.imageDiff = parseInt(localStorage.getItem("imageDiff"));
-    lessons[i].signature.totalPixels = parseInt(localStorage.getItem("totalPixels")); // console.log(destinationCode);
+    lessons[i].signature.totalPixels = parseInt(localStorage.getItem("totalPixels"));
   }
 }
 
@@ -729,39 +723,54 @@ if (JSON.parse(localStorage.getItem("players"))) {
   players = JSON.parse(localStorage.getItem("players"));
 } else {
   players = {};
+} //改變progress
+
+
+function progressCheck() {
+  var correctArray = userInfo[0].finished.filter(function (value) {
+    return value == true;
+  });
+  var correctNum = parseInt(correctArray.length);
+  document.getElementById("progress").style.width = "".concat(correctNum / lessons.length * 100, "%");
+  document.querySelector("#progress").classList.add('progress', 'bg-primary');
+  document.getElementById("progress").innerHTML = "<h6 class=\"text-center w-100\">".concat(correctNum, "/").concat(lessons.length, "</h6>");
+} //積分累加
+
+
+function rateCount() {
+  var status = userInfo[0].finished[current_lesson];
+
+  if (status) {
+    ;
+  } else {
+    userInfo[0].rate += lessons[current_lesson].rate;
+    players["".concat(userInfo[0].name)] = {
+      "rate": "".concat(userInfo[0].rate)
+    };
+  }
 }
 
 function check() {
   doc.write("<scri" + "pt>" + clearScreen + editor.getValue() + verification + "\n</scri" + "pt>");
   var imageDiff = parseInt(localStorage.getItem("imageDiff"));
   var totalPixels = parseInt(localStorage.getItem("totalPixels"));
-  console.log("\n  ".concat(verification, " Diff:").concat(imageDiff, "total:").concat(totalPixels));
   var distanceSquare = (imageDiff - lessons[current_lesson].signature.imageDiff) * (imageDiff - lessons[current_lesson].signature.imageDiff) + (totalPixels - lessons[current_lesson].signature.totalPixels) * (totalPixels - lessons[current_lesson].signature.totalPixels); //alert(`imageDiff:${lessons[current_lesson].signature.imageDiff}`);
   //alert(`totalPixels:${lessons[current_lesson].signature.totalPixels}`);
 
   if (distanceSquare < 20) {
     // alert("great success !!!");
+    rateCount();
     Swal.fire({
       title: '正確!',
       text: "\u5171\u7372\u5F97".concat(lessons[current_lesson].rate, "\u7A4D\u5206"),
       icon: 'success',
       html: "\u5171\u7372\u5F97".concat(lessons[current_lesson].rate, "\u7A4D\u5206")
     });
-    userInfo[0].rate += lessons[current_lesson].rate;
-    players["".concat(userInfo[0].name)] = {
-      "rate": "".concat(userInfo[0].rate)
-    }; // console.log(players);
-
-    localStorage.setItem("players", JSON.stringify(players)); // alert(userInfo[0].rate);
-
+    localStorage.setItem("players", JSON.stringify(players));
     userInfo[0].finished.splice("".concat(current_lesson), 1, true);
-    localStorage.setItem("userInfo", JSON.stringify(userInfo)); // correct++;
-
-    document.getElementById("progress").style.width = "".concat(correct / lessons.length * 100, "%");
-    document.querySelector("#progress").classList.add('progress', 'bg-primary');
-    document.getElementById("progress").innerHTML = "<h6 class=\"text-center w-100\">".concat(correct, "/").concat(lessons.length, "</h6>");
+    localStorage.setItem("userInfo", JSON.stringify(userInfo));
+    progressCheck();
   } else {
-    // alert("try again !!!");
     Swal.fire({
       title: '需要幫忙嗎?',
       text: "觀看提示內容幫助過關!",
@@ -840,7 +849,9 @@ function prev() {
 
   doc.open();
   doc.write(destinationCode);
-} // console.log("mirror end");
+}
+
+progressCheck();
 // console.log('swiper start');
 // let swiper = new Swiper(".courseSwiper", {
 //     slidesPerView: 'auto',
