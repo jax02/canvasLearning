@@ -3,185 +3,7 @@
 var users = [];
 var finishedData;
 var unFinishedData;
-var rate; // const lessons = [
-//   {
-//     title: "lesson 1",
-//     description: "線段",
-//     code2Learn: `\nvar canvas = document.getElementById('fractal');
-//       \nvar ctx = canvas.getContext('2d');
-//       \nctx.fillStyle = '#333';
-//       \nctx.fillRect(0, 0, canvas.width, canvas.height);
-//       // \nctx.clearRect(0,0,canvas.width,canvas.height);
-//       //\nctx.moveTo(10,10);
-//       //\nctx.lineTo(150,50);
-//       //\nctx.stroke();
-//       `,
-//     instruction: `// 畫線段，從(10,10)到(150,50)
-//       `,
-//     signature: { imageDiff: 100, totalPixels: 4708 },
-//     rate:2,
-//   },
-//   {
-//     title: "lesson 2",
-//     description: "矩形",
-//     code2Learn: `\nvar canvas = document.getElementById('fractal');
-//       \nvar ctx = canvas.getContext('2d');
-//       \nctx.clearRect(0,0,canvas.width,canvas.height);
-//       \nctx.fillRect(10, 10, 50, 50);
-//       `,
-//     instruction: `//  畫矩形，原點 (10,10) 長、寬 50 
-//       `,
-//     signature: { imageDiff: 0, totalPixels: 4708 },
-//     rate:3,
-//   },
-//   {
-//     title: "lesson 3",
-//     description: "三角形",
-//     code2Learn: `\nvar canvas = document.getElementById('fractal');
-//       \nvar ctx = canvas.getContext('2d');
-//       \nctx.clearRect(0,0,canvas.width,canvas.height);
-//       \nctx.beginPath();
-//       \nctx.moveTo(100,50);
-//       \nctx.lineTo(60,90);
-//       \nctx.lineTo(140,90);
-//       \nctx.closePath();
-//       \nctx.stroke();
-//       `,
-//     instruction: `//  畫三角形，三點分別為(100,50)、(60,90)、(140,90)
-//       `,
-//     signature: { imageDiff: 0, totalPixels: 4708 },
-//     rate:4,
-//   },
-//   {
-//     title: "lesson 4",
-//     description: "圓形",
-//     code2Learn: `\nvar canvas = document.getElementById('fractal');
-//       \n var ctx = canvas.getContext('2d');
-//       \n ctx.clearRect(0,0,canvas.width,canvas.height);
-//       \n ctx.beginPath();
-//       \n ctx.arc(100, 75, 50, 0, 2 * Math.PI);
-//       \n ctx.stroke();
-//       `,
-//     instruction: `//   劃一個無填滿圓，中心點(100,75)半徑50
-//       `,
-//     signature: { imageDiff: 823, totalPixels: 3164 },
-//     rate:3,
-//   },
-//   {
-//     title: "lesson 5",
-//     description: "弧形",
-//     code2Learn: `\nvar canvas = document.getElementById('fractal');
-//       \n var ctx = canvas.getContext('2d');
-//       \n ctx.clearRect(0,0,canvas.width,canvas.height);
-//       \n ctx.beginPath();
-//       \n ctx.arc(100, 60, 50, Math.PI/2*3, Math.PI/2);
-//       \n ctx.stroke();
-//       `,
-//     instruction: `//   畫起始角270度、結束角90度弧型，中心點(100,60)半徑50
-//       `,
-//     signature: { imageDiff: 823, totalPixels: 3164 },
-//     rate:3,
-//   },
-//   {
-//     title: "lesson 6",
-//     description: "用函數畫圖",
-//     code2Learn: `\nvar canvas = document.getElementById('fractal');
-//       \n var ctx = canvas.getContext('2d');
-//       \n ctx.clearRect(0,0,canvas.width,canvas.height);
-//       \n function drawCircle(x,y,r){
-//       \n ctx.beginPath();
-//       \n ctx.arc(x,y,r,0,2*Math.PI);
-//       \n ctx.stroke();
-//       \n}
-//       \n drawCircle(100,100,50);
-//       `,
-//     instruction: `//   新增畫圓函數並執行，中心點(100,100)半徑50
-//       `,
-//     signature: { imageDiff: 823, totalPixels: 3164 },
-//     rate:4,
-//   },
-//   {
-//     title: "lesson 7",
-//     description: "使用函數重複執行",
-//     code2Learn: `\nvar canvas = document.getElementById('fractal');
-//       \n var ctx = canvas.getContext('2d');
-//       \n ctx.clearRect(0,0,canvas.width,canvas.height);
-//       \n function drawCircle(x,y,r){
-//       \n ctx.beginPath();
-//       \n ctx.arc(x,y,r,0,2*Math.PI);
-//       \n ctx.stroke();
-//       \n}
-//       \n drawCircle(100,100,50);
-//       \n drawCircle(50,100,50);
-//       \n drawCircle(150,100,50);
-//       `,
-//     instruction: `//   新增畫圓函數並執行
-// //中心點分別為(100,100)、(50,100)、(150,100)半徑50
-//       `,
-//     signature: { imageDiff: 823, totalPixels: 3164 },
-//     rate:4,
-//   },
-//   {
-//     title: "lesson 8",
-//     description: "多次執行",
-//     code2Learn: `\nvar canvas = document.getElementById('fractal');
-//       \n var ctx = canvas.getContext('2d');
-//       \n ctx.clearRect(0,0,canvas.width,canvas.height);
-//       \n function drawCircle(x,y,r){
-//       \n ctx.beginPath();
-//       \n ctx.arc(x,y,r,0,2*Math.PI);
-//       \n ctx.stroke();
-//       if (r > 2) { // condition for drawing similarity
-//         drawCircle(x + r, y, r / 2);
-//         drawCircle(x - r, y, r / 2);
-//         }
-//       \n}
-//       \n drawCircle(100,100,50);
-//       `,
-//     instruction: `//加入條件式讓函數執行多次，對稱圖方式如下:
-//     // if (r > 2) { 
-// //drawCircle(x + r, y, r / 2);
-// //drawCircle(x - r, y, r / 2);
-// //}`,
-//     signature: { imageDiff: 823, totalPixels: 3164 },
-//     rate:5,
-//   },
-//   {
-//     title: "lesson 9",
-//     description: "遞迴樹",
-//     code2Learn: `\nvar canvas = document.getElementById('fractal');
-//       \n var ctx = canvas.getContext('2d');
-//       \n canvas.width = window.innerWidth; // 畫布寬 = 視窗內的寬
-//       \n canvas.height = window.innerHeight; // 畫布高 = 視窗內的高
-//       \n ctx.fillStyle = '#fff5a5';
-//       \n ctx.fillRect(0, 0, canvas.width, canvas.height);
-//       \n ctx.clearRect(0,0,canvas.width,canvas.height);
-//       \n function draw(startX, startY, len, angle) {
-//       \n  ctx.beginPath();
-//       \n  ctx.save();
-//         //中間樹幹
-//       \n  ctx.translate(startX, startY);
-//       \n  ctx.rotate(angle * Math.PI/180);
-//       \n  ctx.moveTo(0, 0);
-//       \n  ctx.lineTo(0, -len);
-//       \n  ctx.stroke();
-//       \n  if(len < 10) {
-//         \n      ctx.restore();
-//         \n   return;
-//         \n  }
-//         \n  draw(0, -len, len*0.8, -15);//左邊分之
-//         \ndraw(0, -len, len*0.8, +15);//右邊分支
-//         \nctx.restore();//恢復預設值，分支才會從中間樹幹頂點開始生長
-//         \n}
-//         \ndraw(300, 250, 50, 0)   
-//       `,
-//     instruction: `//繪製遞迴樹初始點(300,250)、初始樹枝長度50
-// //角度0度開始生長，遞迴條件限制於長度小於10停止
-// `,
-//     signature: { imageDiff: 823, totalPixels: 3164 },
-//     rate:5,
-//   },
-// ];
+var rate;
 
 if (localStorage.getItem("players", JSON.stringify(players))) {
   ;
@@ -496,6 +318,17 @@ if (location.pathname == "/canvasLearning/courseDetail.html" || location.pathnam
 }
 
 var lessons = [{
+  title: "lesson test1",
+  description: "線段",
+  code2Learn: "\nvar canvas = document.getElementById('fractal');\n      \nvar ctx = canvas.getContext('2d');\n      \nctx.clearRect(0,0,canvas.width,canvas.height);\n      \nctx.moveTo(10,10);\n      \nctx.lineTo(150,50);\n      \nctx.stroke();\n      ",
+  instruction: "// test1\u756B\u7DDA\u6BB5\uFF0C\u5F9E(10,10)\u5230(150,50)",
+  signature: {
+    imageDiff: 0,
+    totalPixels: 4708
+  },
+  rate: 2,
+  init: "ctx.moveTo(10,10);\n    ctx.lineTo(150,50);\n    ctx.stroke();"
+}, {
   title: "lesson 1",
   description: "線段",
   code2Learn: "\nvar canvas = document.getElementById('fractal');\n      \nvar ctx = canvas.getContext('2d');\n      \nctx.clearRect(0,0,canvas.width,canvas.height);\n      \nctx.moveTo(10,10);\n      \nctx.lineTo(150,50);\n      \nctx.stroke();\n      ",
