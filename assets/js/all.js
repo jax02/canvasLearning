@@ -312,9 +312,9 @@ if (location.pathname == "/canvasLearning/record.html" || location.pathname == "
 if (location.pathname == "/canvasLearning/courseDetail.html" || location.pathname == "/courseDetail.html") {
   current_lesson = 0;
 } else if (location.pathname == "/canvasLearning/courseDetail-mid.html" || location.pathname == "/courseDetail-mid.html") {
-  current_lesson = 6;
+  current_lesson = 3;
 } else {
-  current_lesson = 9;
+  current_lesson = 6;
 }
 
 var lessons = [{
@@ -612,13 +612,12 @@ function check() {
     doc.open();
     doc.write(destinationCode);
   }
-}
+} // var delay;
+// editor.addEventListener("change", function () {
+//   clearTimeout(delay);
+//   if (preview) delay = setTimeout(updatePreview, 300);
+// });
 
-var delay;
-editor.addEventListener("change", function () {
-  clearTimeout(delay);
-  if (preview) delay = setTimeout(updatePreview, 300);
-});
 
 function updatePreview() {
   code = editor.getValue().replace(/^\s*/, "");
@@ -633,9 +632,9 @@ function reset() {
   if (location.pathname == "/canvasLearning/courseDetail.html" || location.pathname == "/courseDetail.html") {
     current_lesson = 0;
   } else if (location.pathname == "/canvasLearning/courseDetail-mid.html" || location.pathname == "/courseDetail-mid.html") {
-    current_lesson = 6;
+    current_lesson = 3;
   } else {
-    current_lesson = 9;
+    current_lesson = 6;
   }
 
   code2Learn = lessons[current_lesson].code2Learn;
@@ -659,6 +658,40 @@ function next() {
 
   doc.open();
   doc.write(destinationCode);
+
+  if (current_lesson == 2) {
+    Swal.fire({
+      title: '開始中級內容囉',
+      text: "需要幫你更換教學內容嗎!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: '是的我需要!'
+    }).then(function (result) {
+      if (result.isConfirmed) {
+        Swal.fire('跳轉成功', 'success');
+        location.href = "courseDetail-mid.html";
+      }
+    });
+  }
+
+  if (current_lesson == 5) {
+    Swal.fire({
+      title: '開始困難內容囉',
+      text: "需要幫你更換教學內容嗎!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: '是的我需要!'
+    }).then(function (result) {
+      if (result.isConfirmed) {
+        Swal.fire('success');
+        location.href = "courseDetail-hard.html";
+      }
+    });
+  }
 }
 
 function prev() {
