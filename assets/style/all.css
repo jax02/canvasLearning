@@ -16123,6 +16123,9 @@ img {
   -o-transition: width 2s;
   transition: width 2s; }
 
+.record {
+  height: 100vh; }
+
 .person img {
   max-width: 100%;
   max-height: 250px;
