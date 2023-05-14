@@ -84,7 +84,7 @@ if (location.pathname == "/canvasLearning/index.html" || location.pathname == "/
     swal("Good job!", "\u6210\u529F\u5EFA\u7ACB\u4F7F\u7528\u8005 \uFF1A ".concat(str), "success", {
       button: "確認"
     });
-    userName = '';
+    nickName.value = '';
     localStorage.removeItem('correct');
     var userfinishedData = userInfo[0].finished.filter(function (value) {
       return value == true;
