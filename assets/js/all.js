@@ -23,6 +23,14 @@ if (localStorage.getItem("players", JSON.stringify(players))) {
     }
   };
   localStorage.setItem("players", JSON.stringify(_players));
+}
+
+function waitAlert() {
+  Swal.fire({
+    icon: 'error',
+    title: 'Oops...',
+    text: '功能還未啟用!'
+  });
 } //leaderboard
 //localhost的pathname=/course.html
 //github Pages的pathname=/canvasLearning/course.html
