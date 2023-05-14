@@ -163,4 +163,7 @@
   -webkit-animation: arrow-down 3s ease 1s infinite;
           animation: arrow-down 3s ease 1s infinite; }
 
+.start:hover {
+  color: white; }
+
 /*# sourceMappingURL=course.css.map */

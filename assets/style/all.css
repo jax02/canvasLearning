@@ -16088,6 +16088,9 @@ textarea.form-control-lg {
   -webkit-animation: arrow-down 3s ease 1s infinite;
           animation: arrow-down 3s ease 1s infinite; }
 
+.start:hover {
+  color: white; }
+
 .border-bottom {
   padding-bottom: 80px;
   border-bottom: 1px solid #111; }
