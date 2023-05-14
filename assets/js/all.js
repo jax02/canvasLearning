@@ -327,7 +327,7 @@ var lessons = [{
     totalPixels: 4708
   },
   rate: 2,
-  init: "ctx.moveTo(10,10);\n    ctx.lineTo(150,50);\n    ctx.stroke();"
+  init: "ctx.beginPath();\n    ctx.moveTo(10,10);\n    ctx.lineTo(150,50);\n    ctx.stroke();"
 }, {
   title: "lesson 2",
   description: "矩形",
