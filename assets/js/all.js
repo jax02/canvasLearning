@@ -580,18 +580,31 @@ function check() {
   var distanceSquare = (imageDiff - lessons[current_lesson].signature.imageDiff) * (imageDiff - lessons[current_lesson].signature.imageDiff) + (totalPixels - lessons[current_lesson].signature.totalPixels) * (totalPixels - lessons[current_lesson].signature.totalPixels);
 
   if (distanceSquare < 20) {
-    rateCount();
+    rateCount(); // Swal.fire({
+    //   title: '正確!',
+    //   text: `共獲得${lessons[current_lesson].rate}積分`,
+    //   icon: 'success',
+    //   html:`共獲得${lessons[current_lesson].rate}積分`
+    // })
+
     Swal.fire({
       title: '正確!',
       text: "\u5171\u7372\u5F97".concat(lessons[current_lesson].rate, "\u7A4D\u5206"),
       icon: 'success',
-      html: "\u5171\u7372\u5F97".concat(lessons[current_lesson].rate, "\u7A4D\u5206")
+      html: "\u5171\u7372\u5F97".concat(lessons[current_lesson].rate, "\u7A4D\u5206"),
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'OK'
+    }).then(function (result) {
+      if (result.isConfirmed) {
+        progressCheck();
+        next();
+      }
     });
     localStorage.setItem("players", JSON.stringify(players));
     userInfo[0].finished.splice("".concat(current_lesson), 1, true);
     localStorage.setItem("userInfo", JSON.stringify(userInfo));
-    progressCheck();
-    next();
   } else {
     Swal.fire({
       title: '需要幫忙嗎?',
