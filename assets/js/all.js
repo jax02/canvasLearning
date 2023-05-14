@@ -318,7 +318,7 @@ if (location.pathname == "/canvasLearning/courseDetail.html" || location.pathnam
 }
 
 var lessons = [{
-  title: "lesson test1",
+  title: "lesson test2",
   description: "線段",
   code2Learn: "\nvar canvas = document.getElementById('fractal');\n    \nvar ctx = canvas.getContext('2d');\n    \nctx.clearRect(0,0,canvas.width,canvas.height);\n    \nctx.fillRect(10, 10, 50, 50);\n      ",
   instruction: "// test1\u756B\u7DDA\u6BB5\uFF0C\u5F9E(10,10)\u5230(150,50)",
