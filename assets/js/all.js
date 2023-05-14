@@ -318,10 +318,10 @@ if (location.pathname == "/canvasLearning/courseDetail.html" || location.pathnam
 }
 
 var lessons = [{
-  title: "lesson test3",
+  title: "lesson test4",
   description: "線段",
-  code2Learn: "\nvar canvas = document.getElementById('fractal');\n    \nvar ctx = canvas.getContext('2d');\n    \nctx.clearRect(0,0,canvas.width,canvas.height);\n    \nctx.moveTo(10, 10);\n    \nctx.lineTo(150,50);\n    \nctx.stroke();",
-  instruction: "// test3-Line",
+  code2Learn: "\nvar canvas = document.getElementById('fractal');\n    \nvar ctx = canvas.getContext('2d');\n    \nctx.moveTo(10, 10);\n    \nctx.lineTo(150,50);\n    \nctx.stroke();",
+  instruction: "// test4-Line",
   signature: {
     imageDiff: 0,
     totalPixels: 4708
