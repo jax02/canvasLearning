@@ -16115,6 +16115,11 @@ img {
 .col img {
   max-width: 360px; }
 
+.progress {
+  -webkit-transition: width 2s;
+  -o-transition: width 2s;
+  transition: width 2s; }
+
 .person img {
   max-width: 100%;
   max-height: 250px;

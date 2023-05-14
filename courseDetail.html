@@ -175,7 +175,7 @@
               <code>ctx.beginPath()</code><br />
               <code>ctx.moveTo(x,y)</code><br />
               <code>ctx.lineTo(X2,y2)</code><br />
-              <code>ctx.lineTo(x,y2)</code><br />
+              <code>ctx.lineTo(x3,y3)</code><br />
               <code>ctx.closePath()</code><br />
               <code>ctx.stroke();</code><br />
             </span>
@@ -293,9 +293,11 @@
     </div>
     <div class="row mt-3">
       <div class="col">
-        <div class="progress" id="progress">
+        <div class="progress" style="height: 25px;">
+        <div class="progress" id="progress" style="height: 25px;">
           <div
             class="progress-bar"
+            id="progress-bg"
             role="progressbar"
             style="width:0%"
             aria-valuenow="25"
@@ -304,7 +306,7 @@
           >
           0/9
           </div>
-        </div>
+        </div></div>
       </div>
     </div>
     <!-- codemirror  -->
