@@ -65,7 +65,7 @@
     right: 10px; } }
 
 .ranking {
-  height: 100vh;
+  height: 100%;
   width: 100%;
   background-image: url(https://i.imgur.com/gUhw05m.jpg);
   background-size: cover;
