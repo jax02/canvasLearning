@@ -29,6 +29,14 @@ if (localStorage.getItem("players", JSON.stringify(players))) {
 
 
 if (location.pathname == "/canvasLearning/course.html" || location.pathname == "/course.html") {
+  var userInfo = JSON.parse(localStorage.getItem("userInfo"));
+
+  if (userInfo != undefined) {
+    document.querySelector("#user").innerHTML = "<h3 class=\"text-primary\" id=\"user\">\u6B61\u8FCE\uFF0C".concat(userInfo[0].name, "</h3>");
+  } else {
+    ;
+  }
+
   var leaderboard = [];
 
   var _players2 = JSON.parse(localStorage.getItem("players"));
@@ -93,6 +101,13 @@ if (location.pathname == "/canvasLearning/index.html" || location.pathname == "/
     swal("Good job!", "\u6210\u529F\u5EFA\u7ACB\u4F7F\u7528\u8005 \uFF1A ".concat(str), "success", {
       button: "確認"
     });
+
+    if (userInfo != undefined) {
+      document.querySelector("#user").innerHTML = "<h3 class=\"text-primary\" id=\"user\">\u6B61\u8FCE\uFF0C".concat(userInfo[0].name, "</h3>");
+    } else {
+      ;
+    }
+
     nickName.value = '';
     localStorage.removeItem('correct');
     var userfinishedData = userInfo[0].finished.filter(function (value) {
@@ -119,8 +134,16 @@ if (location.pathname == "/canvasLearning/index.html" || location.pathname == "/
 
 if (location.pathname == "/canvasLearning/record.html" || location.pathname == "/record.html") {
   var percentage = 0;
-  var userInfo = JSON.parse(localStorage.getItem("userInfo"));
-  var userfinishedData = userInfo[0].finished.filter(function (value) {
+
+  var _userInfo = JSON.parse(localStorage.getItem("userInfo"));
+
+  if (_userInfo != undefined) {
+    document.querySelector("#user").innerHTML = "<h3 class=\"text-primary\" id=\"user\">\u6B61\u8FCE\uFF0C".concat(_userInfo[0].name, "</h3>");
+  } else {
+    ;
+  }
+
+  var userfinishedData = _userInfo[0].finished.filter(function (value) {
     return value == true;
   });
 
@@ -134,9 +157,10 @@ if (location.pathname == "/canvasLearning/record.html" || location.pathname == "
 
   unFinishedData = 9 - finishedData;
   document.querySelector("#percentage").innerHTML = "<span class=\"text-primary\" >".concat(percentage, "%</span>");
-  document.querySelector("#userName").innerHTML = " <div class=\"fs-3 mb-2 text-center\" >".concat(userInfo[0].name, "</div>");
-  document.querySelector("#rate").innerHTML = " <span class=\"text-primary\" >".concat(userInfo[0].rate, "</span>");
-  userInfo[0].finished.forEach(function (e, index) {
+  document.querySelector("#userName").innerHTML = " <div class=\"fs-3 mb-2 text-center\" >".concat(_userInfo[0].name, "</div>");
+  document.querySelector("#rate").innerHTML = " <span class=\"text-primary\" >".concat(_userInfo[0].rate, "</span>");
+
+  _userInfo[0].finished.forEach(function (e, index) {
     if (e == true) {
       var str = "".concat(index + 1);
       document.querySelector("#item".concat(str)).setAttribute("class", "list-group-item ");
@@ -144,6 +168,7 @@ if (location.pathname == "/canvasLearning/record.html" || location.pathname == "
       ;
     }
   });
+
   var chart = c3.generate({
     bindto: "#chart",
     data: {
@@ -164,7 +189,7 @@ if (location.pathname == "/canvasLearning/record.html" || location.pathname == "
       }
     },
     donut: {
-      title: "\u7A4D\u5206\u6578\uFF1A".concat(userInfo[0].rate, "/33")
+      title: "\u7A4D\u5206\u6578\uFF1A".concat(_userInfo[0].rate, "/33")
     }
   });
   setTimeout(function () {
