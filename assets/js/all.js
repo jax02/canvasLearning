@@ -13,13 +13,13 @@ if (localStorage.getItem("players", JSON.stringify(players))) {
       "rate": 14
     },
     "大華": {
-      "rate": 5
+      "rate": 8
     },
     "Larry": {
-      "rate": 6
+      "rate": 11
     },
     "David": {
-      "rate": 3
+      "rate": 6
     }
   };
   localStorage.setItem("players", JSON.stringify(_players));
