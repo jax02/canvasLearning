@@ -355,9 +355,9 @@ if (location.pathname == "/canvasLearning/record.html" || location.pathname == "
 if (location.pathname == "/canvasLearning/courseDetail.html" || location.pathname == "/courseDetail.html") {
   current_lesson = 0;
 } else if (location.pathname == "/canvasLearning/courseDetail-mid.html" || location.pathname == "/courseDetail-mid.html") {
-  current_lesson = 3;
-} else {
   current_lesson = 6;
+} else {
+  current_lesson = 8;
 }
 
 var lessons = [{
@@ -577,6 +577,13 @@ function getSignatures() {
 }
 
 var userInfo = JSON.parse(localStorage.getItem("userInfo"));
+
+if (userInfo != undefined) {
+  document.querySelector("#user").innerHTML = "<h3 class=\"text-primary\" id=\"user\">\u6B61\u8FCE\uFF0C".concat(userInfo[0].name, "</h3>");
+} else {
+  ;
+}
+
 var userfinishedData = userInfo[0].finished.filter(function (value) {
   return value == true;
 });
@@ -592,13 +599,14 @@ if (JSON.parse(localStorage.getItem("players"))) {
 
 
 function progressCheck() {
+  userInfo = JSON.parse(localStorage.getItem("userInfo"));
   var correctArray = userInfo[0].finished.filter(function (value) {
     return value == true;
   });
   var correctNum = parseInt(correctArray.length);
   document.getElementById("progress").style.width = "".concat(correctNum / lessons.length * 100, "%");
   document.querySelector("#progress").classList.add('progress', 'bg-primary');
-  document.getElementById("progress").innerHTML = "<h6 class=\"text-center w-100\">".concat(correctNum, "/").concat(lessons.length, "</h6>");
+  document.getElementById("progress").innerHTML = "<h6 class=\"text-center w-100 text-light\">".concat(correctNum, "/").concat(lessons.length, "</h6>");
 } //積分累加
 
 
@@ -677,12 +685,22 @@ function updatePreview() {
 
 
 function reset() {
+  var userName = userInfo[0].name;
+  var user = {
+    name: userName,
+    rate: 0,
+    finished: [false, false, false, false, false, false, false, false, false],
+    percentage: 0
+  };
+  users.push(user);
+  localStorage.setItem("userInfo", JSON.stringify(users));
+
   if (location.pathname == "/canvasLearning/courseDetail.html" || location.pathname == "/courseDetail.html") {
     current_lesson = 0;
   } else if (location.pathname == "/canvasLearning/courseDetail-mid.html" || location.pathname == "/courseDetail-mid.html") {
-    current_lesson = 3;
-  } else {
     current_lesson = 6;
+  } else {
+    current_lesson = 8;
   }
 
   code2Learn = lessons[current_lesson].code2Learn;
@@ -693,6 +711,7 @@ function reset() {
 
   doc.open();
   doc.write(destinationCode);
+  progressCheck();
 }
 
 function next() {
@@ -705,43 +724,41 @@ function next() {
   doc.close(); // close last action
 
   doc.open();
-  doc.write(destinationCode); // if(current_lesson==2){
-  //   Swal.fire({
-  //     title: '開始中級內容囉',
-  //     text: "需要幫你更換教學內容嗎!",
-  //     icon: 'warning',
-  //     showCancelButton: true,
-  //     confirmButtonColor: '#3085d6',
-  //     cancelButtonColor: '#d33',
-  //     confirmButtonText: '是的我需要!'
-  //   }).then((result) => {
-  //     if (result.isConfirmed) {
-  //       Swal.fire(
-  //         '跳轉成功',
-  //         'success'
-  //       )
-  //       location.href="courseDetail-mid.html"
-  //     }
-  //   })
-  // }
-  // if(current_lesson==5){
-  //   Swal.fire({
-  //     title: '開始困難內容囉',
-  //     text: "需要幫你更換教學內容嗎!",
-  //     icon: 'warning',
-  //     showCancelButton: true,
-  //     confirmButtonColor: '#3085d6',
-  //     cancelButtonColor: '#d33',
-  //     confirmButtonText: '是的我需要!'
-  //   }).then((result) => {
-  //     if (result.isConfirmed) {
-  //       Swal.fire(
-  //         'success'
-  //       )
-  //       location.href="courseDetail-hard.html"
-  //     }
-  //   })
-  // }
+  doc.write(destinationCode);
+
+  if (current_lesson == 6) {
+    Swal.fire({
+      title: '開始中級內容囉',
+      text: "需要幫你更換教學內容嗎!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: '是的我需要!'
+    }).then(function (result) {
+      if (result.isConfirmed) {
+        Swal.fire('跳轉成功', 'success');
+        location.href = "courseDetail-mid.html";
+      }
+    });
+  }
+
+  if (current_lesson == 8) {
+    Swal.fire({
+      title: '開始困難內容囉',
+      text: "需要幫你更換教學內容嗎!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: '是的我需要!'
+    }).then(function (result) {
+      if (result.isConfirmed) {
+        Swal.fire('success');
+        location.href = "courseDetail-hard.html";
+      }
+    });
+  }
 }
 
 function prev() {
