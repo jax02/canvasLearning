@@ -494,6 +494,10 @@ function saveData() {
       Swal.fire('資料未儲存，僅保留系統儲存資料', '', 'info');
     }
   });
+}
+
+function currentQuestion() {
+  document.querySelector("#questionNum").innerHTML = " <span id=\"questionNum\">\u3010\u7B2C".concat(current_lesson + 1, "\u984C\u3011</span>");
 } //執行按鈕
 
 
@@ -561,7 +565,8 @@ function init() {
 
   doc.open();
   doc.write(destinationCode); // open until user done editing
-  // preview=true;   // flag to quick response user coding
+
+  currentQuestion(); // preview=true;   // flag to quick response user coding
 }
 
 function getSignatures() {
@@ -800,6 +805,7 @@ function next() {
 
   totalCheck();
   questionThree();
+  currentQuestion();
 }
 
 function prev() {
@@ -812,6 +818,7 @@ function prev() {
 
   doc.open();
   doc.write(destinationCode);
+  currentQuestion();
 }
 
 progressCheck();
