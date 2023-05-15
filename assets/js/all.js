@@ -370,7 +370,7 @@ var lessons = [{
     totalPixels: 4708
   },
   rate: 2,
-  init: "ctx.beginPath();\n    ctx.moveTo(10,10);\n    ctx.lineTo(150,50);\n    ctx.stroke();"
+  init: "ctx.beginPath()\u958B\u59CB\u8DEF\u5F91\n    ctx.moveTo();\u79FB\u52D5\u5EA7\u6A19\u9EDE\uFF08\u8D77\u9EDE\uFF09\n    ctx.lineTo();\u9023\u7DDA\u5230\u53E6\u4E00\u9EDE\n    ctx.stroke();\u7E6A\u88FD\u51FA\u8DEF\u5F91"
 }, {
   title: "lesson 2",
   description: "矩形",
@@ -381,7 +381,7 @@ var lessons = [{
     totalPixels: 4708
   },
   rate: 3,
-  init: "ctx.fillRect(10, 10, 50, 50);"
+  init: "ctx.fillRect()\u65B9\u6CD5\u53EF\u4EE5\u756B\u586B\u8272\u77E9\u5F62"
 }, {
   title: "lesson 3",
   description: "三角形",
@@ -392,7 +392,7 @@ var lessons = [{
     totalPixels: 398
   },
   rate: 4,
-  init: "ctx.beginPath();\n    ctx.moveTo(100,50);\n    ctx.lineTo(60,90);\n    ctx.lineTo(140,90);\n    ctx.closePath();\n    ctx.stroke();"
+  init: "\u8A18\u5F97\u7528ctx.closePath()\u5C07\u5404\u9EDE\u9023\u63A5\u8D77\u4F86"
 }, {
   title: "lesson 4",
   description: "圓形",
@@ -403,7 +403,7 @@ var lessons = [{
     totalPixels: 3164
   },
   rate: 3,
-  init: "ctx.beginPath();\n    ctx.arc(100, 75, 50, 0, 2 * Math.PI);\n    ctx.stroke();"
+  init: "\n    ctx.arc()\u65B9\u6CD5\u7684\u53C3\u6578\u6709\uFF1A\uFF1A\u5713\u5FC3x,\u5713\u5FC3y\u5EA7\u6A19,\u534A\u5F91,\u8D77\u59CB\u89D2\u5EA6,\u7D50\u675F\u89D2\u5EA6"
 }, {
   title: "lesson 5",
   description: "弧形",
@@ -414,7 +414,7 @@ var lessons = [{
     totalPixels: 3164
   },
   rate: 3,
-  init: " ctx.beginPath();\n    ctx.arc(100, 60, 50, Math.PI/2*3, Math.PI/2);\n    ctx.stroke();"
+  init: "ctx.arc()\u65B9\u6CD5\u7684\u53C3\u6578\u6709\uFF1A\uFF1A\u5713\u5FC3x,\u5713\u5FC3y\u5EA7\u6A19,\u534A\u5F91,\u8D77\u59CB\u89D2\u5EA6,\u7D50\u675F\u89D2\u5EA6"
 }, {
   title: "lesson 6",
   description: "用函數畫圖",
@@ -425,7 +425,7 @@ var lessons = [{
     totalPixels: 3164
   },
   rate: 4,
-  init: "function drawCircle(x,y,r){\n      ctx.beginPath();\n      ctx.arc(x,y,r,0,2*Math.PI);\n      ctx.stroke();\n      }\n      drawCircle(100,100,50);"
+  init: "\u65B0\u589Efunction\u65B9\u6CD5\uFF0Cfunction\u5167\u5BB9\u70BA\u756B\u5713"
 }, {
   title: "lesson 7",
   description: "使用函數重複執行",
@@ -436,18 +436,18 @@ var lessons = [{
     totalPixels: 3164
   },
   rate: 4,
-  init: "function drawCircle(x,y,r){\n      ctx.beginPath();\n      ctx.arc(x,y,r,0,2*Math.PI);\n      ctx.stroke();\n      }\n      drawCircle(100,100,50);\n      drawCircle(50,100,50);\n      drawCircle(150,100,50);"
+  init: "\u5C07\u525B\u624D\u7684\u51FD\u6578\u6839\u64DA\u5404\u5713\u5FC3\u5EA7\u6A19\u591A\u6B21\u57F7\u884C\u5C31\u53EF\u4EE5\u56C9"
 }, {
   title: "lesson 8",
   description: "多次執行",
   code2Learn: "\nvar canvas = document.getElementById('fractal');\n      \n var ctx = canvas.getContext('2d');\n      \n ctx.clearRect(0,0,canvas.width,canvas.height);\n      \n function drawCircle(x,y,r){\n      \n ctx.beginPath();\n      \n ctx.arc(x,y,r,0,2*Math.PI);\n      \n ctx.stroke();\n      if (r > 2) { // condition for drawing similarity\n        drawCircle(x + r, y, r / 2);\n        drawCircle(x - r, y, r / 2);\n        }\n      \n}\n      \n drawCircle(100,100,50);\n      ",
-  instruction: "//\u52A0\u5165\u689D\u4EF6\u5F0F\u8B93\u51FD\u6578\u57F7\u884C\u591A\u6B21\uFF0C\u5C0D\u7A31\u5716\u65B9\u5F0F\u5982\u4E0B:\n    // if (r > 2) { \n//drawCircle(x + r, y, r / 2);\n//drawCircle(x - r, y, r / 2);\n//}",
+  instruction: "//\u52A0\u5165\u689D\u4EF6\u5F0F\u8B93\u51FD\u6578\u57F7\u884C\u591A\u6B21\uFF0C\u5C0D\u7A31\u5716\u689D\u4EF6\u5982\u4E0B:\n    // if (r > 2) { \n//drawCircle(x + r, y, r / 2);\n//drawCircle(x - r, y, r / 2);\n//}",
   signature: {
     imageDiff: 823,
     totalPixels: 3164
   },
   rate: 5,
-  init: "function drawCircle(x,y,r){\n      ctx.beginPath();\n      ctx.arc(x,y,r,0,2*Math.PI);\n      ctx.stroke();\n      if (r > 2) { // condition for drawing similarity\n        drawCircle(x + r, y, r / 2);\n        drawCircle(x - r, y, r / 2);\n        }\n      }\n      drawCircle(100,100,50);"
+  init: "//\u9019\u662F\u756B\u5713\u7684\u51FD\u6578\n    function drawCircle(x,y,r){\n      ctx.beginPath();\n      ctx.arc(x,y,r,0,2*Math.PI);\n      ctx.stroke();\n      //\u689D\u4EF6\u5F0F\n      if (r > 2) { // condition for drawing similarity\n        drawCircle(x + r, y, r / 2);\n        drawCircle(x - r, y, r / 2);\n        }\n      }\n      drawCircle(100,100,50);"
 }, {
   title: "lesson 9",
   description: "遞迴樹",
@@ -714,6 +714,44 @@ function reset() {
   progressCheck();
 }
 
+function questionThree() {
+  userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  var correctArray = userInfo[0].finished.filter(function (value) {
+    return value == true;
+  });
+
+  if (correctArray.length == 3) {
+    Swal.fire({
+      title: '完成3關囉',
+      text: '可以填寫問卷或繼續挑戰',
+      imageUrl: 'https://media.istockphoto.com/id/1409356578/photo/3d-two-popper-with-confetti-for-party-birthday-and-new-year-3d-rendering-illustration.jpg?b=1&s=170667a&w=0&k=20&c=l7oqejsS4BBaZjmDyet2oexLIHGjKeRGRmaf0V1UAmE=',
+      imageWidth: 400,
+      imageHeight: 200,
+      imageAlt: 'good job image',
+      footer: '<a href="https://forms.gle/hV9w1XXz6uPbjjB28" class="text-decoration-none text-primary">問卷連結</a>'
+    });
+  }
+}
+
+function totalCheck() {
+  userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  var correctArray = userInfo[0].finished.filter(function (value) {
+    return value == true;
+  });
+
+  if (correctArray.length == 9) {
+    Swal.fire({
+      title: '恭喜!已完成所有關卡！',
+      text: '可以填寫問卷囉',
+      imageUrl: 'https://images.unsplash.com/photo-1499233983070-99a5f004e720?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZmlyZXdvcmtzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60',
+      imageWidth: 400,
+      imageHeight: 200,
+      imageAlt: 'fireworks image',
+      footer: '<a href="https://forms.gle/hV9w1XXz6uPbjjB28" class="text-decoration-none text-primary">問卷連結</a>'
+    });
+  }
+}
+
 function next() {
   getSignatures();
   current_lesson = (current_lesson + 1) % lessons.length;
@@ -759,6 +797,9 @@ function next() {
       }
     });
   }
+
+  totalCheck();
+  questionThree();
 }
 
 function prev() {
